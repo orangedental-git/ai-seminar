@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>KI bei orangedental</title>
+
+<!-- Reihenfolge zaehlt: Schriften vor Layout. Alles klassische <link>/<script> —
+     ES-Module sind unter file:// CORS-blockiert. -->
+<link rel="stylesheet" href="assets/css/fonts.css">
+<link rel="stylesheet" href="assets/css/deck.css">
+</head>
+<body>
+
+<!-- Der Vorhang. Bekommt .is-done, sobald die Bilder stehen. Die Werkzeuge
+     warten darauf — ohne ihn landet jedes go() im Leeren. -->
+<div id="boot"><div class="b-bar"><i></i></div></div>
+
+<!-- Piktogramme als Inline-Sprite. Eine externe SVG-Datei loest unter file://
+     nicht auf, <use href="datei.svg#id"> bliebe leer. Nur IDs verwenden, die
+     hier stehen — eine erfundene ID rendert lautlos als Leerflaeche. -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>
+
+  <!-- Das orangedental-Symbol. Transformationen exakt aus logo_od_symbol.svg. -->
+  <symbol id="od-blob" viewBox="0 0 156.9875 81.6">
+    <g transform="matrix(1.25,0,0,-1.25,0,81.6)"><g transform="scale(0.1,0.1)">
+      <path d="M 941.895,0 C 887.168,0 835.625,14.5391 790.867,40.1484 743.418,70.2773 687.629,87.4961 627.949,87.4961 568.367,87.4961 512.578,70.2773 465.039,40.2031 420.242,14.5391 368.73,0 313.973,0 140.586,0 0,146.164 0,326.438 0,506.672 140.586,652.82 313.973,652.82 c 54.484,0 105.656,-14.367 150.175,-39.699 47.696,-30.336 103.86,-47.875 163.801,-47.875 59.981,0 116.043,17.539 163.739,47.875 44.64,25.332 95.851,39.699 150.207,39.699 173.425,0 314.005,-146.148 314.005,-326.382 C 1255.9,146.164 1115.32,0 941.895,0"/>
+    </g></g>
+  </symbol>
+
+  <!-- Piktogramme, 24x24, Konturstil. -->
+  <symbol id="i-server" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="7" rx="2"/><rect x="3" y="13" width="18" height="7" rx="2"/><path d="M7 7.5h.01M7 16.5h.01"/></symbol>
+  <symbol id="i-chip" viewBox="0 0 24 24"><rect x="7" y="7" width="10" height="10" rx="2"/><path d="M10 2v3M14 2v3M10 19v3M14 19v3M2 10h3M2 14h3M19 10h3M19 14h3"/></symbol>
+  <symbol id="i-gauge" viewBox="0 0 24 24"><path d="M3.5 17a9 9 0 1 1 17 0"/><path d="M12 13.5 16.5 9"/><circle cx="12" cy="17" r="1.4"/></symbol>
+  <symbol id="i-scan" viewBox="0 0 24 24"><path d="M3 8V5.5A2.5 2.5 0 0 1 5.5 3H8M16 3h2.5A2.5 2.5 0 0 1 21 5.5V8M21 16v2.5a2.5 2.5 0 0 1-2.5 2.5H16M8 21H5.5A2.5 2.5 0 0 1 3 18.5V16"/><path d="M9 10.5h.01M15 10.5h.01M9.5 15c1.5 1.2 3.5 1.2 5 0"/></symbol>
+  <symbol id="i-plug" viewBox="0 0 24 24"><path d="M9 2v6M15 2v6"/><path d="M6 8h12v3a6 6 0 0 1-12 0z"/><path d="M12 17v5"/></symbol>
+  <symbol id="i-play" viewBox="0 0 24 24"><rect x="2.5" y="4.5" width="19" height="13" rx="2.5"/><path d="M10 8.8l4.5 2.7-4.5 2.7z"/><path d="M8 21h8"/></symbol>
+  <symbol id="i-mobile" viewBox="0 0 24 24"><rect x="6.5" y="2.5" width="11" height="19" rx="2.5"/><path d="M10.5 5.5h3M11 18.5h2"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5.2l3.4 2"/></symbol>
+  <symbol id="i-layout" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2.5"/><path d="M9 3v18M9 10h12"/></symbol>
+  <symbol id="i-sparkle" viewBox="0 0 24 24"><path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9z"/><path d="M18.5 15.5l.7 1.8 1.8.7-1.8.7-.7 1.8-.7-1.8-1.8-.7 1.8-.7z"/></symbol>
+  <symbol id="i-cube" viewBox="0 0 24 24"><path d="M12 2.6l8 4.2v9.4l-8 4.2-8-4.2V6.8z"/><path d="M4 6.8l8 4.2 8-4.2M12 11v9.4"/></symbol>
+  <symbol id="i-brain" viewBox="0 0 24 24"><path d="M12 5.2a3.2 3.2 0 0 0-6.1 1.3A3 3 0 0 0 4 9.3a3 3 0 0 0 1.2 2.4A3 3 0 0 0 5 13.5a3.1 3.1 0 0 0 2.6 3A3 3 0 0 0 12 18.6z"/><path d="M12 5.2a3.2 3.2 0 0 1 6.1 1.3A3 3 0 0 1 20 9.3a3 3 0 0 1-1.2 2.4A3 3 0 0 1 19 13.5a3.1 3.1 0 0 1-2.6 3A3 3 0 0 1 12 18.6z"/><path d="M12 5.2v13.4"/></symbol>
+  <symbol id="i-export" viewBox="0 0 24 24"><path d="M21 14v4.5A2.5 2.5 0 0 1 18.5 21h-13A2.5 2.5 0 0 1 3 18.5V14"/><path d="M12 3v12M8 7l4-4 4 4"/></symbol>
+  <!-- Gespiegeltes i-export: Pfeil nach unten. Ein Download mit dem Export-Pfeil
+       nach oben liest sich falsch herum, auch wenn die Schale dieselbe ist. -->
+  <symbol id="i-download" viewBox="0 0 24 24"><path d="M21 14v4.5A2.5 2.5 0 0 1 18.5 21h-13A2.5 2.5 0 0 1 3 18.5V14"/><path d="M12 3v12M16 11l-4 4-4-4"/></symbol>
+  <symbol id="i-camera" viewBox="0 0 24 24"><path d="M3 8.5A2.5 2.5 0 0 1 5.5 6h1.7l1.3-2h7l1.3 2h1.7A2.5 2.5 0 0 1 21 8.5v9A2.5 2.5 0 0 1 18.5 20h-13A2.5 2.5 0 0 1 3 17.5z"/><circle cx="12" cy="12.8" r="3.6"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.4 15.4L21 21"/></symbol>
+  <symbol id="i-database" viewBox="0 0 24 24"><ellipse cx="12" cy="5.8" rx="7.5" ry="3"/><path d="M4.5 5.8v12.4c0 1.66 3.36 3 7.5 3s7.5-1.34 7.5-3V5.8"/><path d="M4.5 12c0 1.66 3.36 3 7.5 3s7.5-1.34 7.5-3"/></symbol>
+  <symbol id="i-key" viewBox="0 0 24 24"><circle cx="8" cy="8" r="4.5"/><path d="M11.2 11.2L20 20M17 17l2-2M14.5 14.5l2-2"/></symbol>
+  <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.4 2.5 3.6 5.5 3.6 9s-1.2 6.5-3.6 9c-2.4-2.5-3.6-5.5-3.6-9S9.6 5.5 12 3z"/></symbol>
+  <symbol id="i-doc" viewBox="0 0 24 24"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h4"/></symbol>
+  <!-- Filmstreifen mit Perforation. Ein Raster aus Quer- und Laengslinien liest
+       sich bei 44 px als Tabelle, nicht als Film. -->
+  <symbol id="i-film" viewBox="0 0 24 24"><rect x="3" y="4.5" width="18" height="15" rx="2.5"/><path d="M7.6 4.5v15M16.4 4.5v15"/><path d="M3 9.2h4.6M3 14.8h4.6M16.4 9.2H21M16.4 14.8H21"/></symbol>
+  <symbol id="i-link" viewBox="0 0 24 24"><path d="M10.5 13.5a4 4 0 0 0 5.7 0l2.8-2.8a4 4 0 0 0-5.7-5.7l-1.4 1.4"/><path d="M13.5 10.5a4 4 0 0 0-5.7 0L5 13.3a4 4 0 0 0 5.7 5.7l1.4-1.4"/></symbol>
+  <symbol id="i-eye" viewBox="0 0 24 24"><path d="M2.5 12S6 5.5 12 5.5 21.5 12 21.5 12 18 18.5 12 18.5 2.5 12 2.5 12z"/><circle cx="12" cy="12" r="3.2"/></symbol>
+  <symbol id="i-monitor" viewBox="0 0 24 24"><rect x="2.5" y="3.5" width="19" height="13" rx="2"/><path d="M8.5 21h7M12 16.5V21"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+
+</defs></svg>
+
+<div id="stage">
+  <div id="aurora">
+    <div class="bloom bloom--warm"></div>
+    <div class="bloom bloom--amber"></div>
+    <div class="bloom bloom--cool"></div>
+  </div>
+  <div id="blobmark"><svg viewBox="0 0 156.9875 81.6"><use href="#od-blob"/></svg></div>
+  <div id="grain"></div>
+
+  <div id="frame">
+
+    <!-- SLIDES:START -->
+
+    <!-- 01 - Titel -->
+    <section class="slide" data-title="KI bei orangedental" data-bare data-divider>
+      <div class="slide-inner">
+        <div class="title-block">
+          <h1 class="h-xl" data-anim><span style="color:var(--orange)">KI</span> bei orangedental</h1>
+          <div class="rule" data-anim></div>
+          <p class="title-sub" data-anim>Was sie kann, wie sie funktioniert, wo sie uns hilft.</p>
+        </div>
+      </div>
+      <template class="notes">
+        <p><b>Referenzfolie Titel.</b> Groesste Schriftstufe (.h-xl, 168 px), Rahmenelemente,
+        Startzustand. <code>data-bare</code> unterdrueckt Kopfzeile und Zaehler,
+        <code>data-divider</code> zieht die Aurora breit und hebt das Lichtzeichen an.</p>
+        <p>Der Platzhaltertext wird im Inhaltsschritt ersetzt — der Aufbau bleibt.</p>
+      </template>
+    </section>
+
+    <!-- 02 - Abschnittstrenner -->
+    <section class="slide" data-title="Was ist KI heute" data-section="1" data-bare data-divider>
+      <div class="slide-inner">
+        <div class="div-block">
+          <div class="div-num" data-anim>ABSCHNITT 01</div>
+          <h2 class="h-l" data-anim>Was ist KI heute</h2>
+          <p class="div-meta" data-anim>Platzhalter fuer die Einordnung des Abschnitts — eine Zeile, kein Absatz.</p>
+        </div>
+      </div>
+      <template class="notes">
+        <p><b>Referenzfolie Abschnittstrenner.</b> Traegt <code>data-bare</code> (keine Kopfzeile)
+        und trotzdem <code>data-section</code> — die Folienuebersicht liest das Attribut,
+        <code>decorate()</code> nicht.</p>
+      </template>
+    </section>
+
+    <!-- 03 - Text links, Bildpanel rechts (das Arbeitspferd) -->
+    <section class="slide" data-title="Text und Bildpanel" data-section="1">
+      <div class="slide-inner">
+        <div class="col-l" style="top:236px">
+          <h2 class="h-1" data-anim>Die Folie,<br>die am meisten traegt.</h2>
+          <div class="rule" data-anim></div>
+          <p class="lead" data-anim>Textspalte links, Panel rechts. Der Trennstrich bringt seine
+          Abstaende selbst mit — er funktioniert in jedem Layout, nicht nur in diesem.</p>
+          <div data-anim style="margin-top:34px;display:flex;gap:12px;flex-wrap:wrap">
+            <span class="path"><svg><use href="#i-monitor"/></svg>908&#160;x&#160;511&#160;px</span>
+            <span class="path"><svg><use href="#i-gauge"/></svg>Faktor&#160;1,00</span>
+          </div>
+        </div>
+        <div class="shot" data-anim style="left:900px;top:270px;width:908px;height:511px">
+          <img class="shot__spill" src="assets/img/platzhalter.soft.jpg" alt="">
+          <div class="shot__frame">
+            <img src="assets/img/platzhalter.webp" width="908" height="511" alt="Platzhalter">
+          </div>
+          <img class="shot__soft" src="assets/img/platzhalter.soft.jpg" alt="">
+          <div class="shot__cap">Platzhalter — wird im Inhaltsschritt ersetzt</div>
+        </div>
+      </div>
+      <template class="notes">
+        <p><b>Referenzfolie Arbeitspferd.</b> Panelhoehe ist aus dem <b>nativen</b>
+        Seitenverhaeltnis gerechnet, nicht geschaetzt: 908 x 511 bei 908 px Anzeigebreite
+        ergibt Faktor 1,00.</p>
+        <p>Die drei Panelebenen gehoeren zusammen: <code>.shot__spill</code> wirft die Farben
+        nach hinten, <code>.shot__frame</code> traegt das Bild, <code>.shot__soft</code> blendet
+        beim Eintritt aus und laesst das Panel scharf werden. Beide Zwillinge sind 44 px breit —
+        sie <b>sind</b> die Weichzeichnung und deshalb in deck.config.json vom Bilddeckel
+        ausgenommen.</p>
+      </template>
+    </section>
+
+    <!-- 04 - Kartenraster -->
+    <section class="slide" data-title="Kartenraster" data-section="2">
+      <div class="slide-inner">
+        <div class="col-l" data-anim style="top:220px;width:1300px">
+          <h2 class="h-1">Drei Karten, gleich hoch.</h2>
+          <div class="rule"></div>
+        </div>
+        <div class="cards cards--3" data-anim style="left:112px;top:470px;width:1696px">
+          <div class="card glass">
+            <div class="card__ico"><svg><use href="#i-eye"/></svg></div>
+            <div class="card__t">Erkennen</div>
+            <div class="card__d">Platzhalter. Texte in einem Raster aehnlich lang halten —
+            sonst stehen die Karten unterschiedlich hoch.</div>
+          </div>
+          <div class="card">
+            <div class="card__ico"><svg><use href="#i-sparkle"/></svg></div>
+            <div class="card__t">Erzeugen</div>
+            <div class="card__d">Platzhalter. Die Piktogramme sind Konturzeichnungen und
+            holen ihre Linienstaerke aus einer globalen Regel.</div>
+          </div>
+          <div class="card">
+            <div class="card__ico"><svg><use href="#i-brain"/></svg></div>
+            <div class="card__t">Entscheiden</div>
+            <div class="card__d">Platzhalter. Nur eine Karte je Folie darf echtes Glas sein —
+            hier die erste.</div>
+          </div>
+        </div>
+      </div>
+      <template class="notes">
+        <p><b>Referenzfolie Kartenraster.</b> Prueft Rastermasse, gleich hohe Karten und die
+        <code>#i-*</code>-Piktogramme in ihrer Anzeigegroesse von 44 px.</p>
+        <p><code>.glass</code> ist zunaechst nur eine Attrappe; das echte
+        <code>backdrop-filter</code> setzt <code>liveGlass()</code> erst nach dem Uebergang,
+        und hoechstens einmal pro Folie.</p>
+      </template>
+    </section>
+
+    <!-- 05 - Mehrstufige Folie -->
+    <section class="slide" data-title="Mehrstufige Folie" data-section="2" data-fragments="4">
+      <div class="slide-inner">
+        <div class="col-l" data-anim style="top:220px;width:1300px">
+          <h2 class="h-1">Vier Zustaende, drei Klicks.</h2>
+          <div class="rule"></div>
+        </div>
+        <div class="marks" data-anim style="left:112px;top:470px;width:1300px">
+          <div class="mark" data-frag="1">
+            <div class="mark__b"></div>
+            <div class="mark__t"><b>Zustand 1.</b> Erscheint beim ersten Weiterklicken.</div>
+          </div>
+          <div class="mark" data-frag="2">
+            <div class="mark__b"></div>
+            <div class="mark__t"><b>Zustand 2.</b> Der vorige bleibt stehen — Aufbau, nicht Sequenz.</div>
+          </div>
+          <div class="mark" data-frag="3">
+            <div class="mark__b"></div>
+            <div class="mark__t"><b>Zustand 3.</b> Danach geht es zur naechsten Folie.</div>
+          </div>
+        </div>
+      </div>
+      <template class="notes">
+        <p><b>Referenzfolie Aufbaustufen.</b> <code>data-fragments</code> ist die Anzahl der
+        <b>Zustaende</b>, nicht der Einblendungen: Zustand 0 ist die Folie ohne jeden Punkt,
+        <code>data-frag="1"</code> erscheint ab Zustand 1. Drei Punkte ergeben also
+        <code>data-fragments="4"</code>.</p>
+        <p>Rueckwaerts betreten zeigt die Folie ihren letzten Zustand — sie muss nicht noch
+        einmal durchgeklickt werden. Im PDF wird jeder Zustand eine eigene Seite.</p>
+      </template>
+    </section>
+
+    <!-- SLIDES:END -->
+
+    <div id="brand"><img src="assets/brand/logo_od_premium_big.png" alt="orangedental — premium innovations"></div>
+    <div id="wordmark" aria-hidden="true"><b>KI</b>-Seminar</div>
+    <div id="progress"></div>
+  </div><!-- /#frame -->
+</div><!-- /#stage -->
+
+<div id="overview"><div class="ov-grid"></div></div>
+<div id="hint"></div>
+
+<!-- Ladereihenfolge, und zwar genau diese:
+     gsap         stellt die Bewegungsbibliothek bereit
+     transitions  bindet sie und haengt sich an window.DECK
+     overview     haengt sich an window.DECK
+     deck         bindet transitions BEIM AUSWERTEN (var T = DECK.transitions)
+                  und muss deshalb dahinter stehen
+     presenter    meldet sich ueber DECK.onChange an und muss deshalb hinter
+                  deck.js stehen — davor faende es nichts vor
+     Wer das umsortiert, bekommt entweder "T is undefined" beim ersten
+     Folienwechsel oder eine Referentenansicht, die nicht mitlaeuft. -->
+<script src="assets/js/vendor/gsap.min.js"></script>
+<script src="assets/js/transitions.js"></script>
+<script src="assets/js/overview.js"></script>
+<script src="assets/js/deck.js"></script>
+<script src="assets/js/presenter.js"></script>
+</body>
+</html>

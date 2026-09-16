@@ -1,0 +1,53 @@
+# Stellt das Deck bei jedem Push nach main online.
+#
+# Drei Dinge, die schon einmal Zeit gekostet haben:
+#
+#   1. Diese Datei muss unter .github/workflows/ liegen. Liegt sie woanders,
+#      wird sie KOMMENTARLOS ignoriert und GitHub laesst stattdessen seinen
+#      eingebauten Jekyll-Workflow laufen. Erkennbar daran, dass der Lauf
+#      "pages build and deployment" heisst statt wie hier.
+#
+#   2. Settings -> Pages -> Source muss auf "GitHub Actions" stehen. Steht dort
+#      "Deploy from a branch", passiert hier nichts - ebenfalls ohne Meldung.
+#
+#   3. cancel-in-progress bleibt false. Ein abgebrochenes Deployment blockiert
+#      die Warteschlange.
+#
+# Es gibt keinen Build-Schritt: path "." nimmt das GESAMTE Repository, auch
+# dev/ und die Markdown-Dateien. Was nicht nach aussen soll, gehoert in die
+# .gitignore - oder das Repository wird privat gestellt.
+
+name: Deck auf GitHub Pages veröffentlichen
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:          # erlaubt einen neuen Anlauf ohne Commit
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Repository auschecken
+        uses: actions/checkout@v6
+
+      - name: Deck als Pages-Artefakt packen
+        uses: actions/upload-pages-artifact@v5
+        with:
+          path: .
+
+      - name: Auf GitHub Pages veröffentlichen
+        id: deployment
+        uses: actions/deploy-pages@v5
