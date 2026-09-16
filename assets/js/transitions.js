@@ -1,16 +1,16 @@
 /* =============================================================================
    KI-Seminar — Bewegungslogik
 
-   Unveraendert aus D:/SourceAI/byzz-whats-new uebernommen, bis auf den
+   Unverändert aus D:/SourceAI/byzz-whats-new übernommen, bis auf den
    Namensraum. Blur-Werte, Aurora-Formel und Staffelabstand sind gemessen —
    wer daran dreht, misst neu.
 
    Leitgedanke: Das Deck ist EINE Kamerafahrt, kein Stapel Folien.
-   Vorwaerts kommt der neue Inhalt aus der Tiefe auf den Betrachter zu, waehrend
-   der alte nach hinten wegfaellt. Rueckwaerts ist das exakt gespiegelt — wie man
-   eine Folie verlaesst, bestimmt, wie man in die naechste hineinkommt.
+   Vorwärts kommt der neue Inhalt aus der Tiefe auf den Betrachter zu, während
+   der alte nach hinten wegfällt. Rückwärts ist das exakt gespiegelt — wie man
+   eine Folie verlässt, bestimmt, wie man in die nächste hineinkommt.
 
-   Der Hintergrund bewegt sich NIE von allein. Er verschiebt sich ausschliesslich
+   Der Hintergrund bewegt sich NIE von allein. Er verschiebt sich ausschließlich
    als Folge eines Folienwechsels und steht danach still. Dauerbewegung ohne
    Anlass liest sich als Zappeln, nicht als Ruhe.
 
@@ -20,7 +20,7 @@
      - Screenshots blenden ueber eine vorgeblurte Zwillingsebene ein. Animiert
        wird deren opacity; der Blur selbst ist statisch und wird einmal gerastert.
      - will-change wird direkt vor dem Tween gesetzt und im onComplete
-       zurueckgenommen. filter endet auf 'none', nicht auf blur(0px) — sonst
+       zurückgenommen. filter endet auf 'none', nicht auf blur(0px) — sonst
        bleibt die Filter-Pipeline aktiv.
    ========================================================================== */
 (function (w) {
@@ -29,7 +29,7 @@
   var T = {};
   var g = w.gsap;
 
-  /* Blur-Obergrenze auf der 1920er Buehne. Die Buehnenskalierung skaliert sie
+  /* Blur-Obergrenze auf der 1920er Bühne. Die Bühnenskalierung skaliert sie
      optisch mit, deshalb hier ein fester Pixelwert. */
   var BLUR_IN = 11;
   var BLUR_OUT = 8;
@@ -44,7 +44,7 @@
     if (!el) return;
     g.set(el, { willChange: 'auto' });
   }
-  /** filter vollstaendig entfernen statt auf blur(0px) stehen zu lassen. */
+  /** filter vollständig entfernen statt auf blur(0px) stehen zu lassen. */
   function clearFilter(el) {
     if (el) el.style.filter = '';
   }
@@ -100,9 +100,9 @@
 
     mark(inner, 'transform, opacity, filter');
 
-    /* Vorwaerts: aus der Tiefe nach vorn (kleiner -> normal).
-       Rueckwaerts: von vorn zurueck auf die Ebene (groesser -> normal).
-       Das Vorzeichen der Skalierung traegt die Richtung. */
+    /* Vorwärts: aus der Tiefe nach vorn (kleiner -> normal).
+       Rückwärts: von vorn zurück auf die Ebene (größer -> normal).
+       Das Vorzeichen der Skalierung trägt die Richtung. */
     tl.fromTo(inner,
       { opacity: 0, scale: back ? 1.035 : 0.968, filter: 'blur(' + BLUR_IN + 'px)' },
       {
@@ -123,7 +123,7 @@
         }, 0.1);
     }
 
-    /* Das Panel wird etwas spaeter scharf als der Text steht — es hat mehr
+    /* Das Panel wird etwas später scharf als der Text steht — es hat mehr
        Gewicht und darf sich langsamer setzen. */
     T.focusShots(slide, tl, 0.14, false);
 
@@ -156,11 +156,11 @@
     return tl;
   };
 
-  /* ------------------------------------------------- Hintergrund als Traeger */
+  /* ------------------------------------------------- Hintergrund als Träger */
 
   /* Die Aurora wandert ueber das gesamte Deck als eine einzige langsame Fahrt.
      Position kommt deterministisch aus dem Folienindex — kein Zufall, damit
-     Vor- und Rueckwaertsnavigation exakt dieselben Zustaende treffen. */
+     Vor- und Rückwärtsnavigation exakt dieselben Zustände treffen. */
   function auroraState(i, total, isDivider) {
     var t = total > 1 ? i / (total - 1) : 0;
     var wide = isDivider ? 1.22 : 1;
@@ -199,11 +199,11 @@
 
   /* Das Signature-Zeichen steht fest rechts und vertikal mittig (Position in
      deck.css). Es wandert NICHT — auf Trennern tritt es hervor, auf
-     Inhaltsfolien blendet es zurueck, bleibt aber sichtbar. Nur Deckkraft
+     Inhaltsfolien blendet es zurück, bleibt aber sichtbar. Nur Deckkraft
      bewegt sich; ein wanderndes Zeichen zieht den Blick vom Inhalt weg. */
   var BLOB_DIVIDER = 0.11;
   var BLOB_SLIDE = 0.035;   /* auf Inhaltsfolien liegt es hinter Text und
-                               Schaubildern — mehr wuerde mitlesen wollen. */
+                               Schaubildern — mehr würde mitlesen wollen. */
 
   T.moveBlob = function (isDivider, fast) {
     var el = document.getElementById('blobmark');
@@ -218,13 +218,13 @@
 
   /* ------------------------------------------------------------ Fragmente */
 
-  /* Zeiger, der von Schritt zu Schritt unter die jeweils aktive Schaltflaeche
-     im Screenshot wandert. data-pointer haelt die Ziel-x in Buehnenkoordinaten,
+  /* Zeiger, der von Schritt zu Schritt unter die jeweils aktive Schaltfläche
+     im Screenshot wandert. data-pointer hält die Ziel-x in Bühnenkoordinaten,
      eine Angabe je Schritt; das Element selbst steht bei left:0.
 
-     Bewegt wird ausschliesslich transform:translateX. Das ist mit Absicht die
-     einzige Bewegung: ein dauerhaft wippender Zeiger waere Leerlaufbewegung
-     und wuerde den Blick auch dann binden, wenn nichts passiert. */
+     Bewegt wird ausschließlich transform:translateX. Das ist mit Absicht die
+     einzige Bewegung: ein dauerhaft wippender Zeiger wäre Leerlaufbewegung
+     und würde den Blick auch dann binden, wenn nichts passiert. */
   function pointerAt(slide, idx) {
     var el = slide.querySelector('[data-pointer]');
     if (!el) return null;
@@ -245,7 +245,7 @@
   };
 
   /* Sequenzfolien: drei Screenshots blenden an derselben Stelle uebereinander.
-     Auch hier laeuft nur opacity — die vorgeblurte Ebene liefert die Weichheit. */
+     Auch hier läuft nur opacity — die vorgeblurte Ebene liefert die Weichheit. */
   T.showFragment = function (slide, idx, fast) {
     var items = slide.querySelectorAll('.seq__item');
     var steps = slide.querySelectorAll('.step');
@@ -311,7 +311,7 @@
 
   /* ----------------------------------------------------------- Echtes Glas */
 
-  /* backdrop-filter erst einschalten, wenn die Folie steht. Waehrend des
+  /* backdrop-filter erst einschalten, wenn die Folie steht. Während des
      Uebergangs bewegt sich der Hintergrund, und jede Bewegung dahinter
      verwirft den Snapshot des Effekts in jedem einzelnen Frame. */
   T.liveGlass = function (slide) {

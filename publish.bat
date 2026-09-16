@@ -1,18 +1,23 @@
 @echo off
+chcp 65001 >nul
+rem  Die Zeile darüber stellt die Konsole auf UTF-8 und ist bewusst die
+rem  erste nach @echo off: cmd.exe liest die Datei mit der gerade gültigen
+rem  Codepage, alles davor muss deshalb reines ASCII bleiben. Ab hier sind
+rem  Umlaute erlaubt und werden korrekt angezeigt.
 setlocal
 
 rem  Erzeugt unter publish\ eine Fassung des Decks ohne dev\ und ohne
 rem  Werkzeuge - zum Weitergeben als Ordner oder auf einem USB-Stick.
 rem
-rem  Das ist NICHT der Weg ins Netz. Veroeffentlicht wird direkt aus diesem
+rem  Das ist NICHT der Weg ins Netz. Veröffentlicht wird direkt aus diesem
 rem  Repository heraus ueber .github\workflows\pages.yml. Aus publish\ heraus
-rem  zu pushen wuerde dev\ im Repository loeschen.
+rem  zu pushen würde dev\ im Repository löschen.
 rem
 rem  Kopiert wird nach der Positivliste "handover" aus deck.config.json:
 rem  index.html, assets, readme.txt - dazu das PDF, falls es schon erzeugt ist.
 rem
-rem  robocopy /MIR laeuft bewusst nur auf assets\, nie auf publish\ selbst:
-rem  sonst wuerde ein dort angelegtes .git mitgeloescht.
+rem  robocopy /MIR läuft bewusst nur auf assets\, nie auf publish\ selbst:
+rem  sonst würde ein dort angelegtes .git mitgelöscht.
 
 set "QUELLE=%~dp0"
 set "ZIEL=%~dp0publish"
@@ -37,13 +42,13 @@ for /f %%N in ('dir /s /b /a-d "%ZIEL%" 2^>nul ^| find /c /v ""') do set "ANZAHL
 
 echo.
 echo   Fertig:  %ZIEL%
-echo   %ANZAHL% Datei^(en^). Der Ordner laeuft per Doppelklick auf index.html.
+echo   %ANZAHL% Datei^(en^). Der Ordner läuft per Doppelklick auf index.html.
 goto :ende
 
 :fehler_kopie
 echo.
 echo   Beim Kopieren ist etwas schiefgegangen. Ist publish\ in einem
-echo   anderen Programm geoeffnet?
+echo   anderen Programm geöffnet?
 goto :ende
 
 :fehlt_index
@@ -53,7 +58,7 @@ goto :ende
 
 :fehlt_readme
 echo.
-echo   readme.txt fehlt. Sie ist die Bedienungsanleitung und gehoert mit
+echo   readme.txt fehlt. Sie ist die Bedienungsanleitung und gehört mit
 echo   in den Weitergabeordner.
 goto :ende
 

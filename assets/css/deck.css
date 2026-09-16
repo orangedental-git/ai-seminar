@@ -2,15 +2,15 @@
    KI-Seminar · orangedental
    Design-System und Folien-Vorlagen
 
-   Buehne     1920 x 1080, per transform:scale() auf jeden Bildschirm gelegt
-   Raster     Aussenrand 112 px, Grundlinie 8 px
+   Bühne     1920 x 1080, per transform:scale() auf jeden Bildschirm gelegt
+   Raster     Außenrand 112 px, Grundlinie 8 px
    Laufzeit   file:// — keine externen Ressourcen, kein Webfont-Request
    ========================================================================== */
 
 /* ---------------------------------------------------------------- 1 · Tokens */
 :root {
-  /* Flaechen — warmes Off-White statt Reinweiss: Screenshots und Diagramme
-     stehen meist dunkel im Panel, ein kaltes Weiss daneben wirkt klinisch. */
+  /* Flächen — warmes Off-White statt Reinweiß: Screenshots und Diagramme
+     stehen meist dunkel im Panel, ein kaltes Weiß daneben wirkt klinisch. */
   --paper:      #FBF8F4;
   --paper-2:    #FFFFFF;
   --paper-sunk: #F3EDE4;
@@ -27,8 +27,8 @@
   --orange-deep: #C2620A;   /* Orange als TEXT auf hellem Grund (Kontrast 4.6:1) */
   --orange-soft: rgba(246, 139, 26, 0.12);
 
-  /* Kuehler Gegenpol zum Marken-Orange. Ein Deck aus einer einzigen Farbe
-     ermuedet; dieser Ton traegt Diagramme, Rahmen und ruhige Flaechen. */
+  /* Kühler Gegenpol zum Marken-Orange. Ein Deck aus einer einzigen Farbe
+     ermüdet; dieser Ton trägt Diagramme, Rahmen und ruhige Flächen. */
   --slate:      #363E4B;
   --slate-soft: rgba(54, 62, 75, 0.09);
 
@@ -40,14 +40,14 @@
   /* Raster */
   --gutter: 112px;
   --top:    112px;
-  --bottom: 940px;   /* unterste Grundlinie fuer Inhalt; darunter liegt die Logo-Zone */
+  --bottom: 940px;   /* unterste Grundlinie für Inhalt; darunter liegt die Logo-Zone */
 
   /* Bewegung */
   --e-out: cubic-bezier(0.16, 1, 0.3, 1);
   --e-in:  cubic-bezier(0.7, 0, 0.84, 0);
 }
 
-/* ------------------------------------------------------- 2 · Grundgeruest */
+/* ------------------------------------------------------- 2 · Grundgerüst */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 html, body {
@@ -64,15 +64,15 @@ html, body {
 
    #frame  ist der KOMPONIERTE Bereich — immer exakt 1920x1080. Alle
            Folienkoordinaten in diesem Stylesheet und in index.html beziehen
-           sich ausschliesslich hierauf. Kein clamp()/vw-Layout: das Deck muss
+           sich ausschließlich hierauf. Kein clamp()/vw-Layout: das Deck muss
            auf jedem Beamer identisch aussehen, und Blur-Radien, Schattenweiten
            und Stagger-Distanzen skalieren so automatisch mit.
 
    #stage  ist der SICHTBARE Bereich. Er wird mit demselben Faktor skaliert,
-           waechst aber in --stage-w / --stage-h so weit ueber 1920x1080
+           wächst aber in --stage-w / --stage-h so weit ueber 1920x1080
            hinaus, dass er nach der Skalierung das ganze Fenster deckt
            (gesetzt in deck.js -> fit()). Nur so laufen Aurora und Korn bis an
-           die Fensterkante; bei einer starr 1920x1080 grossen Buehne endete
+           die Fensterkante; bei einer starr 1920x1080 großen Bühne endete
            der Farbverlauf mit einer sichtbaren Kante, und daneben stand ein
            heller Balken.
 
@@ -87,7 +87,7 @@ html, body {
   background: var(--paper);
 }
 
-/* Der Inhaltsrahmen sitzt mittig in der Buehne und ist immer exakt 1920x1080 —
+/* Der Inhaltsrahmen sitzt mittig in der Bühne und ist immer exakt 1920x1080 —
    alle Folienkoordinaten beziehen sich darauf. */
 #frame {
   position: absolute;
@@ -99,15 +99,15 @@ html, body {
 }
 
 /* ------------------------------------------------------------- 3 · Aurora */
-/* Eine einzige, dauerhaft montierte Hintergrundebene. Ausschliesslich
-   radial-gradient — ein filter:blur() auf Kreisen dieser Groesse kostet auf
+/* Eine einzige, dauerhaft montierte Hintergrundebene. Ausschließlich
+   radial-gradient — ein filter:blur() auf Kreisen dieser Größe kostet auf
    integrierten GPUs zweistellige Millisekunden pro Frame. */
-/* Am Inhaltsrahmen ausgerichtet, nicht an der Buehne: die Wolkenpositionen aus
-   transitions.js sind Offsets von der linken oberen Ecke dieser Ebene. Waere
-   sie an der (formatabhaengig wachsenden) Buehne aufgehaengt, saehe dieselbe
+/* Am Inhaltsrahmen ausgerichtet, nicht an der Bühne: die Wolkenpositionen aus
+   transitions.js sind Offsets von der linken oberen Ecke dieser Ebene. Wäre
+   sie an der (formatabhängig wachsenden) Bühne aufgehängt, sähe dieselbe
    Folie je nach Fensterformat anders aus.
-   2380.8 x 1339.2 mit halbnegativem Rand ist exakt das frueher genutzte
-   inset:-12% eines 1920x1080-Kastens — die Komposition bleibt unveraendert. */
+   2380.8 x 1339.2 mit halbnegativem Rand ist exakt das früher genutzte
+   inset:-12% eines 1920x1080-Kastens — die Komposition bleibt unverändert. */
 #aurora {
   position: absolute;
   left: 50%; top: 50%;
@@ -138,8 +138,8 @@ html, body {
     rgba(54, 62, 75, 0.14), rgba(54, 62, 75, 0.05) 48%, rgba(54, 62, 75, 0) 76%);
 }
 
-/* Feines Korn gegen Banding in den Verlaeufen. 1 Kachel, base64, ~200 Byte.
-   Deckt bewusst die ganze Buehne, nicht nur den Inhaltsrahmen — sonst waere der
+/* Feines Korn gegen Banding in den Verläufen. 1 Kachel, base64, ~200 Byte.
+   Deckt bewusst die ganze Bühne, nicht nur den Inhaltsrahmen — sonst wäre der
    Rand bei abweichendem Fensterformat sichtbar kornfrei. */
 #grain {
   position: absolute; inset: 0;
@@ -153,20 +153,20 @@ html, body {
 /* --------------------------------------------------- 4 · Signature: Blob */
 /* Die orangedental-Doppelform als wiederkehrendes Lichtzeichen. Bewusst
    randscharf statt weichgezeichnet: ein grafisches Mal, kein diffuser Schein —
-   und damit auch kostenlos fuer den Compositor.
+   und damit auch kostenlos für den Compositor.
 
    Die Position ist FEST: rechts, vertikal mittig, ungedreht. Das Zeichen
    wandert nicht mehr von Folie zu Folie — es wechselt nur seine Deckkraft
    (siehe transitions.js -> moveBlob). Ein wanderndes Zeichen zieht den Blick
-   vom Inhalt weg; ein stehendes traegt ihn.
+   vom Inhalt weg; ein stehendes trägt ihn.
 
-   Hoehe folgt aus dem viewBox-Verhaeltnis 156.9875 : 81.6 = 1.9239
+   Höhe folgt aus dem viewBox-Verhältnis 156.9875 : 81.6 = 1.9239
      1240 / 1.9239 = 644.5  ->  top (1080 - 644.5) / 2 = 218
-   Die Form laeuft rechts bewusst ueber den Buehnenrand hinaus. */
+   Die Form läuft rechts bewusst ueber den Bühnenrand hinaus. */
 #blobmark {
   position: absolute;
   /* Wie die Aurora am Inhaltsrahmen ausgerichtet: 860 - 960 = -100,
-     218 - 540 = -322. Bei 16:9 identisch mit der frueheren Angabe. */
+     218 - 540 = -322. Bei 16:9 identisch mit der früheren Angabe. */
   left: 50%; top: 50%;
   margin: -322px 0 0 -100px;
   width: 1240px;
@@ -187,13 +187,13 @@ html, body {
 .slide.is-active,
 .slide.is-leaving { display: block; }
 
-/* Traeger der Tiefenbewegung. Blur/Scale liegen NUR hier, nie auf Kindern. */
+/* Träger der Tiefenbewegung. Blur/Scale liegen NUR hier, nie auf Kindern. */
 .slide-inner {
   position: absolute; inset: 0;
   transform-origin: 50% 52%;
 }
 
-/* Notausgang (Taste B) fuer schwache Vorfuehrhardware. */
+/* Notausgang (Taste B) für schwache Vorführhardware. */
 body.no-blur .slide-inner,
 body.no-blur .shot__soft,
 body.no-blur .glass {
@@ -203,7 +203,7 @@ body.no-blur .glass {
 }
 body.no-blur .shot__soft { opacity: 0 !important; }
 
-/* ------------------------------------------------------- 6 · Kopf und Fuss */
+/* ------------------------------------------------------- 6 · Kopf und Fuß */
 .eyebrow {
   position: absolute;
   left: var(--gutter); top: var(--top);
@@ -235,14 +235,14 @@ body.no-blur .shot__soft { opacity: 0 !important; }
 }
 #brand img { display: block; height: 52px; width: auto; }
 
-/* Wortmarke unten rechts, Gegenstueck zum Logo unten links. Steht auf jeder
+/* Wortmarke unten rechts, Gegenstück zum Logo unten links. Steht auf jeder
    Folie — auch auf Titel und Trennern.
-   Der Grundtext im Grau der Kopfzeile (--ink-3), das hervorgehobene Stueck in
-   --orange-deep: --orange waere bei dieser Groesse auf --paper mit 2,3:1 nicht
+   Der Grundtext im Grau der Kopfzeile (--ink-3), das hervorgehobene Stück in
+   --orange-deep: --orange wäre bei dieser Größe auf --paper mit 2,3:1 nicht
    lesbar.
 
    ACHTUNG Schutzzone: "KI-Seminar" ist breiter als "byzz 11". Der Guard in
-   deck.config.json ist gemessen, nicht geschaetzt — wer den Text aendert,
+   deck.config.json ist gemessen, nicht geschätzt — wer den Text aendert,
    misst getBoundingClientRect() neu. */
 #wordmark {
   position: absolute;
@@ -281,9 +281,9 @@ body.no-blur .shot__soft { opacity: 0 !important; }
 
 .mono { font-family: var(--f-mono); font-weight: 500; letter-spacing: 0.01em; }
 
-/* Der duenne Orangestrich zwischen Headline und Fliesstext. Einziges
+/* Der dünne Orangestrich zwischen Headline und Fließtext. Einziges
    wiederkehrendes Trennelement im Deck.
-   Die Abstaende gehoeren an das Element selbst, nicht an den Elternkontext —
+   Die Abstände gehören an das Element selbst, nicht an den Elternkontext —
    sonst kollidiert der Strich in jedem Layout, das nicht .col-l ist. */
 .rule {
   width: 64px; height: 3px;
@@ -292,7 +292,7 @@ body.no-blur .shot__soft { opacity: 0 !important; }
   border-radius: 2px;
 }
 
-/* Menuepfade, Ports, Dateinamen — echtes Software-Vokabular, deshalb Mono. */
+/* Menüpfade, Ports, Dateinamen — echtes Software-Vokabular, deshalb Mono. */
 .path {
   display: inline-flex; align-items: center; gap: 10px;
   font: 500 21px/1 var(--f-mono);
@@ -320,8 +320,8 @@ body.no-blur .shot__soft { opacity: 0 !important; }
 }
 .chip--muted::before { background: var(--ink-3); }
 
-/* Klickbarer Chip: Symbol statt Punkt — fuer einen Download- oder Weblink auf
-   der Folie. deck.js nimmt Klicks auf <a> vom Blaettern aus, der Link blaettert
+/* Klickbarer Chip: Symbol statt Punkt — für einen Download- oder Weblink auf
+   der Folie. deck.js nimmt Klicks auf <a> vom Blättern aus, der Link blättert
    also nicht nebenbei weiter. Externe https-Ziele sind unter file:// erlaubt:
    das ist eine Navigation, kein fetch(). */
 .chip--link {
@@ -347,17 +347,17 @@ body.no-blur .shot__soft { opacity: 0 !important; }
 /* ------------------------------------------------------ 8 · Screenshot-Panel */
 /* "Lichtkasten": ein dunkler Screenshot steht nicht mit harter Kante auf hellem
    Grund, sondern wirft seine eigenen Farben in den Raum dahinter.
-   .shot__spill ist dieselbe 48-px-Miniatur, die auch den Tiefenuebergang traegt —
-   stark vergroessert und weit ausgeblendet ergibt sie genau diesen Schein. */
+   .shot__spill ist dieselbe 48-px-Miniatur, die auch den Tiefenübergang trägt —
+   stark vergrößert und weit ausgeblendet ergibt sie genau diesen Schein. */
 .shot {
   position: absolute;
   border-radius: 16px;
 }
 /* Kein CSS-Filter: die 44-px-Miniatur IST die Weichzeichnung. Ein filter:blur()
-   hier waere doppelt teuer, weil .slide-inner den Teilbaum beim Uebergang
+   hier wäre doppelt teuer, weil .slide-inner den Teilbaum beim Übergang
    ohnehin schon in eine Textur rendert und weichzeichnet. */
-/* Groesse explizit setzen: ein <img> mit inset allein behaelt seine
-   Eigengroesse — die Miniatur wuerde als 44-px-Fleck erscheinen. */
+/* Größe explizit setzen: ein <img> mit inset allein behält seine
+   Eigengröße — die Miniatur würde als 44-px-Fleck erscheinen. */
 .shot__spill {
   position: absolute;
   left: -9%; top: -12%;
@@ -389,9 +389,9 @@ body.no-blur .shot__soft { opacity: 0 !important; }
   object-fit: cover; object-position: center top;
 }
 
-/* Vorgeblurte Zwillingsebene. Sie traegt den "kommt aus der Tiefe"-Effekt:
-   animiert wird ausschliesslich ihre opacity, der Blur selbst ist statisch und
-   wird einmal gerastert. Ein getweenter filter:blur() waere hier zehnmal teurer. */
+/* Vorgeblurte Zwillingsebene. Sie trägt den "kommt aus der Tiefe"-Effekt:
+   animiert wird ausschließlich ihre opacity, der Blur selbst ist statisch und
+   wird einmal gerastert. Ein getweenter filter:blur() wäre hier zehnmal teurer. */
 .shot__soft {
   position: absolute; inset: 0;
   z-index: 2;
@@ -436,8 +436,8 @@ body.no-blur .shot__soft { opacity: 0 !important; }
   backdrop-filter: blur(16px) saturate(135%);
 }
 
-/* Alle Piktogramme sind Konturzeichnungen. Ohne diese Regel wuerde der Browser
-   die Pfade fuellen und aus jedem Icon einen schwarzen Klecks machen. */
+/* Alle Piktogramme sind Konturzeichnungen. Ohne diese Regel würde der Browser
+   die Pfade füllen und aus jedem Icon einen schwarzen Klecks machen. */
 svg use, .ico svg, .path svg, .card__ico svg {
   fill: none;
   stroke: currentColor;
@@ -445,7 +445,7 @@ svg use, .ico svg, .path svg, .card__ico svg {
   stroke-linecap: round;
   stroke-linejoin: round;
 }
-/* Ausnahmen: das Markensymbol und Pfeilspitzen sind Flaechen. */
+/* Ausnahmen: das Markensymbol und Pfeilspitzen sind Flächen. */
 #blobmark svg, #blobmark use { fill: currentColor; stroke: none; }
 
 .card__ico {
@@ -461,7 +461,7 @@ svg use, .ico svg, .path svg, .card__ico svg {
   font: 500 15px/1 var(--f-mono); color: rgba(25, 23, 20, 0.20);
 }
 
-/* Karte mit Bildplatz — vorbereitet fuer spaeter nachgelieferte Screenshots.
+/* Karte mit Bildplatz — vorbereitet für später nachgelieferte Screenshots.
    Ein <img class="card__shot"> ersetzt das <svg> im .card__ico 1:1. */
 .card__shot {
   display: block; width: 100%; height: 132px;
@@ -469,11 +469,11 @@ svg use, .ico svg, .path svg, .card__ico svg {
   margin-bottom: 20px; background: #14161a;
 }
 
-/* ------------------------------------------- 10 · Aufzaehlung mit Strichen */
+/* ------------------------------------------- 10 · Aufzählung mit Strichen */
 .marks { position: absolute; display: grid; gap: 26px; }
 .mark { display: grid; grid-template-columns: 30px 1fr; gap: 20px; align-items: start; }
 /* Die 45-Grad-Drehung macht aus dem 11-px-Quadrat eine 15,6 px breite Raute.
-   Der Versatz von 2 px holt die gedrehte Kante zurueck auf die Rasterlinie. */
+   Der Versatz von 2 px holt die gedrehte Kante zurück auf die Rasterlinie. */
 .mark__b {
   width: 11px; height: 11px;
   margin: 11px 0 0 2px;
@@ -484,7 +484,7 @@ svg use, .ico svg, .path svg, .card__ico svg {
 .mark__t b { font-weight: 600; color: var(--ink); }
 
 /* --------------------------------------------------------- 11 · Sequenzen */
-/* Mehrere Bilder, die an derselben Stelle uebereinanderblenden. */
+/* Mehrere Bilder, die an derselben Stelle übereinanderblenden. */
 .seq { position: absolute; }
 .seq__stack { position: absolute; inset: 0; }
 .seq__item { position: absolute; inset: 0; opacity: 0; }
@@ -543,9 +543,9 @@ svg use, .ico svg, .path svg, .card__ico svg {
 
 
 /* --------------------------------------------------- 15 · Overlays / UI */
-/* Fuer die Notizen gibt es hier bewusst nichts: sie stehen ausschliesslich im
+/* Für die Notizen gibt es hier bewusst nichts: sie stehen ausschließlich im
    Referentenfenster (P) und dort dauerhaft, weil das Hauptfenster am Beamer
-   haengt — siehe assets/js/presenter.js. */
+   hängt — siehe assets/js/presenter.js. */
 
 #overview {
   position: fixed; inset: 0;
@@ -605,17 +605,17 @@ svg use, .ico svg, .path svg, .card__ico svg {
 #boot .b-bar { width: 190px; height: 2px; background: var(--rule); border-radius: 2px; overflow: hidden; }
 #boot .b-bar i { display: block; height: 100%; width: 0; background: var(--orange); transition: width 0.25s linear; }
 
-/* Sichtbarer Fokus fuer Tastaturbedienung. */
+/* Sichtbarer Fokus für Tastaturbedienung. */
 :focus-visible { outline: 2px solid var(--orange); outline-offset: 3px; }
 
 @media (prefers-reduced-motion: reduce) {
   .step { transition: none; }
 }
 
-/* ----------------------------------------- 16 · Stillstand und Rueckfall */
+/* ----------------------------------------- 16 · Stillstand und Rückfall */
 
-/* Der Pruefstand und die PDF-Ausgabe setzen das, um die rein per CSS gebauten
-   Uebergaenge der Kleinteile (.step, .chip--link) sofort zu beenden. Die
+/* Der Prüfstand und die PDF-Ausgabe setzen das, um die rein per CSS gebauten
+   Übergänge der Kleinteile (.step, .chip--link) sofort zu beenden. Die
    GSAP-Timelines werden daneben in deck.js -> settle() auf ihr Ende gezogen —
    eine CSS-Klasse erreicht einen laufenden Tween NICHT, GSAP schreibt
    Inline-Styles. Beides zusammen ergibt erst den Stillstand. */
@@ -628,7 +628,7 @@ body.is-settled *::after {
   transition-delay: 0s !important;
 }
 
-/* Rueckfallebene, wenn gsap.min.js fehlt: deck.js zeigt dann die erste Folie
-   ohne Bewegung. Schlicht ist brauchbar, weisse Seite nicht. */
+/* Rückfallebene, wenn gsap.min.js fehlt: deck.js zeigt dann die erste Folie
+   ohne Bewegung. Schlicht ist brauchbar, weiße Seite nicht. */
 body.no-anim .slide-inner { opacity: 1 !important; filter: none !important; transform: none !important; }
 body.no-anim [data-anim]  { opacity: 1 !important; transform: none !important; }

@@ -1,13 +1,18 @@
 @echo off
+chcp 65001 >nul
+rem  Die Zeile darüber stellt die Konsole auf UTF-8 und ist bewusst die
+rem  erste nach @echo off: cmd.exe liest die Datei mit der gerade gültigen
+rem  Codepage, alles davor muss deshalb reines ASCII bleiben. Ab hier sind
+rem  Umlaute erlaubt und werden korrekt angezeigt.
 setlocal
 
 rem  Erzeugt die statische Fassung des Decks als PDF.
 rem
-rem  Nicht direkt gedruckt, sondern erst fotografiert: Chrome laesst im
+rem  Nicht direkt gedruckt, sondern erst fotografiert: Chrome lässt im
 rem  Druckpfad backdrop-filter weg, rechnet Blur anders und stellt <video>
-rem  ueberhaupt nicht dar. Jede Aufbaustufe wird eine eigene Seite.
+rem  überhaupt nicht dar. Jede Aufbaustufe wird eine eigene Seite.
 rem
-rem  Argumente werden durchgereicht:  --klein  halbe Aufloesung, viel kleiner
+rem  Argumente werden durchgereicht:  --klein  halbe Auflösung, viel kleiner
 rem                                   --out    anderer Zielpfad
 
 set "SKILL=%USERPROFILE%\.claude\skills\create-slides\scripts"
@@ -20,7 +25,7 @@ if not exist "%SKILL%\deck-pdf.mjs"  goto :kein_skill
 if not exist "%SKILL%\node_modules"  goto :keine_pakete
 
 echo.
-echo   Das dauert einige Minuten. Chrome oeffnet und schliesst sich dabei.
+echo   Das dauert einige Minuten. Chrome öffnet und schließt sich dabei.
 echo.
 
 node "%SKILL%\deck-pdf.mjs" --config "%~dp0deck.config.json" %*

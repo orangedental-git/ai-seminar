@@ -2,18 +2,18 @@
    KI-Seminar — Deck-Engine
 
    Portiert aus D:/SourceAI/byzz-whats-new. Navigationsmodell, Skalierung,
-   Vorladen und settle() sind unveraendert uebernommen — sie sind gemessen,
+   Vorladen und settle() sind unverändert übernommen — sie sind gemessen,
    nicht geraten. Neu ist der Vertrag, ueber den die Werkzeuge des Skills
    create-slides das Deck ansprechen (window.DECK, siehe unten).
 
    Navigationsmodell: `target` wird bei jedem Tastendruck sofort gesetzt, ein
-   rAF-Koaleszierer wendet hoechstens einen Schritt pro Frame an. Vor jedem
-   neuen Uebergang wird ein laufender per progress(1).kill() auf seinen
+   rAF-Koaleszierer wendet höchstens einen Schritt pro Frame an. Vor jedem
+   neuen Übergang wird ein laufender per progress(1).kill() auf seinen
    Endzustand gezogen — so stapelt sich beim schnellen Durchklicken nichts.
 
-   Liegt der letzte Wechsel weniger als 220 ms zurueck, laeuft eine reduzierte
+   Liegt der letzte Wechsel weniger als 220 ms zurück, läuft eine reduzierte
    Variante: nur opacity, kein Blur, kein Stagger. Beim Loslassen der Taste
-   kommt die volle Choreografie zurueck. Uebersprungene Folien werden nie
+   kommt die volle Choreografie zurück. Uebersprungene Folien werden nie
    animiert, sondern nur durchgereicht.
    ========================================================================== */
 (function (w, d) {
@@ -24,7 +24,7 @@
   /* T wird HIER gebunden, beim Auswerten des Skripts — nicht beim Start.
      transitions.js muss deshalb VOR dieser Datei geladen werden, sonst ist T
      undefined und der erste Folienwechsel wirft. Die Ladereihenfolge steht in
-     index.html und ist dort begruendet. */
+     index.html und ist dort begründet. */
   var T = DECK.transitions;
 
   var FAST_MS = 220;
@@ -32,7 +32,7 @@
   var S = {
     slides: [],
     i: 0,             // aktuell sichtbare Folie
-    target: 0,        // gewuenschte Folie
+    target: 0,        // gewünschte Folie
     frag: 0,          // Fragmentzeiger innerhalb der Folie
     tl: null,         // laufende Uebergangs-Timeline
     lastNav: 0,
@@ -43,11 +43,11 @@
   };
   DECK.state = S;
 
-  /* ------------------------------------------------------ Buehnenskalierung */
+  /* ------------------------------------------------------ Bühnenskalierung */
 
   /* Der Inhaltsrahmen bleibt starr 1920x1080 und wird mit min() eingepasst —
-     nichts wird verzerrt oder beschnitten. Die Buehne darum herum wird
-     zusaetzlich so weit aufgezogen, dass sie nach derselben Skalierung genau
+     nichts wird verzerrt oder beschnitten. Die Bühne darum herum wird
+     zusätzlich so weit aufgezogen, dass sie nach derselben Skalierung genau
      das Fenster deckt. Dadurch laufen Aurora und Korn bis an die Fensterkante,
      statt an einer sichtbaren Kante zu enden und einen hellen Balken
      stehenzulassen. Bei genau 16:9 kommt 1920x1080 heraus. */
@@ -61,8 +61,8 @@
 
   /* ------------------------------------------------------------- Kopfzeile */
 
-  /* EINE Wahrheit fuer die Gliederung. overview.js liest sie ueber
-     DECK.sections mit, statt eine zweite Tabelle zu fuehren — zwei Tabellen
+  /* EINE Wahrheit für die Gliederung. overview.js liest sie ueber
+     DECK.sections mit, statt eine zweite Tabelle zu führen — zwei Tabellen
      laufen beim ersten Umbenennen auseinander. */
   var SECTIONS = {
     1: 'Was ist KI heute',
@@ -169,7 +169,7 @@
     emit();
   }
 
-  /* Koaleszierer: hoechstens ein Schritt pro Frame, uebersprungene Folien
+  /* Koaleszierer: höchstens ein Schritt pro Frame, übersprungene Folien
      werden ohne Animation durchgereicht. */
   function pump() {
     if (S.queued) return;
@@ -222,7 +222,7 @@
     }
     var t = S.target === S.i ? S.i - 1 : S.target - 1;
     go(t);
-    /* Rueckwaerts auf eine Fragmentfolie: deren letzten Zustand zeigen. */
+    /* Rückwärts auf eine Fragmentfolie: deren letzten Zustand zeigen. */
     var back = S.slides[Math.max(0, t)];
     if (back && fragCount(back) > 1) {
       setTimeout(function () {
@@ -235,12 +235,12 @@
   }
 
   /* Alle laufenden Tweens sofort auf ihren Endzustand ziehen.
-     Der Screenshot-Pruefstand braucht den gesetzten Zustand, nicht eine
+     Der Screenshot-Prüfstand braucht den gesetzten Zustand, nicht eine
      Momentaufnahme mitten in der Bewegung. Im Vortrag nie aufgerufen. */
   DECK.settle = function () {
     try {
       /* Der dritte Parameter MUSS true sein — sonst bleiben verschachtelte
-         Timelines aussen vor, und genau deren onComplete blendet die
+         Timelines außen vor, und genau deren onComplete blendet die
          abgehende Folie aus. */
       w.gsap.globalTimeline.getChildren(true, true, true).forEach(function (t) {
         try { t.progress(1, false); } catch (e) {}
@@ -248,7 +248,7 @@
     } catch (e) {}
 
     /* Danach hart normalisieren: genau eine Folie sichtbar, in ihrem Endzustand.
-       Der Pruefstand soll den gesetzten Zustand fotografieren, nicht das
+       Der Prüfstand soll den gesetzten Zustand fotografieren, nicht das
        Ergebnis eines Wettlaufs. */
     for (var i = 0; i < S.slides.length; i++) {
       var sl = S.slides[i];
@@ -279,12 +279,12 @@
 
   /* ------------------------------------------------- Vertrag des Skills */
   /* Die Werkzeuge unter ~/.claude/skills/create-slides/scripts/ sprechen das
-     Deck ausschliesslich ueber window.DECK an. Drei Stuecke fehlten dem
+     Deck ausschließlich ueber window.DECK an. Drei Stücke fehlten dem
      Quellprojekt und stehen deshalb hier. */
 
   /* Anzahl der ZUSTAENDE der geltenden Folie, mindestens 1. Eine Folie ohne
      Aufbau ist ein Zustand: sie selbst.
-     Intern zeigt S.frag ab 0 — data-fragments="4" heisst Zustand 0,1,2,3.
+     Intern zeigt S.frag ab 0 — data-fragments="4" heißt Zustand 0,1,2,3.
      Der Vertrag will die ANZAHL, nicht den Index: derselbe Wert. */
   DECK.fragmentCount = function () {
     var sl = S.slides[S.i];
@@ -293,8 +293,8 @@
 
   /* Einen Zustand weiter. Wechselt NIE die Folie — genau das unterscheidet
      die Funktion von next(), und deshalb darf next() hier nicht stehen:
-     layout-audit.mjs und deck-pdf.mjs rufen sie count-1-mal blind auf. Wuerde
-     sie am letzten Schritt auf die naechste Folie durchrutschen, landeten
+     layout-audit.mjs und deck-pdf.mjs rufen sie count-1-mal blind auf. Würde
+     sie am letzten Schritt auf die nächste Folie durchrutschen, landeten
      Folgefolien im PDF — ohne dass sich irgendetwas beschwert. */
   DECK.nextFragment = function () {
     var sl = S.slides[S.i];
@@ -306,8 +306,8 @@
     return true;
   };
 
-  /* Mehrere Zuhoerer statt eines Slots. Im Quellprojekt war das eine
-     Zuweisung (onSlide = fn) — ein zweiter Anmelder haette den ersten
+  /* Mehrere Zuhörer statt eines Slots. Im Quellprojekt war das eine
+     Zuweisung (onSlide = fn) — ein zweiter Anmelder hätte den ersten
      lautlos ueberschrieben. */
   var listeners = [];
   DECK.onChange = function (fn) { if (typeof fn === 'function') listeners.push(fn); };
@@ -371,8 +371,8 @@
         e.preventDefault(); break;
       case 'o': case 'O':
         DECK.overview && DECK.overview.toggle(); e.preventDefault(); break;
-      /* Fuer Notizen gibt es bewusst keine Taste: sie stehen dauerhaft im
-         Referentenfenster (P) und nie im Hauptfenster, das am Beamer haengt. */
+      /* Für Notizen gibt es bewusst keine Taste: sie stehen dauerhaft im
+         Referentenfenster (P) und nie im Hauptfenster, das am Beamer hängt. */
       case 'p': case 'P':
         DECK.presenter && DECK.presenter.open(); e.preventDefault(); break;
       case 'Escape':
@@ -398,7 +398,7 @@
     var fired = false;
 
     /* Genau EINMAL weiterreichen. Ohne diese Sperre feuert das Sicherheitsnetz
-       unten zusaetzlich zum regulaeren Abschluss — und startet das Deck mitten
+       unten zusätzlich zum regulären Abschluss — und startet das Deck mitten
        im Vortrag ein zweites Mal auf Folie 1. */
     function done() {
       if (fired) return;
@@ -421,7 +421,7 @@
         im.addEventListener('error', step, { once: true });
       }
     });
-    /* Sicherheitsnetz: nie laenger als 6 s auf dem Ladeschirm haengen. */
+    /* Sicherheitsnetz: nie länger als 6 s auf dem Ladeschirm hängen. */
     setTimeout(done, 6000);
   }
 
@@ -429,7 +429,7 @@
 
   function boot() {
     if (!w.gsap) {
-      /* Ohne GSAP bleibt das Deck vorfuehrbar — nur ohne Bewegung.
+      /* Ohne GSAP bleibt das Deck vorführbar — nur ohne Bewegung.
          S.slides und #boot.is-done werden trotzdem gesetzt: die Werkzeuge
          warten auf slideCount() > 0 UND #boot.is-done. Ohne das laufen sie
          15 Sekunden in einen Timeout und melden einen Fehler, der nach allem
@@ -458,11 +458,11 @@
     d.addEventListener('keydown', onKey);
     d.addEventListener('click', onClick);
     d.addEventListener('contextmenu', function (e) {
-      /* Rechtsklick = zurueck, praktisch mit Praesentationsfernbedienungen. */
+      /* Rechtsklick = zurück, praktisch mit Präsentationsfernbedienungen. */
       e.preventDefault(); prev();
     });
 
-    /* Wischgesten fuer Touchscreens. */
+    /* Wischgesten für Touchscreens. */
     var tx = 0, ty = 0;
     d.addEventListener('touchstart', function (e) { tx = e.touches[0].clientX; ty = e.touches[0].clientY; }, { passive: true });
     d.addEventListener('touchend', function (e) {

@@ -1,8 +1,8 @@
 /* =============================================================================
-   KI-Seminar — Folienuebersicht (Taste O)
+   KI-Seminar — Folienübersicht (Taste O)
 
    Zeigt ein Raster aller Folien mit Titel, Nummer und Abschnitt. Klick springt.
-   Bewusst textbasiert statt mit Miniaturbildern: echte Vorschaubilder wuerden
+   Bewusst textbasiert statt mit Miniaturbildern: echte Vorschaubilder würden
    entweder alle Folien gleichzeitig gerendert verlangen oder eine Canvas-Kopie,
    und Canvas ist unter file:// nach dem Zeichnen lokaler Bilder tainted.
    ========================================================================== */
@@ -13,7 +13,7 @@
   var root, grid, built = false;
 
   /* Keine eigene Abschnittstabelle: die Gliederung steht in deck.js und wird
-     ueber DECK.sections gelesen. Zwei Tabellen fuer dieselbe Sache laufen beim
+     ueber DECK.sections gelesen. Zwei Tabellen für dieselbe Sache laufen beim
      ersten Umbenennen auseinander — und zwar lautlos. */
   function sectionLabel(sec) {
     var map = DECK.sections || {};

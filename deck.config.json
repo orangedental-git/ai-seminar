@@ -8,7 +8,7 @@
   "_content": "Inhaltsband. Oberhalb 200 liegt die Kopfzeile, unterhalb 940 die Logo-Zone.",
   "content": { "top": 200, "bottom": 940 },
 
-  "_guards": "Schutzzonen in Rahmenkoordinaten, gemessen mit getBoundingClientRect() und um einen Saum erweitert. Gemessen liegt #brand bei x 112-338 / y 964-1016, #wordmark bei x 1667-1808 / y 986-1016. Wer den Text der Wortmarke aendert, misst neu - 'KI-Seminar' ist breiter als 'byzz 11' war.",
+  "_guards": "Schutzzonen in Rahmenkoordinaten, gemessen mit getBoundingClientRect() und um einen Saum erweitert. Gemessen liegt #brand bei x 112-338 / y 964-1016, #wordmark bei x 1667-1808 / y 986-1016. Wer den Text der Wortmarke ändert, misst neu, 'KI-Seminar' ist breiter als 'byzz 11' war.",
   "guards": [
     { "name": "Logo unten links", "x1": 100, "y1": 948, "x2": 372, "y2": 1034 },
     { "name": "Wortmarke unten rechts", "x1": 1655, "y1": 970, "x2": 1820, "y2": 1034 }
@@ -16,7 +16,7 @@
 
   "imageScaleMax": 1.15,
 
-  "_selectors": "Die beiden :not()-Listen sind Absicht. .eyebrow und .counter haengen in .slide-inner, sitzen aber bei y 112 und damit bewusst OBERHALB des Inhaltsbands - ohne Ausnahme meldet der Pruefstand sie auf jeder Folie. .shot__spill und .shot__soft sind 44 px breite Miniaturen, die absichtlich auf Panelbreite gezogen werden: sie SIND die Weichzeichnung, kein Inhaltsbild. Niemals stattdessen content.top senken oder imageScaleMax anheben - das gaebe die Pruefung fuer echte Inhalte auf.",
+  "_selectors": "Die beiden :not()-Listen sind Absicht. .eyebrow und .counter hängen in .slide-inner, sitzen aber bei y 112 und damit bewusst OBERHALB des Inhaltsbands, ohne Ausnahme meldet der Prüfstand sie auf jeder Folie. .shot__spill und .shot__soft sind 44 px breite Miniaturen, die absichtlich auf Panelbreite gezogen werden: sie SIND die Weichzeichnung, kein Inhaltsbild. Niemals stattdessen content.top senken oder imageScaleMax anheben, das gäbe die Prüfung für echte Inhalte auf.",
   "selectors": {
     "frame": "#frame",
     "slideContent": ".slide-inner *:not(.eyebrow):not(.eyebrow *):not(.counter):not(.counter *):not(.shot__spill):not(.shot__soft)",
@@ -30,16 +30,16 @@
     "pdf": "ki-seminar.pdf"
   },
 
-  "_handover": "Was der Kaltstart-Test an einen fremden Pfad kopiert und was spaeter weitergegeben wird.",
+  "_handover": "Was der Kaltstart-Test an einen fremden Pfad kopiert und was später weitergegeben wird.",
   "handover": ["index.html", "assets", "readme.txt"],
 
-  "_assemble": "Leere order heisst: keine Montage. index.html ist die einzige Quelle der Folien. Die Marker stehen trotzdem in der Datei, falls in Phase 4 parallel gebaut wird - eine gefuellte order ueberschreibt dann alles zwischen ihnen, auch Handarbeit.",
+  "_assemble": "Leere order heißt: keine Montage. index.html ist die einzige Quelle der Folien. Die Marker stehen trotzdem in der Datei, falls in Phase 4 parallel gebaut wird, eine gefüllte order überschreibt dann alles zwischen ihnen, auch Handarbeit.",
   "assemble": {
     "parts": "dev/slides",
     "markers": ["<!-- SLIDES:START -->", "<!-- SLIDES:END -->"],
     "order": []
   },
 
-  "_stills": "Feste Zeitpunkte fuer Videos im PDF. Noch keine Videos im Deck.",
+  "_stills": "Feste Zeitpunkte für Videos im PDF. Noch keine Videos im Deck.",
   "stills": {}
 }

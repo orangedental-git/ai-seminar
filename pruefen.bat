@@ -1,10 +1,15 @@
 @echo off
+chcp 65001 >nul
+rem  Die Zeile darüber stellt die Konsole auf UTF-8 und ist bewusst die
+rem  erste nach @echo off: cmd.exe liest die Datei mit der gerade gültigen
+rem  Codepage, alles davor muss deshalb reines ASCII bleiben. Ab hier sind
+rem  Umlaute erlaubt und werden korrekt angezeigt.
 setlocal
 
 rem  Abnahme des Decks: Layout, Referentenansicht, Kaltstart.
 rem
 rem  Die Werkzeuge liegen NICHT in diesem Projekt, sondern im Skill
-rem  create-slides. Deshalb wird hier zuerst geprueft, ob der Skill ueberhaupt
+rem  create-slides. Deshalb wird hier zuerst geprüft, ob der Skill überhaupt
 rem  eingerichtet ist - sonst bricht node mit einer Meldung ab, die niemand
 rem  einordnen kann.
 rem
@@ -21,7 +26,7 @@ if not exist "%SKILL%\abnahme.mjs"   goto :kein_skill
 if not exist "%SKILL%\node_modules"  goto :keine_pakete
 
 echo.
-echo   Abnahme laeuft. Chrome oeffnet und schliesst sich dabei mehrfach.
+echo   Abnahme läuft. Chrome öffnet und schließt sich dabei mehrfach.
 echo.
 
 node "%SKILL%\abnahme.mjs" --config "%~dp0deck.config.json" %*
@@ -30,7 +35,7 @@ if errorlevel 1 goto :befunde
 echo.
 echo   Alles bestanden.
 echo.
-echo   Von Hand fehlt noch - dafuer gibt es kein Werkzeug:
+echo   Von Hand fehlt noch - dafür gibt es kein Werkzeug:
 echo     - den Kontaktbogen ansehen  ^(dev\shots^)
 echo     - das Fenster auf 16:10, 4:3 und Hochformat ziehen
 echo     - einmal wirklich index.html doppelklicken
@@ -39,7 +44,7 @@ goto :ende
 :befunde
 echo.
 echo   Es gibt Befunde. Sie stehen oben, mit Folie und Element.
-echo   Rueckgabewert ungleich 0 - das ist das Abnahmekriterium, nicht der Text.
+echo   Rückgabewert ungleich 0 - das ist das Abnahmekriterium, nicht der Text.
 goto :ende
 
 :fehlt_index

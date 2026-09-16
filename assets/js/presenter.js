@@ -1,36 +1,36 @@
 /* =============================================================================
    KI-Seminar — Referentenansicht (Taste P)
 
-   Die Notizen stehen ausschliesslich im Referentenfenster und dort dauerhaft —
-   nie im Hauptfenster, denn das haengt am Beamer. Kein Umschalten, keine Taste
-   dafuer: das Fenster hat genau einen Zweck, und der ist der Sprechtext.
+   Die Notizen stehen ausschließlich im Referentenfenster und dort dauerhaft —
+   nie im Hauptfenster, denn das hängt am Beamer. Kein Umschalten, keine Taste
+   dafür: das Fenster hat genau einen Zweck, und der ist der Sprechtext.
 
    Unter file:// ist jedes Dokument eine eigene opaque origin. BroadcastChannel,
    localStorage und der Zugriff auf eine zweite lokale Datei fallen damit als
    Kanal zwischen zwei Fenstern aus — in build/probe.html nachgemessen.
 
-   Was funktioniert: ein per window.open('', name) geoeffnetes about:blank-Fenster
+   Was funktioniert: ein per window.open('', name) geöffnetes about:blank-Fenster
    erbt die Origin-Instanz des Openers. Opener und Popup sind damit same-origin,
    das Elternfenster kann w.document direkt aufbauen und aktualisieren. Kein
-   Messaging noetig, keine Serialisierung, keine Latenz.
+   Messaging nötig, keine Serialisierung, keine Latenz.
 
    Fallstricke, die hier behandelt sind:
-     - Doctype einmalig per document.write, danach ausschliesslich DOM-API.
-       Ohne Doctype laeuft das Popup im Quirks Mode.
+     - Doctype einmalig per document.write, danach ausschließlich DOM-API.
+       Ohne Doctype läuft das Popup im Quirks Mode.
      - Keine externen Ressourcen im Popup: CSS als Textknoten, Systemschrift,
-       Bilder nur ueber absolut aufgeloeste URLs.
+       Bilder nur ueber absolut aufgelöste URLs.
      - Kein Klonen der echten Folie: styleSheet.cssRules wirft bei file://-
        Stylesheets SecurityError. Die Vorschau wird schematisch aufgebaut.
-     - Timer rechnet immer Date.now() - start, zaehlt nie hoch. Chrome drosselt
+     - Timer rechnet immer Date.now() - start, zählt nie hoch. Chrome drosselt
        setInterval in verdeckten Fenstern.
-     - Tastendruecke im Popup werden vom Opener aus abgefangen, sonst kann der
-       Referent aus seinem Fenster nicht blaettern.
-     - Die Uhr traegt id="clock" und data-clock. test-referent.mjs sucht genau
-       danach; eine Uhr, die nur eine Klasse hat, laesst den Pruefstand
+     - Tastendrücke im Popup werden vom Opener aus abgefangen, sonst kann der
+       Referent aus seinem Fenster nicht blättern.
+     - Die Uhr trägt id="clock" und data-clock. test-referent.mjs sucht genau
+       danach; eine Uhr, die nur eine Klasse hat, lässt den Prüfstand
        fehlschlagen, obwohl sie sichtbar tickt.
 
-   Diese Datei laedt NACH deck.js: sie meldet sich ueber DECK.onChange an und
-   faende davor nichts vor.
+   Diese Datei lädt NACH deck.js: sie meldet sich ueber DECK.onChange an und
+   fände davor nichts vor.
    ========================================================================== */
 (function (w, d) {
   'use strict';
@@ -119,7 +119,7 @@
     var ttl = el('div', 'ttl', top);
     var clk = el('div', 'clk', top);
     /* test-referent.mjs sucht '#clock, [data-clock]'. Beides setzen kostet
-       nichts und macht die Uhr fuer den Pruefstand auffindbar. */
+       nichts und macht die Uhr für den Prüfstand auffindbar. */
     clk.id = 'clock';
     clk.setAttribute('data-clock', '');
     var clkT = dx.createTextNode('00:00');
@@ -209,8 +209,8 @@
     }
   }
 
-  /* onChange statt eines Einzelslots: eine Zuweisung haette jeden weiteren
-     Anmelder lautlos verdraengt. */
+  /* onChange statt eines Einzelslots: eine Zuweisung hätte jeden weiteren
+     Anmelder lautlos verdrängt. */
   DECK.onChange(function () { paint(); });
 
   w.addEventListener('pagehide', function () {

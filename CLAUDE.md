@@ -7,13 +7,13 @@
   Einzige Ausnahme: das Session-Scratchpad für temporäre Dateien.
 - Änderungen an fremden Projekten oder an System- und Config-Pfaden nur nach
   ausdrücklicher Aufforderung. Das gilt besonders für
-  `~\.claude\skills\create-slides\` — der Skill ist Vorlage für andere Projekte.
+  `~\.claude\skills\create-slides\`, denn der Skill ist Vorlage für andere Projekte.
 
 ## Werkzeug-Schritte
 
 Build- und Werkzeugschritte nicht erfragen, sondern ausführen: Bild- und
 Videokonvertierung, Schriften einbetten, Prüfläufe, Hilfsskripte im Scratchpad.
-Inhaltliche und gestalterische Weichenstellungen weiterhin vorab klären —
+Inhaltliche und gestalterische Weichenstellungen weiterhin vorab klären,
 gebündelt und früh.
 
 ## Anrede
@@ -33,7 +33,7 @@ Der Auftrag und alle Festlegungen stehen in `dev/BRIEFING.md`.
 
 ## Herkunft und Zuständigkeit
 
-Die Technik ist aus `D:\SourceAI\byzz-whats-new` portiert — Engine, Bewegung,
+Die Technik ist aus `D:\SourceAI\byzz-whats-new` portiert: Engine, Bewegung,
 Design-System, Referentenansicht. Der Namensraum heißt hier `window.DECK`
 statt `BYZZ`, weil die Werkzeuge das so verlangen.
 
@@ -50,19 +50,19 @@ gemessene `file://`-Tabelle. Vor größeren Eingriffen:
 | PDF, Weitergabe, Veröffentlichung | `references/ausliefern.md` |
 | Folien parallel bauen lassen | `references/agenten-briefing.md` |
 
-Nicht aus dem Gedächtnis arbeiten — die Dokumente enthalten gemessene Werte und
+Nicht aus dem Gedächtnis arbeiten, die Dokumente enthalten gemessene Werte und
 konkrete Fehler, die schon einmal Stunden gekostet haben.
 
 ## Aufbau
 
 ```
-index.html            das Deck — Bühne, Sprite, alle Folien
-deck.config.json      alle Projektzahlen; ohne sie findet kein Werkzeug das Projekt
+index.html            das Deck: Bühne, Sprite, alle Folien
+deck.config.json      alle Projektzahlen, ohne sie findet kein Werkzeug das Projekt
 readme.txt            Bedienung für den Vortragenden
 README.md             Einstieg
 CLAUDE.md             diese Datei
 
-pruefen.bat           Doppelklick: Abnahme
+pruefen.bat          Doppelklick: Abnahme
 pdf.bat               Doppelklick: PDF erzeugen
 publish.bat           Doppelklick: Weitergabe-Ordner ohne dev/
 
@@ -75,7 +75,7 @@ assets/
   js/deck.js          Zustand, Navigation, Skalierung, der DECK-Vertrag
   js/transitions.js   Bewegungslogik
   js/overview.js      Folienübersicht (O)
-  js/presenter.js     Referentenansicht (P) — die Notizen stehen nur dort
+  js/presenter.js     Referentenansicht (P), Notizen stehen nur dort
   js/vendor/          GSAP 3.13
   img/                Bilder                                       [erzeugt]
   brand/              Logos
@@ -91,7 +91,7 @@ dev/
 
 ## Harte Regeln
 
-Diese Punkte sind keine Stilfragen. Wer sie verletzt, macht das Deck kaputt —
+Diese Punkte sind keine Stilfragen. Wer sie verletzt, macht das Deck kaputt,
 teils so, dass es erst im Seminar auffällt.
 
 1. **`file://` ist die Randbedingung.** Keine ES-Module, kein `import()`, kein
@@ -101,11 +101,11 @@ teils so, dass es erst im Seminar auffällt.
 2. **Zustand nie aus dem DOM lesen.** Während eines Übergangs tragen zwei Folien
    `is-active`. Immer `DECK.current()` / `DECK.slideAt(n)`.
 3. **Die Sperre `if (fired) return;` in `preload()` bleibt.** Ohne sie springt
-   das Deck sechs Sekunden nach dem Start zurück auf Folie 1 — mitten im Vortrag.
+   das Deck sechs Sekunden nach dem Start zurück auf Folie 1, mitten im Vortrag.
 4. **`data-fragments` ist die Anzahl der Zustände, nicht der Einblendungen.**
    Zustand 0 ist die Folie ohne jeden Punkt, `data-frag="1"` erscheint ab
    Zustand 1. Drei Punkte ergeben `data-fragments="4"`. Wer sich hier vertut,
-   verliert die letzte Einblendung in PDF und Prüflauf — **lautlos**.
+   verliert die letzte Einblendung in PDF und Prüflauf, und zwar **lautlos**.
 5. **`DECK.nextFragment()` wechselt nie die Folie.** Die Werkzeuge rufen sie
    `count-1`-mal blind auf. Würde sie am letzten Schritt durchrutschen, landeten
    Folgefolien im PDF, ohne dass sich etwas beschwert.
@@ -125,7 +125,7 @@ teils so, dass es erst im Seminar auffällt.
     geblurrte Ebenen, Radius ≤ 12 px, danach `filter: none` (nicht `blur(0px)`),
     `backdrop-filter` höchstens einmal pro Folie, kein Leerlauf-Wackeln.
 11. **Bestehende CSS-Klassen und Piktogramm-IDs verwenden.** Erfundene
-    `#i-*`-IDs rendern als Leerfläche — ohne Fehlermeldung. Wer eine neue Stelle
+    `#i-*`-IDs rendern als Leerfläche, ohne Fehlermeldung. Wer eine neue Stelle
     mit Icons baut, **muss** sie in den globalen Kontur-Selektor in `deck.css`
     aufnehmen, sonst füllt der Browser die Pfade zu schwarzen Klecksen.
 12. **`#stage` und `#frame` nicht zusammenlegen.** `#frame` ist der komponierte
@@ -133,7 +133,7 @@ teils so, dass es erst im Seminar auffällt.
     `--stage-h` so weit, dass er jedes Fensterformat deckt. Fällt das zusammen,
     stehen bei jedem Format außer 16:9 helle Balken am Rand.
 13. **`index.html` ist die einzige Quelle der Folien.** `assemble.order` bleibt
-    leer. Eine gefüllte `order` überschreibt alles zwischen den Markern — auch
+    leer. Eine gefüllte `order` überschreibt alles zwischen den Markern, auch
     Handarbeit, und ohne Rückfrage.
 14. **Nichts erfinden.** Keine Zahlen, Jahreszahlen oder Funktionsumfänge ohne
     Beleg. Bei einem KI-Vortrag besonders heikel: die Zahlen veralten monatlich.
@@ -146,15 +146,20 @@ teils so, dass es erst im Seminar auffällt.
 SK=~/.claude/skills/create-slides/scripts
 node "$SK/layout-audit.mjs"    # Folien fotografieren und Layout prüfen
 node "$SK/abnahme.mjs"         # Layout + Referent + Kaltstart, sammelnd
-node "$SK/deck-pdf.mjs"        # nur wenn Folien sich änderten
 ```
 
+**Das PDF wird erst ganz zum Schluss erzeugt**, wenn das Deck inhaltlich fertig
+ist. Nicht zwischendurch, auch nicht „nur zur Kontrolle". Solange sich Folien
+ändern, ist jedes erzeugte PDF sofort veraltet, und ein veraltetes PDF neben
+einem aktuellen Deck ist schlimmer als gar keins. `pdf.bat` und
+`node "$SK/deck-pdf.mjs"` laufen also erst am Ende.
+
 **Rückgabewert 0 ist das Abnahmekriterium, nicht die Textausgabe.** Vorsicht bei
-`| tail` — dann liest `$?` das letzte Pipeglied und meldet immer Erfolg.
+`| tail`, dann liest `$?` das letzte Pipeglied und meldet immer Erfolg.
 
 Nicht automatisierbar und deshalb von Hand: den Kontaktbogen ansehen, das
 Fenster auf andere Seitenverhältnisse ziehen, **einmal wirklich `index.html`
-doppelklicken**. Niemals über einen Dev-Server abnehmen — über `http://`
+doppelklicken**. Niemals über einen Dev-Server abnehmen, denn über `http://`
 funktioniert genau das, was unter `file://` scheitert.
 
 Nach einem Port oder größeren Umbau zusätzlich die mechanische Gegenprobe:
@@ -168,11 +173,11 @@ grep -rn 'type="module"' .         # muss leer sein
 
 Neue Klassen und Piktogramm-IDs gehören ins Stylesheet **und** in die
 Beschreibung. Neue Stolperfallen als Regel hierher. Änderungen an der
-allgemeinen Vorschrift gehören in den Skill, nicht hierher — ändert sich etwas
+allgemeinen Vorschrift gehören in den Skill, nicht hierher. Ändert sich etwas
 an *diesem* Deck, dann hierher.
 
 **Keine Änderungsgeschichte im Quelltext.** Kommentare in `.bat`, `.js` und
-`.css` sagen, was der Code tut und warum er so aussieht — kein „seit … geändert",
+`.css` sagen, was der Code tut und warum er so aussieht, kein „seit … geändert",
 keine Datumsangaben. Dafür ist Git da.
 
 `readme.txt` enthält **ausschließlich die Bedienung** für den Vortragenden.
