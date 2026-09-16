@@ -91,7 +91,8 @@ Dreifach:
 1. **Offline per Doppelklick** auf `index.html`, das ist die maßgebliche
    Fassung und der Weg, über den abgenommen wird.
 2. **GitHub Pages** über `.github/workflows/pages.yml`.
-3. **PDF** über `pdf.bat`, jede Aufbaustufe wird eine eigene Seite.
+3. **PDF** über `pdf.bat`, jede Aufbaustufe wird eine eigene Seite. Es entsteht erst,
+   wenn das Deck inhaltlich fertig ist, nicht zwischendurch.
 
 ## Material
 

@@ -39,7 +39,7 @@ README.md             diese Datei
 CLAUDE.md             Arbeitsregeln
 
 pruefen.bat          Doppelklick: Abnahme
-pdf.bat               Doppelklick: PDF erzeugen
+pdf.bat               Doppelklick: PDF erzeugen (erst am Ende)
 publish.bat           Doppelklick: Weitergabe-Ordner ohne dev\
 .gitignore            was nicht ins Repository gehört
 
@@ -63,7 +63,7 @@ dev/                  alles, was nur beim Bauen gebraucht wird
   shots/              Prüfaufnahmen                                [erzeugt]
 
 publish/              von publish.bat erzeugt, nicht im Repository [erzeugt]
-ki-seminar.pdf        von pdf.bat erzeugt, nicht im Repository     [erzeugt]
+ki-seminar.pdf        von pdf.bat erzeugt, nicht im Repository     [erst am Ende]
 ```
 
 Zum Weitergeben genügen `index.html`, `readme.txt` und `assets/`, genau das
@@ -84,10 +84,14 @@ SK=~/.claude/skills/create-slides/scripts
 node "$SK/layout-audit.mjs"            # Folien fotografieren und Layout prüfen
 node "$SK/abnahme.mjs"                 # Layout + Referent + Kaltstart
 node "$SK/kontaktbogen.mjs" dev/shots  # ein Blatt zum Draufschauen
-node "$SK/deck-pdf.mjs"                # ki-seminar.pdf
+node "$SK/deck-pdf.mjs"                # ki-seminar.pdf, erst ganz am Ende
 node "$SK/gliederung.mjs"              # Folientabelle für die Doku
 node "$SK/bilder-aufbereiten.mjs" <bild> --out assets/img --breite <px> --weich
 ```
+
+**Das PDF entsteht erst zum Schluss**, wenn das Deck inhaltlich fertig ist. Solange sich
+Folien ändern, ist jedes erzeugte PDF sofort veraltet, und ein veraltetes PDF neben einem
+aktuellen Deck ist schlimmer als gar keins.
 
 Einmalig muss der Skill eingerichtet sein (`cd ~/.claude/skills/create-slides/scripts && npm install`).
 Die `.bat`-Dateien im Projektstamm prüfen das vorab und sagen es im Klartext.

@@ -21,6 +21,28 @@ gebündelt und früh.
 Andrew wird geduzt. Das gilt auch für alles, was im Deck steht: es ist eine
 **interne** Veranstaltung, und intern wird bei orangedental geduzt.
 
+## Schreibweise
+
+Es gelten die allgemeinen Regeln aus `~\.claude\CLAUDE.md`: Umlaute und ß werden
+ausgeschrieben, auch in Quelltextkommentaren; das Komma ist das Standardzeichen,
+der Gedankenstrich bleibt nur, wo er wirklich etwas leistet; kein Strichpunkt in
+deutscher Prosa. Dazu zwei Dinge, die nur hier gelten und beide schon einmal
+Arbeit gekostet haben:
+
+**Dateinamen sind Bezeichner und bleiben, wie sie sind.** `pruefen.bat` heißt
+weiter so, `references/buehne-und-system.md` und `references/pruefen.md` im Skill
+ebenfalls. Wer beim Nachziehen der Umlaute pauschal ersetzt, bricht diese
+Verweise, und zwar ohne Fehlermeldung, weil es nur Text in einer Tabelle ist.
+
+**Die `.bat`-Dateien sind der einzige Ort mit einer echten Kodierungsfrage.**
+Sie tragen `chcp 65001 >nul` als erste Zeile nach `@echo off` und sind UTF-8
+**ohne BOM**. Alles vor dieser Zeile bleibt reines ASCII, weil `cmd.exe` die
+Datei mit der gerade gültigen Codepage liest. So gemessen und in der echten
+Konsole gegengeprüft. Wer eine `.bat` neu anlegt, übernimmt diesen Kopf.
+
+Für Node-Skripte braucht es das nicht: Node schreibt auf der Konsole über die
+Unicode-Schnittstelle und gibt Umlaute auch bei Codepage 850 korrekt aus.
+
 ---
 
 # Projekt: KI-Seminar bei orangedental
@@ -63,7 +85,7 @@ README.md             Einstieg
 CLAUDE.md             diese Datei
 
 pruefen.bat          Doppelklick: Abnahme
-pdf.bat               Doppelklick: PDF erzeugen
+pdf.bat               Doppelklick: PDF erzeugen (erst am Ende)
 publish.bat           Doppelklick: Weitergabe-Ordner ohne dev/
 
 .claude/settings.json Projektrechte
