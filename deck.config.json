@@ -1,45 +1,62 @@
 {
   "_": "KI-Seminar. Alle Pfade sind relativ zu DIESER Datei, nie zum Arbeitsverzeichnis. Die Werkzeuge liegen im Skill create-slides und finden das Projekt ueber diese Datei.",
-
   "index": "index.html",
-
-  "frame": { "width": 1920, "height": 1080 },
-
+  "frame": {
+    "width": 1920,
+    "height": 1080
+  },
   "_content": "Inhaltsband. Oberhalb 200 liegt die Kopfzeile, unterhalb 940 die Logo-Zone.",
-  "content": { "top": 200, "bottom": 940 },
-
+  "content": {
+    "top": 200,
+    "bottom": 940
+  },
   "_guards": "Schutzzonen in Rahmenkoordinaten, gemessen mit getBoundingClientRect() und um einen Saum erweitert. Gemessen liegt #brand bei x 112-338 / y 964-1016, #wordmark bei x 1667-1808 / y 986-1016. Wer den Text der Wortmarke ändert, misst neu, 'KI-Seminar' ist breiter als 'byzz 11' war.",
   "guards": [
-    { "name": "Logo unten links", "x1": 100, "y1": 948, "x2": 372, "y2": 1034 },
-    { "name": "Wortmarke unten rechts", "x1": 1655, "y1": 970, "x2": 1820, "y2": 1034 }
+    {
+      "name": "Logo unten links",
+      "x1": 100,
+      "y1": 948,
+      "x2": 372,
+      "y2": 1034
+    },
+    {
+      "name": "Wortmarke unten rechts",
+      "x1": 1655,
+      "y1": 970,
+      "x2": 1820,
+      "y2": 1034
+    }
   ],
-
   "imageScaleMax": 1.15,
-
   "_selectors": "Die beiden :not()-Listen sind Absicht. .eyebrow und .counter hängen in .slide-inner, sitzen aber bei y 112 und damit bewusst OBERHALB des Inhaltsbands, ohne Ausnahme meldet der Prüfstand sie auf jeder Folie. .shot__spill und .shot__soft sind 44 px breite Miniaturen, die absichtlich auf Panelbreite gezogen werden: sie SIND die Weichzeichnung, kein Inhaltsbild. Niemals stattdessen content.top senken oder imageScaleMax anheben, das gäbe die Prüfung für echte Inhalte auf.",
   "selectors": {
     "frame": "#frame",
     "slideContent": ".slide-inner *:not(.eyebrow):not(.eyebrow *):not(.counter):not(.counter *):not(.shot__spill):not(.shot__soft)",
     "images": "img:not(.shot__spill):not(.shot__soft)",
-    "guardLeaves": "img, p, h1, h2, h3, li, figcaption, .chip, .card, .step, .path, .badge, .mark__t, .card__d, .shot__cap, .title-sub, .div-meta"
+    "guardLeaves": "img, p, h1, h2, h3, li, figcaption, .chip, .card, .step, .path, .badge, .mark__t, .card__d, .shot__cap, .title-sub, .div-meta, .axis__d, .axis__y, .axis__n, .axis__s"
   },
-
   "_out": "Ausgabeverzeichnisse, relativ zu dieser Datei.",
   "out": {
     "shots": "dev/shots",
     "pdf": "ki-seminar.pdf"
   },
-
   "_handover": "Was der Kaltstart-Test an einen fremden Pfad kopiert und was später weitergegeben wird.",
-  "handover": ["index.html", "assets", "readme.txt"],
-
+  "handover": [
+    "index.html",
+    "assets",
+    "readme.txt",
+    "referat.md",
+    "quellenangabe.md"
+  ],
   "_assemble": "Leere order heißt: keine Montage. index.html ist die einzige Quelle der Folien. Die Marker stehen trotzdem in der Datei, falls in Phase 4 parallel gebaut wird, eine gefüllte order überschreibt dann alles zwischen ihnen, auch Handarbeit.",
   "assemble": {
     "parts": "dev/slides",
-    "markers": ["<!-- SLIDES:START -->", "<!-- SLIDES:END -->"],
+    "markers": [
+      "<!-- SLIDES:START -->",
+      "<!-- SLIDES:END -->"
+    ],
     "order": []
   },
-
   "_stills": "Feste Zeitpunkte für Videos im PDF. Noch keine Videos im Deck.",
   "stills": {}
 }

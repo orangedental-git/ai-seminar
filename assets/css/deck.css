@@ -269,11 +269,12 @@ body.no-blur .shot__soft { opacity: 0 !important; }
 }
 
 /* ---------------------------------------------------------- 7 · Typografie */
-.h-xl { font: 600 168px/0.92 var(--f-display); letter-spacing: -0.035em; }
-.h-l  { font: 600 96px/1.0  var(--f-display); letter-spacing: -0.025em; }
-.h-1  { font: 600 68px/1.08 var(--f-display); letter-spacing: -0.022em; }
-.h-2  { font: 500 38px/1.18 var(--f-display); letter-spacing: -0.012em; }
-.h-3  { font: 600 26px/1.25 var(--f-display); letter-spacing: -0.005em; }
+.h-xl    { font: 600 168px/0.92 var(--f-display); letter-spacing: -0.035em; }
+.h-title { font: 600 128px/0.98 var(--f-display); letter-spacing: -0.030em; }
+.h-l     { font: 600 96px/1.0   var(--f-display); letter-spacing: -0.025em; }
+.h-1     { font: 600 68px/1.08 var(--f-display); letter-spacing: -0.022em; }
+.h-2     { font: 500 38px/1.18 var(--f-display); letter-spacing: -0.012em; }
+.h-3     { font: 600 26px/1.25 var(--f-display); letter-spacing: -0.005em; }
 
 .lead { font: 400 30px/1.48 var(--f-body); color: var(--ink-2); letter-spacing: -0.004em; }
 .body { font: 400 24px/1.55 var(--f-body); color: var(--ink-2); }
@@ -291,6 +292,11 @@ body.no-blur .shot__soft { opacity: 0 !important; }
   background: var(--orange);
   border-radius: 2px;
 }
+
+/* Freistehender Pfeil zwischen zwei Werten, etwa „vorher → nachher".
+   Steht ausserhalb von .card__ico und .path und braucht deshalb einen eigenen
+   Eintrag im Kontur-Selektor (Abschnitt 9), sonst wird er ein schwarzer Fleck. */
+.ico-arrow { width: 64px; height: 64px; color: var(--orange); flex: none; stroke-width: 2.2; }
 
 /* Menüpfade, Ports, Dateinamen — echtes Software-Vokabular, deshalb Mono. */
 .path {
@@ -438,7 +444,7 @@ body.no-blur .shot__soft { opacity: 0 !important; }
 
 /* Alle Piktogramme sind Konturzeichnungen. Ohne diese Regel würde der Browser
    die Pfade füllen und aus jedem Icon einen schwarzen Klecks machen. */
-svg use, .ico svg, .path svg, .card__ico svg {
+svg use, .ico svg, .path svg, .card__ico svg, .ico-arrow {
   fill: none;
   stroke: currentColor;
   stroke-width: 1.7;
@@ -456,9 +462,25 @@ svg use, .ico svg, .path svg, .card__ico svg {
 .card__ico svg { width: 100%; height: 100%; }
 .card__t { font: 600 27px/1.25 var(--f-display); letter-spacing: -0.008em; margin-bottom: 12px; }
 .card__d { font: 400 20px/1.52 var(--f-body); color: var(--ink-2); }
+/* Die englische Auflösung einer Abkürzung, unter dem Kartentitel. Sie steht
+   auf der Folie, damit auch das weitergereichte PDF ohne den Vortragenden
+   verständlich bleibt. Was die Wörter bedeuten, erklärt die Sprechnotiz. */
+.card__ab {
+  font: 400 italic 18px/1.35 var(--f-body); color: var(--ink-3);
+  margin: -6px 0 12px;
+}
 .card__n {
   position: absolute; right: 26px; top: 24px;
   font: 500 15px/1 var(--f-mono); color: rgba(25, 23, 20, 0.20);
+}
+/* Das Jahr als Kartenkopf, anstelle des Piktogramms. Gleiche Höhe und
+   gleicher Abstand wie .card__ico, damit Karten mit Jahr und Karten mit
+   Piktogramm nebeneinander auf einer Linie stehen. */
+.card__yr {
+  display: flex; align-items: center;
+  height: 44px; margin-bottom: 22px;
+  font: 500 34px/1 var(--f-mono); letter-spacing: -0.01em;
+  color: var(--orange-deep);
 }
 
 /* Karte mit Bildplatz — vorbereitet für später nachgelieferte Screenshots.
@@ -482,6 +504,15 @@ svg use, .ico svg, .path svg, .card__ico svg {
 }
 .mark__t { font: 400 26px/1.45 var(--f-body); color: var(--ink-2); }
 .mark__t b { font-weight: 600; color: var(--ink); }
+.mark__y { font: 500 26px/1.45 var(--f-mono); color: var(--orange-deep); }
+
+/* Kompakte Form für das Detailband unter einer Zeitachse: eine Zeile je
+   Station, das Jahr in der ersten Spalte an der Stelle der Raute. Die Zeilen
+   bleiben stehen, am Ende der Folie steht die ganze Liste da. */
+.marks--tight { gap: 10px; }
+.marks--tight .mark { grid-template-columns: 62px 1fr; gap: 16px; align-items: baseline; }
+.marks--tight .mark__t { font: 400 19px/1.35 var(--f-body); color: var(--ink-3); }
+.marks--tight .mark__y { font: 500 19px/1.35 var(--f-mono); }
 
 /* --------------------------------------------------------- 11 · Sequenzen */
 /* Mehrere Bilder, die an derselben Stelle übereinanderblenden. */
@@ -524,10 +555,23 @@ svg use, .ico svg, .path svg, .card__ico svg {
 .pointer svg path { fill: currentColor; stroke: none; }
 
 /* ------------------------------------------------------------ 12 · Titel */
-.title-block { position: absolute; left: var(--gutter); top: 328px; }
-.title-block .h-xl { color: var(--ink); }
+.title-block { position: absolute; left: var(--gutter); top: 300px; }
+.title-block .h-xl,
+.title-block .h-title { color: var(--ink); }
 .title-block .rule { margin: 46px 0 38px; width: 96px; }
 .title-sub { font: 400 52px/1.15 var(--f-body); color: var(--ink-2); letter-spacing: -0.015em; }
+
+/* Die drei Punkte unter dem Titel. Kein Aufzählungszeichen: die Zeilen sind
+   ein Versprechen, keine Liste. Das Fragewort trägt die Farbe, nicht das
+   Gewicht — fett stünde neben der 128er Headline zu laut.
+   Abstände am Bauteil selbst, damit es auch ohne .title-block trägt. */
+.title-list { list-style: none; display: grid; gap: 12px; }
+.title-list li {
+  font: 400 46px/1.2 var(--f-body);
+  color: var(--ink-2);
+  letter-spacing: -0.012em;
+}
+.title-list b { font-weight: 400; color: var(--orange-deep); }
 
 /* --------------------------------------------------------- 13 · Divider */
 .div-block { position: absolute; left: var(--gutter); top: 392px; }
@@ -538,11 +582,66 @@ svg use, .ico svg, .path svg, .card__ico svg {
 .div-block .h-l { max-width: 1180px; }
 .div-meta { font: 400 26px/1.5 var(--f-body); color: var(--ink-3); margin-top: 30px; }
 
-/* ------------------------------------------------------ 14 · Zwei Spalten */
+/* -------------------------------------------------------- 14 · Zeitachse */
+/* Waagerechte Achse, MASSSTÄBLICH: die x-Position jeder Marke entspricht ihrem
+   Jahr. Die Marken stehen abwechselnd über und unter der Linie — nur deshalb
+   geht das auf. Zwei gleichseitige Marken brauchen rund 170 px Abstand,
+   über Kreuz dürfen sie sich beliebig nahe kommen.
+
+   Das "left" jeder Marke wird AUSGERECHNET und steht inline am Element:
+
+       left = (jahr - startjahr) * (achsenbreite / (endjahr - startjahr))
+
+   Wer eine Marke verschiebt, rechnet neu. Eine geschätzte Position macht aus
+   einer maßstäblichen Achse eine, die nur so aussieht, und das ist schlimmer
+   als eine ehrlich gleichverteilte.
+
+   Höhen sind fest und aufeinander abgestimmt: Linie bei 170, Markenblock 340
+   hoch. Wer einen Wert ändert, rechnet die anderen nach und lässt
+   layout-audit laufen. */
+.axis { position: absolute; height: 380px; }
+
+/* Die Linie gehört der Achse und trägt deshalb kein data-frag: sie steht
+   ab Zustand 0 da, zusammen mit der Überschrift. */
+.axis__line {
+  position: absolute; left: 0; right: 0; top: 170px;
+  height: 1px; background: var(--rule);
+}
+
+/* Eine Marke. Breite und left kommen inline, weil beide aus dem Jahr folgen. */
+.axis__mark { position: absolute; top: 0; height: 340px; }
+
+/* Der Punkt sitzt auf der Linie. Heller Kern, damit die Linie nicht
+   durchscheint. Er markiert die exakte Jahresposition, deshalb sitzt er bei
+   left 0 der Marke und nicht in ihrer Mitte. */
+.axis__mark::before {
+  content: ''; position: absolute; left: -6px; top: 165px;
+  width: 11px; height: 11px; border-radius: 50%;
+  background: var(--paper); border: 2px solid var(--orange);
+}
+
+.axis__t { position: absolute; left: 0; right: 0; }
+.axis__mark--up .axis__t { bottom: 196px; }
+.axis__mark--dn .axis__t { top: 196px; }
+
+.axis__y {
+  display: block; margin-bottom: 9px;
+  font: 500 26px/1 var(--f-mono); letter-spacing: 0.01em;
+  color: var(--orange-deep);
+}
+.axis__d { font: 400 20px/1.4 var(--f-body); color: var(--ink-2); }
+/* Der Kopfsatz bekommt eine eigene Zeile. Läuft er in denselben Absatz wie
+   der graue Text, verliert die Marke beim Überfliegen ihren Halt. */
+.axis__d b { display: block; margin-bottom: 5px; font-weight: 600; color: var(--ink); }
+/* Die englische Auflösung einer Abkürzung. Steht auf der Folie, damit auch
+   das weitergereichte PDF ohne den Vortragenden verständlich bleibt. */
+.axis__ab { display: block; margin-top: 6px; font-style: italic; color: var(--ink-3); }
+
+/* ------------------------------------------------------ 15 · Zwei Spalten */
 .col-l { position: absolute; left: var(--gutter); width: 660px; }
 
 
-/* --------------------------------------------------- 15 · Overlays / UI */
+/* --------------------------------------------------- 16 · Overlays / UI */
 /* Für die Notizen gibt es hier bewusst nichts: sie stehen ausschließlich im
    Referentenfenster (P) und dort dauerhaft, weil das Hauptfenster am Beamer
    hängt — siehe assets/js/presenter.js. */
@@ -612,7 +711,7 @@ svg use, .ico svg, .path svg, .card__ico svg {
   .step { transition: none; }
 }
 
-/* ----------------------------------------- 16 · Stillstand und Rückfall */
+/* ----------------------------------------- 17 · Stillstand und Rückfall */
 
 /* Der Prüfstand und die PDF-Ausgabe setzen das, um die rein per CSS gebauten
    Übergänge der Kleinteile (.step, .chip--link) sofort zu beenden. Die

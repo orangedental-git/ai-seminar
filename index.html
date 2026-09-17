@@ -78,16 +78,37 @@
     <section class="slide" data-title="KI bei orangedental" data-bare data-divider>
       <div class="slide-inner">
         <div class="title-block">
-          <h1 class="h-xl" data-anim><span style="color:var(--orange)">KI</span> bei orangedental</h1>
+          <h1 class="h-title" data-anim><span style="color:var(--orange)">KI</span> bei orangedental</h1>
           <div class="rule" data-anim></div>
-          <p class="title-sub" data-anim>Was sie kann, wie sie funktioniert, wo sie uns hilft.</p>
+          <ul class="title-list" data-anim>
+            <li><b>Wie</b> sie funktioniert.</li>
+            <li><b>Was</b> sie kann.</li>
+            <li><b>Wo</b> sie uns hilft.</li>
+          </ul>
         </div>
       </div>
       <template class="notes">
-        <p><b>Referenzfolie Titel.</b> Größte Schriftstufe (.h-xl, 168 px), Rahmenelemente,
-        Startzustand. <code>data-bare</code> unterdrückt Kopfzeile und Zähler,
-        <code>data-divider</code> zieht die Aurora breit und hebt das Lichtzeichen an.</p>
-        <p>Der Platzhaltertext wird im Inhaltsschritt ersetzt, der Aufbau bleibt.</p>
+        <p><b>Rahmen</b></p>
+        <ul>
+          <li>Rund 20 Minuten, Fragen gern sofort und nicht erst am Ende</li>
+          <li>Kein Technikvortrag, niemand muss hinterher programmieren können</li>
+          <li>Interne Runde, wir duzen uns</li>
+        </ul>
+        <p><b>„Wie sie funktioniert"</b></p>
+        <ul>
+          <li>So viel Technik, dass verständlich wird, warum so ein Ding manchmal
+          völlig überzeugt danebenliegt</li>
+        </ul>
+        <p><b>„Was sie kann"</b></p>
+        <ul>
+          <li>Und genauso wichtig: was nicht</li>
+          <li>Der zweite Teil ist der, den die Werbung weglässt</li>
+        </ul>
+        <p><b>„Wo sie uns hilft"</b></p>
+        <ul>
+          <li>Konkrete Fälle aus dem Haus, Dinge die schon laufen</li>
+          <li>Kein Zukunftsgerede</li>
+        </ul>
       </template>
     </section>
 
@@ -97,18 +118,398 @@
         <div class="div-block">
           <div class="div-num" data-anim>ABSCHNITT 01</div>
           <h2 class="h-l" data-anim>Was ist KI heute</h2>
-          <p class="div-meta" data-anim>Platzhalter für die Einordnung des Abschnitts. Eine Zeile, kein Absatz.</p>
+          <p class="div-meta" data-anim>Woher sie kommt, warum gerade jetzt, und was davon Werbung ist.</p>
         </div>
       </div>
       <template class="notes">
-        <p><b>Referenzfolie Abschnittstrenner.</b> Trägt <code>data-bare</code> (keine Kopfzeile)
-        und trotzdem <code>data-section</code>, denn die Folienübersicht liest das Attribut,
-        <code>decorate()</code> nicht.</p>
+        <p><b>Ansage</b></p>
+        <ul>
+          <li>Erst ein kurzer Rückblick, fünf Minuten, dann sind wir im Heute</li>
+        </ul>
+        <p><b>Warum überhaupt Geschichte</b></p>
+        <ul>
+          <li>Fast jeder denkt, KI sei zwei Jahre alt. Sie ist über siebzig</li>
+          <li>Wer weiß, dass sie zweimal gescheitert ist, schätzt den heutigen Stand
+          besser ein als jemand, der nur Schlagzeilen kennt</li>
+        </ul>
+        <p><b>„Was davon Werbung ist"</b></p>
+        <ul>
+          <li>Das Versprechen für diesen Abschnitt</li>
+          <li>Ich sage auch, was ich weglasse und warum</li>
+        </ul>
       </template>
     </section>
 
-    <!-- 03 - Text links, Bildpanel rechts (das Arbeitspferd) -->
-    <section class="slide" data-title="Text und Bildpanel" data-section="1">
+    <!-- 03 - Zeitachse 1950 bis 2012, maßstäblich. Belege: quellenangabe.md -->
+    <section class="slide" data-title="KI ist älter als die meisten denken" data-section="1" data-fragments="9">
+      <div class="slide-inner">
+        <div class="col-l" data-anim style="top:220px;width:1400px">
+          <h2 class="h-1">KI ist älter als die meisten denken.</h2>
+          <div class="rule"></div>
+        </div>
+        <div class="axis" data-anim style="left:112px;top:380px;width:1400px">
+          <div class="axis__line"></div>
+          <div class="axis__mark axis__mark--up" data-frag="1"
+               style="left:0px;width:463px">
+            <div class="axis__t">
+              <span class="axis__y">1950</span>
+              <span class="axis__d"><b>„Kann eine Maschine denken?“</b>
+              Turing ersetzt die Streitfrage durch eine, die sich prüfen lässt.</span>
+            </div>
+          </div>
+          <div class="axis__mark axis__mark--dn" data-frag="2"
+               style="left:131px;width:463px">
+            <div class="axis__t">
+              <span class="axis__y">1956</span>
+              <span class="axis__d"><b>Das Wort „KI“ entsteht.</b>
+              Zehn Forscher, ein Förderantrag. Den Namen gab es vor dem Fachgebiet.</span>
+            </div>
+          </div>
+          <div class="axis__mark axis__mark--up" data-frag="3"
+               style="left:503px;width:266px">
+            <div class="axis__t">
+              <span class="axis__y">1973</span>
+              <span class="axis__d"><b>Ein Gutachten streicht das&#160;Geld.</b>
+              Großbritannien beendet die Förderung fast vollständig.</span>
+            </div>
+          </div>
+          <div class="axis__mark axis__mark--dn" data-frag="4"
+               style="left:634px;width:354px">
+            <div class="axis__t">
+              <span class="axis__y">1979</span>
+              <span class="axis__d"><b>Und es funktionierte schon.</b>
+              Ein Programm schlägt Antibiotika vor, besser als die Fachärzte.</span>
+            </div>
+          </div>
+          <div class="axis__mark axis__mark--up" data-frag="5"
+               style="left:809px;width:442px">
+            <div class="axis__t">
+              <span class="axis__y">1987</span>
+              <span class="axis__d"><b>Der zweite Einbruch.</b>
+              Nicht die Technik versagt, der Preis: normale Rechner werden billig.</span>
+            </div>
+          </div>
+          <div class="axis__mark axis__mark--dn" data-frag="6"
+               style="left:1028px;width:288px">
+            <div class="axis__t">
+              <span class="axis__y">1997</span>
+              <span class="axis__d"><b>Schachweltmeister geschlagen.</b>
+              Gerechnet, nicht gelernt: 200 Millionen Stellungen je Sekunde.</span>
+            </div>
+          </div>
+          <div class="axis__mark axis__mark--up" data-frag="7"
+               style="left:1291px;width:405px">
+            <div class="axis__t">
+              <span class="axis__y">2009</span>
+              <span class="axis__d"><b>3,2&#160;Mio. beschriftete Fotos.</b>
+              Endlich gibt es genug Material zum Lernen.</span>
+            </div>
+          </div>
+          <div class="axis__mark axis__mark--dn" data-frag="8"
+               style="left:1356px;width:340px">
+            <div class="axis__t">
+              <span class="axis__y">2012</span>
+              <span class="axis__d"><b>Bilderkennung: von 26 auf 15&#160;%&#160;Fehler.</b>
+              Auf genau diesen Fotos, in einem einzigen Jahr.</span>
+            </div>
+          </div>
+        </div>
+        <div class="marks marks--tight" data-anim style="left:112px;top:764px;width:1696px">
+          <div class="mark" data-frag="3">
+            <div class="mark__y">1973</div>
+            <div class="mark__t">Der Streit über das Gutachten wurde öffentlich im britischen Fernsehen ausgetragen.</div>
+          </div>
+          <div class="mark" data-frag="4">
+            <div class="mark__y">1979</div>
+            <div class="mark__t">65&#160;% der Therapievorschläge galten als akzeptabel, die Fachärzte kamen auf höchstens 63&#160;%. In die Praxis kam es nie.</div>
+          </div>
+          <div class="mark" data-frag="5">
+            <div class="mark__y">1987</div>
+            <div class="mark__t">Der Markt für KI-Spezialrechner bricht binnen eines Jahres zusammen, die Firmen dahinter verschwinden.</div>
+          </div>
+          <div class="mark" data-frag="7">
+            <div class="mark__y">2009</div>
+            <div class="mark__t">Menschen haben die Fotos von Hand beschriftet, bezahlt, in Kleinstarbeit.</div>
+          </div>
+          <div class="mark" data-frag="8">
+            <div class="mark__y">2012</div>
+            <div class="mark__t">Zwei handelsübliche Grafikkarten, fünf bis sechs Tage Rechenzeit. Kein Rechenzentrum.</div>
+          </div>
+        </div>
+      </div>
+      <template class="notes">
+        <p><b>1950 · „Kann eine Maschine denken?"</b></p>
+        <ul>
+          <li>Alan Turing, britischer Mathematiker, stellt die Frage in einem Aufsatz</li>
+          <li>Problem: über „denken" kann man ewig streiten</li>
+          <li>Sein Ausweg: eine prüfbare Frage — kann ein Mensch im Gespräch Maschine
+          und Mensch unterscheiden?</li>
+          <li>Der Aufsatz ist 76 Jahre alt</li>
+        </ul>
+
+        <p><b>1956 · Das Wort „KI" entsteht</b></p>
+        <ul>
+          <li>Zehn Forscher, ein Sommer am Dartmouth College, USA</li>
+          <li>Für den Förderantrag brauchen sie einen Namen: „artificial intelligence"</li>
+          <li>Der Begriff ist also älter als das Fachgebiet, das er bezeichnet</li>
+          <li>Der Förderantrag ist von 1955</li>
+        </ul>
+
+        <p><b>1973 · Ein Gutachten streicht das Geld</b></p>
+        <ul>
+          <li>Die britische Regierung lässt die KI-Forschung begutachten</li>
+          <li>Urteil: in keinem Teilgebiet kam, was versprochen war</li>
+          <li>Folge: Förderung fast vollständig gestrichen</li>
+          <li>Der Streit darüber wurde öffentlich ausgetragen, in einer Fernsehdebatte</li>
+          <li>Das ist der erste von zwei Zusammenbrüchen</li>
+        </ul>
+
+        <p><b>1979 · Und es funktionierte schon</b></p>
+        <ul>
+          <li>Ein Programm schlägt Antibiotika bei Blutvergiftung vor</li>
+          <li>Verblindete Studie: acht Fachleute bewerten die Vorschläge, ohne zu wissen,
+          welcher vom Rechner kommt</li>
+          <li>65 % der Vorschläge des Programms galten als akzeptabel</li>
+          <li>Die menschlichen Fachärzte kamen auf höchstens 63 %</li>
+          <li>In die Praxis kam es nie: zu umständlich zu bedienen, keine Anbindung an
+          Krankenakten, Haftungsfrage ungeklärt</li>
+          <li><b>Gut genug im Test heißt nicht angekommen in der Praxis</b> — wer hier mit
+          Zulassung zu tun hat, weiß warum. Gilt heute noch</li>
+        </ul>
+
+        <p><b>1987 · Der zweite Einbruch</b></p>
+        <ul>
+          <li>Diesmal versagte nicht die Technik, sondern die Rechnung</li>
+          <li>Für KI brauchte man teure Spezialrechner</li>
+          <li>Normale Arbeitsplatzrechner wurden schnell genug und kosteten einen Bruchteil</li>
+          <li>Der Markt für die Spezialrechner brach binnen eines Jahres zusammen, die
+          Firmen dahinter verschwanden</li>
+        </ul>
+
+        <p><b>1997 · Schachweltmeister geschlagen</b></p>
+        <ul>
+          <li>IBM-Rechner gegen Garri Kasparow, 3,5:2,5</li>
+          <li>Wichtig: der Rechner hat nichts gelernt</li>
+          <li>Menschen hatten die Schachregeln einprogrammiert</li>
+          <li>200 Millionen Stellungen pro Sekunde durchprobiert</li>
+          <li>Das alte Prinzip: Mensch gibt die Regeln, Maschine rechnet schnell</li>
+        </ul>
+
+        <p><b>2009 · 3,2 Mio. beschriftete Fotos</b></p>
+        <ul>
+          <li>Forscher tragen Millionen Bilder aus dem Netz zusammen</li>
+          <li>Menschen beschriften sie von Hand: Katze, Auto, Kaffeetasse</li>
+          <li>Bezahlt, in Kleinstarbeit, über eine Plattform für Kleinaufträge</li>
+          <li>Klingt banal, war aber genau der Engpass: die Lernverfahren gab es längst,
+          es fehlte das Material</li>
+        </ul>
+
+        <p><b>2012 · Bilderkennung 26 % → 15 %</b></p>
+        <ul>
+          <li>Auf diesen Fotos lief ab 2010 ein jährlicher Wettbewerb</li>
+          <li>Bis dahin rang man um Zehntelpunkte, 2012 fielen elf Punkte auf einmal</li>
+          <li>Anschaulich: vorher jedes vierte Bild falsch, danach jedes siebte</li>
+          <li>Gerechnet auf zwei handelsüblichen Grafikkarten, fünf bis sechs Tage</li>
+          <li>Kein Rechenzentrum, kein Supercomputer, ein aufgerüsteter PC</li>
+          <li>Warum Grafikkarten: beim Lernen fällt millionenfach dieselbe simple Rechnung
+          an, dafür sind sie gebaut</li>
+        </ul>
+
+        <p><b>Wenn jemand fragt:</b> Der Sieger von 2012 nutzte zusätzliche Trainingsdaten.
+        Ohne die waren es rund 16 statt 15 %. Schlägt die 26 immer noch deutlich.</p>
+
+        <p><b>Überleitung:</b> Ab hier überschlagen sich die Jahre.</p>
+      </template>
+    </section>
+
+    <!-- 04 - Zeitachse 2017 bis 2024. Belege: quellenangabe.md -->
+    <section class="slide" data-title="KI wird erwachsen" data-section="1" data-fragments="5">
+      <div class="slide-inner">
+        <div class="col-l" data-anim style="top:220px;width:1400px">
+          <h2 class="h-1">KI wird erwachsen.</h2>
+          <div class="rule"></div>
+        </div>
+        <div class="axis" data-anim style="left:112px;top:480px;width:1400px">
+          <div class="axis__line"></div>
+          <div class="axis__mark axis__mark--up" data-frag="1"
+               style="left:0px;width:620px">
+            <div class="axis__t">
+              <span class="axis__y">2017</span>
+              <span class="axis__d"><b>Die Bauart, auf der heute alles aufbaut.</b>
+              Acht Forscher zeigen, wie ein Modell alle Wörter eines Satzes gleichzeitig ansieht und gewichtet, welche zusammengehören. Vorher las man Wort für Wort und verlor bei langen Sätzen den Anfang.</span>
+            </div>
+          </div>
+          <div class="axis__mark axis__mark--dn" data-frag="2"
+               style="left:467px;width:560px">
+            <div class="axis__t">
+              <span class="axis__y">2020</span>
+              <span class="axis__d"><b>Das Modell ist fertig. Bedienen kann es fast niemand.</b><span class="axis__ab">GPT-3: Generative Pre-trained Transformer, dritte Fassung</span>
+              Es schreibt, fasst zusammen, übersetzt. Der Zugang führt über eine Programmierschnittstelle, 175 Milliarden eingestellte Werte im Hintergrund.</span>
+            </div>
+          </div>
+          <div class="axis__mark axis__mark--up" data-frag="3"
+               style="left:778px;width:620px">
+            <div class="axis__t">
+              <span class="axis__y">2022</span>
+              <span class="axis__d"><b>ChatGPT.</b><span class="axis__ab">Chat + Generative Pre-trained Transformer</span>
+              Keine neue Technik. Jemand setzt ein Textfeld davor, zweieinhalb Jahre nach dem Modell. Das war der ganze Unterschied.</span>
+            </div>
+          </div>
+          <div class="axis__mark axis__mark--dn" data-frag="4"
+               style="left:1089px;width:590px">
+            <div class="axis__t">
+              <span class="axis__y">2024</span>
+              <span class="axis__d"><b>Zwei Nobelpreise in einer Woche.</b>
+              Physik an John Hopfield und Geoffrey Hinton für die Grundlagen der neuronalen Netze. Chemie unter anderem an Demis Hassabis und John Jumper, deren Programm Proteinstrukturen vorhersagt.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <template class="notes">
+        <p><b>2017 · Die Bauart, auf der heute alles aufbaut</b></p>
+        <ul>
+          <li>Acht Forscher, fünfzehn Seiten, frei im Netz nachlesbar</li>
+          <li>Kern: das Modell sieht alle Wörter eines Satzes gleichzeitig an und
+          gewichtet, welche zusammengehören</li>
+          <li>Vorher las man Wort für Wort und verlor bei langen Sätzen den Anfang</li>
+          <li>Beispiel: „Der Bogen, den der Zahnarzt gestern eingesetzt hat, sitzt fest" —
+          das Modell muss „Bogen" und „sitzt" verbinden, über acht Wörter hinweg</li>
+          <li>Zweiter Vorteil: gleichzeitig heißt parallel rechenbar, also mit
+          Grafikkarten trainierbar</li>
+          <li>Das „T" in ChatGPT kommt daher</li>
+        </ul>
+
+        <p><b>2020 · Das Modell ist fertig, bedienen kann es fast niemand</b></p>
+        <ul>
+          <li>Die Buchstaben, Wort für Wort: <b>Generative</b> — erzeugt Text selbst,
+          statt vorgefertigte Antworten auszuwählen</li>
+          <li><b>Pre-trained</b> — vorher an Unmengen Text trainiert, nicht für jede
+          Frage neu</li>
+          <li><b>Transformer</b> — die Bauart von 2017, siehe eben</li>
+          <li>Die 3 ist schlicht die dritte Fassung</li>
+          <li>175 Milliarden eingestellte Werte — das sind die Stellschrauben, die beim
+          Training gefunden wurden</li>
+          <li>Es schreibt, fasst zusammen, übersetzt, also im Grunde das, was heute alle
+          beeindruckt</li>
+          <li>Der Zugang lief über eine Programmierschnittstelle: man brauchte
+          Zugangsdaten, Programmierkenntnisse und musste wissen, wie man so ein Ding
+          anspricht</li>
+        </ul>
+
+        <p><b>2022 · ChatGPT, am 30. November</b></p>
+        <ul>
+          <li>Chat plus der Name des Modells von eben</li>
+          <li>Keine neue Technik, kein neues Modell</li>
+          <li>Jemand setzt ein Textfeld davor: schreib rein, was du willst</li>
+          <li>Zweieinhalb Jahre nach dem Modell</li>
+          <li>Details gleich auf der nächsten Folie</li>
+        </ul>
+
+        <p><b>2024 · Zwei Nobelpreise in einer Woche</b></p>
+        <ul>
+          <li><b>Physik</b> an John Hopfield und Geoffrey Hinton, für die Grundlagen der
+          neuronalen Netze</li>
+          <li>Ihre Arbeiten stammen von 1982 und 1986, also aus der Zeit zwischen den
+          beiden Zusammenbrüchen von vorhin</li>
+          <li><b>Chemie</b> zur Hälfte an Demis Hassabis und John Jumper, deren Programm
+          vorhersagt, wie sich ein Eiweiß räumlich faltet</li>
+          <li>Die andere Hälfte an David Baker, der Eiweiße am Rechner neu entwirft</li>
+          <li>An der Faltungsfrage wurde fünfzig Jahre gearbeitet, sie gilt als gelöst</li>
+          <li>Das ist der Punkt für dieses Haus: nicht Textgeneratoren, sondern ein
+          medizinisch-naturwissenschaftliches Problem</li>
+          <li>Damit schließt sich der Bogen: dieselbe Idee, die zweimal für tot erklärt
+          wurde, bekommt die höchste wissenschaftliche Auszeichnung</li>
+        </ul>
+
+        <p><b>Überleitung:</b> Zurück zum 30. November 2022. Was da wirklich passiert ist.</p>
+      </template>
+    </section>
+
+    <!-- 05 - die Pointe des Abschnitts. Belege: quellenangabe.md -->
+    <section class="slide" data-title="Wie kam es zu ChatGPT?" data-section="1" data-fragments="4">
+      <div class="slide-inner">
+        <div class="col-l" data-anim style="top:220px;width:1400px">
+          <h2 class="h-1">Wie kam es zu ChatGPT?</h2>
+          <div class="rule"></div>
+        </div>
+        <div class="cards cards--3" data-anim style="left:112px;top:480px;width:1696px">
+          <div class="card glass" data-frag="1">
+            <div class="card__yr">2017</div>
+            <div class="card__t">Erfindung der Architektur</div>
+            <div class="card__d">Acht Autoren beschreiben die Transformer-Bauart auf
+            fünfzehn Seiten, <b>frei nachlesbar für jeden</b>.</div>
+          </div>
+          <div class="card" data-frag="2">
+            <div class="card__yr">2020</div>
+            <div class="card__t">Entstehung des Modells</div>
+            <div class="card__d">GPT-3 ist die dritte Fassung mit 175 Milliarden Werten.
+            Erreichbar ist sie nur über eine Schnittstelle für Entwickler.</div>
+          </div>
+          <div class="card" data-frag="3">
+            <div class="card__yr">30.11.2022</div>
+            <div class="card__t">Veröffentlichung</div>
+            <div class="card__d">ChatGPT wird als Webseite öffentlich und kostenlos nutzbar.
+            Das dahinterliegende Modell GPT-3.5 <b>befolgt Anweisungen</b>, statt Text nur
+            fortzusetzen.</div>
+          </div>
+        </div>
+      </div>
+      <template class="notes">
+        <p><b>Die Frage, die die Folie beantwortet</b></p>
+        <ul>
+          <li>Fünf Jahre von der Erfindung bis zu dem Tag, an dem jeder damit arbeiten
+          konnte</li>
+          <li>Wer glaubt, im November 2022 sei die Technik erfunden worden, liegt falsch</li>
+        </ul>
+
+        <p><b>2017 · Erfindung der Architektur</b></p>
+        <ul>
+          <li>Die Bauart wird veröffentlicht, nicht patentiert, nicht verkauft</li>
+          <li>Fünfzehn Seiten, acht Autoren, frei im Netz nachlesbar</li>
+          <li>Jeder hätte damit weiterbauen können, und viele haben es getan</li>
+          <li>Die acht Autoren nicht namentlich nennen, „fünfzehn Seiten" trägt</li>
+        </ul>
+
+        <p><b>2020 · Entstehung des Modells</b></p>
+        <ul>
+          <li>GPT-3, die dritte Fassung, 175 Milliarden eingestellte Werte</li>
+          <li>Kann bereits schreiben, zusammenfassen, übersetzen</li>
+          <li>Außerhalb der Fachwelt interessiert es kaum jemanden</li>
+          <li>Zugang nur über eine Programmierschnittstelle: Zugangsdaten,
+          Programmierkenntnisse, und man muss wissen, wie man so ein Ding anspricht</li>
+        </ul>
+
+        <p><b>30.11.2022 · Veröffentlichung</b></p>
+        <ul>
+          <li>Eine Webseite, ein Textfeld, kostenlos, kein Handbuch</li>
+          <li>Zweiter Teil, der oft untergeht: Das Modell wurde nachtrainiert, damit es
+          Anweisungen <b>befolgt</b>, statt Text nur fortzusetzen</li>
+          <li>Trainiert wurde das an menschlichen Bewertungen: Menschen haben Antworten
+          in eine Rangfolge gebracht, daraus hat das Modell gelernt</li>
+          <li>Warum plötzlich 3.5: eine Zwischenfassung, Anfang 2022 fertig trainiert.
+          Die Zahl nicht betonen, sie wirft mehr Fragen auf, als sie beantwortet</li>
+        </ul>
+
+        <p><b>Der Punkt für dieses Haus</b></p>
+        <ul>
+          <li>Der Durchbruch war nicht die Größe des Modells, sondern die Bedienbarkeit</li>
+          <li>Und zwar in zwei Formen: die Webseite und das Anweisungstraining</li>
+          <li>Dieselbe Technik lag zweieinhalb Jahre herum und interessierte niemanden</li>
+          <li>Für ein Haus, das selbst Software baut, ist das die eigentliche Lehre</li>
+        </ul>
+
+        <p><b>Wenn jemand fragt,</b> ob das nicht nur eine hübsche Oberfläche war: Ein
+        Modell mit 1,3 Milliarden Werten und diesem Anweisungstraining wurde von
+        Testpersonen gegenüber dem 175-Milliarden-Modell bevorzugt. Hundertfach kleiner,
+        trotzdem besser bewertet. Nicht Größe hat den Durchbruch gebracht.</p>
+
+        <p><b>Überleitung:</b> Rückblick durch. Jetzt die Frage, die alle wirklich haben:
+        Was passiert, wenn ich da etwas hineinschreibe?</p>
+      </template>
+    </section>
+
+    <!-- 06 - Referenzfolie: Text links, Bildpanel rechts (das Arbeitspferd) -->
+    <section class="slide" data-title="Die Folie, die am meisten trägt" data-section="1">
       <div class="slide-inner">
         <div class="col-l" style="top:236px">
           <h2 class="h-1" data-anim>Die Folie,<br>die am meisten trägt.</h2>
@@ -141,8 +542,8 @@
       </template>
     </section>
 
-    <!-- 04 - Kartenraster -->
-    <section class="slide" data-title="Kartenraster" data-section="2">
+    <!-- 07 - Referenzfolie: Kartenraster -->
+    <section class="slide" data-title="Drei Karten, gleich hoch" data-section="2">
       <div class="slide-inner">
         <div class="col-l" data-anim style="top:220px;width:1300px">
           <h2 class="h-1">Drei Karten, gleich hoch.</h2>
@@ -178,8 +579,8 @@
       </template>
     </section>
 
-    <!-- 05 - Mehrstufige Folie -->
-    <section class="slide" data-title="Mehrstufige Folie" data-section="2" data-fragments="4">
+    <!-- 08 - Referenzfolie: Mehrstufige Folie -->
+    <section class="slide" data-title="Vier Zustände, drei Klicks" data-section="2" data-fragments="4">
       <div class="slide-inner">
         <div class="col-l" data-anim style="top:220px;width:1300px">
           <h2 class="h-1">Vier Zustände, drei Klicks.</h2>

@@ -116,6 +116,34 @@ werden.
 - Die fünf Referenzfolien tragen Platzhaltertext. Sie sind das **Muster** für
   alles Weitere, nicht der Anfang des Inhalts.
 
+## Belege
+
+**Die Belege stehen in `quellenangabe.md`** im Wurzelverzeichnis: je Folie
+eine Tabelle mit Aussage, Fundstelle und einer Adresse zum Nachlesen. Dort
+steht auch, wo ein Beleg schwächer ist als der Rest, und warum die Zahlen auf
+den Folien gerundet sind.
+
+**Was recherchiert wurde und bewusst nicht vorgetragen wird**, steht in
+`dev/nicht-erzaehlen.md`: die Legenden, die gut klingen und nicht stimmen,
+und die Zahlen, die kursieren, ohne belegt zu sein. Beides steht absichtlich
+nicht in den Sprechnotizen und nicht in `referat.md` — das sind die zwei
+Dateien, die im Vortrag gelesen werden.
+
+### Offene Punkte aus der Recherche
+
+- **Keine belegbare Nutzerzahl für Deutschland.** Weder OpenAI noch Google
+  veröffentlichen Landeszahlen. Soll so etwas ins Deck, braucht es eine
+  Umfrage, etwa von Bitkom.
+- **Keine belegte Wegmarke speziell für die Zahnmedizin.** Wenn Abschnitt 03
+  einen dentalen Anker braucht (KI in der Röntgendiagnostik, MDR,
+  CE-Kennzeichnung), ist das eine eigene Recherche: die Belege liegen bei
+  Benannten Stellen und Herstellerzulassungen, nicht bei KI-Laboren.
+- **Der EU AI Act ist recherchiert, aber bewusst nicht im Abriss.** Er gehört
+  nach Abschnitt 03, weil er die Zuhörer selbst betrifft: seit dem 02.02.2025
+  gilt die Pflicht zur KI-Kompetenz der Beschäftigten, also genau so eine
+  Veranstaltung wie diese. Vor dem Abdruck von Terminen auf einer Folie die
+  Fassung auf EUR-Lex gegenprüfen, die Termine sind 2026 verschoben worden.
+
 ## Offen
 
 | Punkt | Was zum Schließen nötig ist |

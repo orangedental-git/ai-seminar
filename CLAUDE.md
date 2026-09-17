@@ -81,6 +81,8 @@ konkrete Fehler, die schon einmal Stunden gekostet haben.
 index.html            das Deck: Bühne, Sprite, alle Folien
 deck.config.json      alle Projektzahlen, ohne sie findet kein Werkzeug das Projekt
 readme.txt            Bedienung für den Vortragenden
+referat.md            der gesprochene Vortrag, ein Kapitel je Folie
+quellenangabe.md      jede Zahl mit Beleg und Adresse zum Nachlesen
 README.md             Einstieg
 CLAUDE.md             diese Datei
 
@@ -104,6 +106,7 @@ assets/
 
 dev/
   BRIEFING.md         Auftrag und Festlegungen
+  nicht-erzaehlen.md  was recherchiert wurde und absichtlich draußen bleibt
   platzhalter.png     Quellbild                                    [Quelle]
   shots/              Prüfaufnahmen                                [erzeugt]
 ```
@@ -150,6 +153,8 @@ teils so, dass es erst im Seminar auffällt.
     `#i-*`-IDs rendern als Leerfläche, ohne Fehlermeldung. Wer eine neue Stelle
     mit Icons baut, **muss** sie in den globalen Kontur-Selektor in `deck.css`
     aufnehmen, sonst füllt der Browser die Pfade zu schwarzen Klecksen.
+    Stand jetzt im Selektor: `svg use`, `.ico svg`, `.path svg`,
+    `.card__ico svg`, `.ico-arrow`.
 12. **`#stage` und `#frame` nicht zusammenlegen.** `#frame` ist der komponierte
     Bereich und immer exakt 1920 × 1080. `#stage` wächst über `--stage-w` /
     `--stage-h` so weit, dass er jedes Fensterformat deckt. Fällt das zusammen,
@@ -161,6 +166,160 @@ teils so, dass es erst im Seminar auffällt.
     Beleg. Bei einem KI-Vortrag besonders heikel: die Zahlen veralten monatlich.
 15. **„orangedental" wird immer kleingeschrieben**, auch am Satzanfang und in
     Überschriften. Nicht „nach Duden" korrigieren.
+16. **`data-title` trägt die Überschrift der Folie**, nicht ihren Arbeitsnamen.
+    Das Attribut ist das Einzige, was Folienübersicht (O) und
+    Referentenansicht (P) anzeigen, und beides liest der Vortragende, während
+    fünfzig Leute warten. „Die Sprache" hilft ihm dabei nicht, „ChatGPT war
+    keine Erfindung" schon. Bei einer mehrzeiligen Überschrift den tragenden
+    Teil nehmen, ohne Schlusspunkt.
+
+## Bauteile, die es nur hier gibt
+
+Über das aus dem byzz-Deck portierte Design-System hinaus. Wer eine Folie
+baut, nimmt diese, statt neue zu erfinden.
+
+| Klasse | Wofür |
+|---|---|
+| `.h-title` | Schriftstufe 128 px, zwischen `.h-xl` (168) und `.h-l` (96). Die Titelfolie. `.h-xl` bleibt im Stylesheet, wird derzeit aber von keiner Folie benutzt. |
+| `.title-list` | Die drei Zeilen unter dem Titel. Kein Aufzählungszeichen, das Fragewort in `<b>` trägt die **Farbe**, nicht das Gewicht: fett stünde neben der 128er Headline zu laut. |
+| `.axis` und `.axis__*` | Die waagerechte Zeitachse, siehe unten. |
+| `.card__yr` | Jahreszahl als Kartenkopf, anstelle des Piktogramms. Gleiche Höhe und gleicher Abstand wie `.card__ico`, damit Karten mit Jahr und Karten mit Piktogramm nebeneinander auf einer Linie stehen. Nicht zu verwechseln mit `.card__n`, das ist die kleine blasse Ordnungszahl oben rechts. |
+| `.card__ab` | Die englische Auflösung einer Abkürzung, unter dem Kartentitel. Steht auf der Folie, damit auch das PDF ohne den Vortragenden verständlich bleibt. Auf der Zeitachse heißt dasselbe `.axis__ab`. |
+| `.marks--tight` | Das Detailband unter einer Zeitachse. Eine Zeile je Station, das Jahr in der ersten Spalte an der Stelle der Raute. Die Zeilen bleiben stehen, am Ende steht die ganze Liste da. |
+| `.ico-arrow` | Freistehender Pfeil zwischen zwei Werten. Steht außerhalb von `.card__ico` und `.path` und ist deshalb **eigens** im Kontur-Selektor eingetragen. |
+
+### Die Zeitachse
+
+```
+.axis                 absolut, Höhe 380, Breite inline
+  .axis__line         die Linie, steht ab Zustand 0
+  .axis__mark         eine Marke, --up oder --dn   <-- HIER sitzt data-frag
+                      left und width kommen INLINE, weil beide gerechnet sind
+    .axis__t          der Textblock
+      .axis__y        das Jahr, Mono
+      .axis__d        der Satz dazu, <b> für den Kopf
+        .axis__ab     die englische Auflösung einer Abkürzung
+
+.marks.marks--tight   das Detailband unter der Achse, eine Zeile je Station
+  .mark               eine Zeile   <-- data-frag, dasselbe wie ihre Station
+    .mark__y          das Jahr
+    .mark__t          der Satz dazu
+```
+
+**Die Achse ist maßstäblich.** Die x-Position jeder Marke entspricht ihrem
+Jahr:
+
+```
+left = (jahr - startjahr) * (achsenbreite / (endjahr - startjahr))
+```
+
+Fünf Punkte, die Arbeit gekostet haben:
+
+- **Positionen werden gerechnet, nicht geschätzt.** Eine geschätzte Position
+  macht aus einer maßstäblichen Achse eine, die nur so aussieht — schlimmer
+  als eine ehrlich gleichverteilte. Das Skript, das die Achsen erzeugt, prüft
+  selbst auf Kollisionen und Überlauf und bricht ab, statt stillschweigend
+  etwas Krummes zu liefern.
+- **Die Marken wechseln zwischen `--up` und `--dn`.** Nur deshalb geht der
+  Maßstab auf: zwei gleichseitige Marken brauchen rund 170 px Abstand, über
+  Kreuz dürfen sie sich beliebig nahe kommen. 2009 und 2012 liegen 65 px
+  auseinander und kollidieren trotzdem nicht.
+- **Die Achse ist 1400 px breit, nicht 1696.** Der Text der letzten Marke
+  läuft über das Linienende hinaus und braucht den Rest bis zum Rahmenrand.
+  Wer die Linie auf volle Breite zieht, schiebt den letzten Text aus dem Bild.
+- **`data-frag` sitzt an der einzelnen `.axis__mark`**, eine Station je Klick.
+  `.axis__line` trägt keines: sonst beginnt die Folie mit einem leeren Bild
+  und sieht aus, als sei sie nicht fertig geladen.
+- **Zwischen zwei benachbarten Textblöcken bleiben 40 px Luft.** Ohne diesen
+  Zuschlag stoßen sie aneinander und lesen sich als ein Absatz. Der Generator
+  prüft das, die Breite einer Marke ist deshalb höchstens der Abstand zur
+  nächsten gleichseitigen Marke minus 40.
+- **Der Maßstab steht nicht auf der Folie.** Folie 03 zeigt 62 Jahre, Folie 04
+  dieselbe Linienlänge für 9 Jahre. Eine Zeile wie „maßstäblich" oder
+  „7,1-fach vergrößert" erklärt dem Publikum die Machart der Folie statt ihres
+  Inhalts und hat dort nichts verloren. Dass der Maßstab innerhalb **einer**
+  Achse stimmt, bleibt Pflicht — nur gesagt wird es nicht.
+
+## Abkürzungen werden aufgelöst
+
+**Jede Abkürzung wird bei ihrem ersten Auftreten im Deck aufgelöst** — die
+englische Langform auf der Folie, was sie bedeutet in Sprechnotiz und
+`referat.md`.
+
+Der Grund ist nicht Stil, sondern die Weitergabe: Das Deck geht als PDF an
+Leute, die den Vortrag nicht gehört haben. „ChatGPT" ohne Auflösung ist für
+sie Buchstabensalat. Auf der Folie stehen dafür `.card__ab` und `.axis__ab`
+bereit.
+
+## Fünf Dateien, fünf Zwecke
+
+Derselbe Inhalt steht an drei Stellen, und das ist Absicht. Wer eine Aussage
+ändert, ändert sie überall, wo sie vorkommt.
+
+| Datei | Wofür | Form |
+|---|---|---|
+| `quellenangabe.md` | eine Zahl nachprüfen | Tabelle je Folie, mit Adresse zum Nachlesen |
+| `dev/nicht-erzaehlen.md` | wissen, warum etwas fehlt | je Eintrag: die Behauptung, der Einwand, und was stattdessen sagbar ist |
+| `referat.md` | Vortrag vorbereiten, nachlesen | **kurze** ganze Sätze, dicht gestellt. Andrew trägt aus dem Gedächtnis vor und schaut nur gelegentlich hin: keine Begrüßungsfloskeln, keine Absätze über die Wirkung einer Folie |
+| `<template class="notes">` in `index.html` | im Vortrag, ein Blick genügt | Stichpunkte |
+| `dev/BRIEFING.md` | Auftrag und Festlegungen | Entscheidungen, offene Punkte |
+
+## Was in eine Sprechnotiz gehört
+
+**Eine Sprechnotiz trägt zu jedem sichtbaren Punkt der Folie einen Stichpunkt
+mit den wichtigsten Informationen dazu.** Sie ist das, was Andrew im Vortrag
+anschaut, während er redet.
+
+Sie enthält **keine Technik**: keine CSS-Klassen, keine Pixelmaße, keine
+Attributnamen, keine Begründungen zum Folienbau. Das gehört in diese Datei
+hier, nicht in die Notiz.
+
+**Und sie enthält nichts über die Machart der Folie.** Sätze wie „gleiche
+Linie, viel kürzerer Zeitraum" oder „die Abstände entsprechen den Jahren"
+beschreiben, wie die Grafik gebaut ist. Das sieht das Publikum, es muss ihm
+nicht erklärt werden, und im Vortrag zählt der Inhalt, nicht die
+Bauerklärung. Die Regel gilt für **alle drei Dateien, die im Vortrag gelesen
+werden**: Folie, Sprechnotiz und `referat.md`. Am 17.09.2026 zum zweiten Mal
+angeordnet, nachdem beim ersten Mal nur die Folien bereinigt worden waren und
+dieselben Sätze in den Notizen stehen geblieben sind.
+
+**Die Form ist Überschrift plus Liste**, keine Fließtext-Absätze und kein
+Satz über den „Zweck dieser Folie". Das Popup bringt `.notes ul` und
+`.notes li` bereits mit, `presenter.js` setzt die Notiz per `innerHTML` —
+Listen werden also gerendert.
+
+```html
+<!-- FALSCH — das hilft im Vortrag niemandem -->
+<p>Schriftstufe <code>.h-title</code> (128 px). <code>data-bare</code>
+unterdrückt Kopfzeile und Zähler.</p>
+
+<!-- RICHTIG — Fakten als Stichpunktsätze untereinander -->
+<p><b>1973, Großbritannien</b></p>
+<ul>
+  <li>Regierung lässt Gutachten erstellen</li>
+  <li>Urteil: in keinem Teilgebiet kam, was versprochen war</li>
+  <li>Folge: Förderung gestrichen</li>
+  <li>Streit darüber öffentliches Ereignis, im Fernsehen ausgetragen</li>
+</ul>
+```
+
+Nützlich am Ende einer Notiz, wo es passt: ein Absatz **„Wenn jemand fragt:"**
+für die vorhersehbare Nachfrage und einer **„Überleitung:"** für den Satz zur
+nächsten Folie.
+
+Angeordnet am 17.09.2026, nachdem ein ganzer Foliensatz Sprechnotizen
+enthielt, die über Pixelgrößen redeten statt über den Inhalt.
+
+## Prozentzahlen ohne Nachkommastellen
+
+**Auf der Folie steht `26 %`, nicht `26,2 %`.** Vor einem Laienpublikum ist
+die Nachkommastelle Scheingenauigkeit: Sie kostet Lesezeit, bleibt nicht
+hängen und suggeriert eine Präzision, auf die es nicht ankommt.
+
+**Im Beleg bleibt die exakte Zahl stehen.** Das ist der Unterschied zwischen
+Runden und Erfinden: Die Folie vereinfacht, `dev/BRIEFING.md` bleibt
+nachprüfbar. Wer beim Nachziehen auch den Beleg rundet, zerstört genau die
+Nachprüfbarkeit, für die er da ist.
 
 ## Nach jeder Änderung
 
