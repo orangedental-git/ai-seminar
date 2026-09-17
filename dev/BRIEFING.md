@@ -152,4 +152,7 @@ Dateien, die im Vortrag gelesen werden.
 | Live-Demos | Ob und wo aus dem Deck herausgesprungen wird |
 | Vortragsdatum | Für die Schlussfolie |
 | Repository privat oder öffentlich | Vor dem ersten Push, siehe Kopf dieser Datei |
-| Inhalte Abschnitt 1 und 2 | Eigene Recherche, nächster Arbeitsschritt |
+| Rest von Abschnitt 01 | Der geschichtliche Rückblick steht und ist belegt. Was danach kommt, ist offen |
+| Abschnitt 02, wie KI funktioniert | Eigene Recherche, nächster Arbeitsschritt |
+| Abschnitt 03, KI bei orangedental | Material liegt im 2nd Brain, dazu der EU AI Act als eigene Folie |
+| Die drei Referenzfolien | Fliegen raus, sobald das Deck inhaltlich steht |

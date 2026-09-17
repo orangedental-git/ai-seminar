@@ -50,8 +50,13 @@ Unicode-Schnittstelle und gibt Umlaute auch bei Codepage 850 korrekt aus.
 Fullscreen-HTML-Präsentation für ein 15–20-minütiges Seminar vor rund 50
 Mitarbeitenden. Läuft per Doppelklick auf `index.html` offline ohne Server.
 
-Stand: **Grundgerüst mit fünf Referenzfolien.** Die Inhalte kommen noch.
-Der Auftrag und alle Festlegungen stehen in `dev/BRIEFING.md`.
+Stand: **Abschnitt 01 steht, der geschichtliche Rückblick.** Fünf inhaltliche
+Folien und drei Referenzfolien, die herausfliegen, sobald das Deck steht. Es
+fehlen der Rest von Abschnitt 01, Abschnitt 02 („Wie KI funktioniert") und
+Abschnitt 03 („KI bei orangedental").
+
+Der Auftrag und alle Festlegungen stehen in `dev/BRIEFING.md`, die Belege mit
+Adressen zum Nachlesen in `quellenangabe.md`.
 
 ## Herkunft und Zuständigkeit
 
@@ -307,6 +312,11 @@ Nützlich am Ende einer Notiz, wo es passt: ein Absatz **„Wenn jemand fragt:"*
 für die vorhersehbare Nachfrage und einer **„Überleitung:"** für den Satz zur
 nächsten Folie.
 
+**Die ausführliche Fassung steht inzwischen im Skill**, in
+`references/referentenansicht.md` §5, zusammen mit den Regeln zur Quellendatei
+und zur Datei mit dem, was nicht gesagt wird. Hier steht sie nur noch, weil
+dieses Deck sie besonders oft gebraucht hat.
+
 Angeordnet am 17.09.2026, nachdem ein ganzer Foliensatz Sprechnotizen
 enthielt, die über Pixelgrößen redeten statt über den Inhalt.
 
@@ -337,6 +347,17 @@ einem aktuellen Deck ist schlimmer als gar keins. `pdf.bat` und
 
 **Rückgabewert 0 ist das Abnahmekriterium, nicht die Textausgabe.** Vorsicht bei
 `| tail`, dann liest `$?` das letzte Pipeglied und meldet immer Erfolg.
+
+**Die Zeile „Folien im Deck" gegenlesen — es müssen 8 sein.** Kein Prüflauf
+meldet, dass Folien *fehlen*: ein kürzeres Deck ist ein gültiges Deck, und alle
+Tests bleiben grün. In diesem Projekt sind so schon einmal zwei Folien
+verschwunden, zurückgeholt aus `git show HEAD:index.html`.
+
+**`abnahme.mjs` erzeugt keine Aufnahmen**, es startet die Layoutprüfung mit
+`--keine-bilder`. Wer danach ein Bild ansieht, begutachtet einen alten Stand.
+Für frische Bilder `layout-audit.mjs` einzeln laufen lassen und **vor jeder
+Sichtprüfung den Zeitstempel ansehen**:
+`ls -l --time-style=+%H:%M:%S dev/shots`.
 
 Nicht automatisierbar und deshalb von Hand: den Kontaktbogen ansehen, das
 Fenster auf andere Seitenverhältnisse ziehen, **einmal wirklich `index.html`

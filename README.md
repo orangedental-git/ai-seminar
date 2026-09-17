@@ -5,8 +5,8 @@ Teilnehmende. HTML, läuft offline.
 
 **Vorführen:** `index.html` doppelklicken. Bedienung steht in [`readme.txt`](readme.txt).
 
-> **Stand: Grundgerüst.** Bühne, Engine, Design-System und fünf Referenzfolien
-> stehen und bestehen die Abnahme. Die Inhalte kommen im nächsten Schritt.
+> **Stand: Abschnitt 01 steht.** Der geschichtliche Rückblick ist gebaut und
+> belegt, fünf inhaltliche Folien. Die Abschnitte 02 und 03 kommen noch.
 
 ---
 
@@ -18,7 +18,7 @@ einen USB-Stick kopieren.
 
 | | |
 |---|---|
-| Folien | 5 Referenzfolien, drei Abschnitte vorgesehen |
+| Folien | 5 inhaltliche, 3 Referenzfolien als Muster; drei Abschnitte vorgesehen |
 | Ziel | Chrome und Edge unter Windows |
 | Bühne | Inhalt fix 1920 × 1080, Hintergrund füllt jedes Fensterformat |
 | Besonderheiten | Referentenansicht mit Notizen, Folienübersicht, mehrstufige Folien |
@@ -26,6 +26,10 @@ einen USB-Stick kopieren.
 Technik und Optik sind aus `D:\SourceAI\byzz-whats-new` portiert. Der Auftrag
 und alle Festlegungen stehen in [`dev/BRIEFING.md`](dev/BRIEFING.md), die
 Arbeitsregeln in [`CLAUDE.md`](CLAUDE.md).
+
+Der gesprochene Vortrag steht in [`referat.md`](referat.md), ein Kapitel je
+Folie. Jede Zahl im Deck ist in [`quellenangabe.md`](quellenangabe.md) mit
+einer Adresse zum Nachlesen belegt.
 
 ---
 
