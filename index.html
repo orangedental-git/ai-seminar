@@ -92,7 +92,6 @@
         <ul>
           <li>Rund 20 Minuten, Fragen gern sofort und nicht erst am Ende</li>
           <li>Kein Technikvortrag, niemand muss hinterher programmieren können</li>
-          <li>Interne Runde, wir duzen uns</li>
         </ul>
         <p><b>„Wie sie funktioniert"</b></p>
         <ul>
@@ -113,12 +112,12 @@
     </section>
 
     <!-- 02 - Abschnittstrenner -->
-    <section class="slide" data-title="Was ist KI heute" data-section="1" data-bare data-divider>
+    <section class="slide" data-title="Von den Anfängen bis ChatGPT" data-section="1" data-bare data-divider>
       <div class="slide-inner">
+        <div class="eyebrow" data-anim><b>01</b></div>
         <div class="div-block">
-          <div class="div-num" data-anim>ABSCHNITT 01</div>
-          <h2 class="h-l" data-anim>Was ist KI heute</h2>
-          <p class="div-meta" data-anim>Woher sie kommt, warum gerade jetzt, und was davon Werbung ist.</p>
+          <h2 class="h-l" data-anim>Von den Anfängen bis ChatGPT</h2>
+          <p class="sub" data-anim>Über siebzig Jahre, zwei Fehlschläge, und fünf Jahre, in denen alles zusammenkam.</p>
         </div>
       </div>
       <template class="notes">
@@ -131,17 +130,19 @@
           <li>Fast jeder denkt, KI sei zwei Jahre alt. Sie ist über siebzig</li>
           <li>Wer weiß, dass sie zweimal gescheitert ist, schätzt den heutigen Stand
           besser ein als jemand, der nur Schlagzeilen kennt</li>
+          <li>Zweimal war das Geld weg, beide Male hielt die Technik nicht, was
+          versprochen war</li>
         </ul>
-        <p><b>„Was davon Werbung ist"</b></p>
-        <ul>
-          <li>Das Versprechen für diesen Abschnitt</li>
-          <li>Ich sage auch, was ich weglasse und warum</li>
-        </ul>
+        <p><b>Überleitung:</b> Und der Anfang liegt weiter zurück, als die meisten
+        vermuten.</p>
       </template>
     </section>
 
-    <!-- 03 - Zeitachse 1950 bis 2012, maßstäblich. Belege: quellenangabe.md -->
-    <section class="slide" data-title="KI ist älter als die meisten denken" data-section="1" data-fragments="9">
+    <!-- 03 - Zeitachse 1950 bis 1986, maßstäblich. Geometrie gerechnet mit
+         achsen-rechnen.mjs, Belege in quellenangabe.md. Eine Karte an der Marke
+         Eine getönte Fläche heißt „hier war das Verfahren neu“, eine
+         neutrale heißt „vor allem öffentliche Wirkung“. Das Band ist ein Zeitraum, kein Ereignis. -->
+    <section class="slide" data-title="KI ist älter als die meisten denken" data-section="1" data-fragments="8">
       <div class="slide-inner">
         <div class="col-l" data-anim style="top:220px;width:1400px">
           <h2 class="h-1">KI ist älter als die meisten denken.</h2>
@@ -149,210 +150,330 @@
         </div>
         <div class="axis" data-anim style="left:112px;top:380px;width:1400px">
           <div class="axis__line"></div>
+          <!-- Beide Kanten weich: „späte 1960er“ ist keine Jahreszahl, und für das
+               Ende nennt keine der geprüften Darstellungen ein Ereignis. -->
+          <div class="axis__span axis__span--fade-l axis__span--fade-r" data-frag="5"
+               style="left:626px;width:479px"></div>
           <div class="axis__mark axis__mark--up" data-frag="1"
-               style="left:0px;width:463px">
+               style="left:0px;width:207px;--tx:16px">
             <div class="axis__t">
               <span class="axis__y">1950</span>
               <span class="axis__d"><b>„Kann eine Maschine denken?“</b>
-              Turing ersetzt die Streitfrage durch eine, die sich prüfen lässt.</span>
+              Turing ersetzt sie durch eine prüfbare.</span>
             </div>
           </div>
           <div class="axis__mark axis__mark--dn" data-frag="2"
-               style="left:131px;width:463px">
+               style="left:221px;width:296px">
             <div class="axis__t">
               <span class="axis__y">1956</span>
               <span class="axis__d"><b>Das Wort „KI“ entsteht.</b>
-              Zehn Forscher, ein Förderantrag. Den Namen gab es vor dem Fachgebiet.</span>
+              Vier Forscher schreiben es in einen Förderantrag.</span>
             </div>
           </div>
-          <div class="axis__mark axis__mark--up" data-frag="3"
-               style="left:503px;width:266px">
+          <div class="axis__mark axis__mark--up axis__mark--mile" data-frag="3"
+               style="left:295px;width:430px">
             <div class="axis__t">
-              <span class="axis__y">1973</span>
-              <span class="axis__d"><b>Ein Gutachten streicht das&#160;Geld.</b>
-              Großbritannien beendet die Förderung fast vollständig.</span>
+              <span class="axis__y">1958</span>
+              <span class="axis__d"><b>Ein künstliches Neuron, das lernt.</b>
+              Rosenblatt baut ein Verfahren, das seine Regeln selbst findet.</span>
             </div>
           </div>
           <div class="axis__mark axis__mark--dn" data-frag="4"
-               style="left:634px;width:354px">
+               style="left:589px;width:430px">
             <div class="axis__t">
-              <span class="axis__y">1979</span>
-              <span class="axis__d"><b>Und es funktionierte schon.</b>
-              Ein Programm schlägt Antibiotika vor, besser als die Fachärzte.</span>
+              <span class="axis__y">1966</span>
+              <span class="axis__d"><b>Ein Programm führt ein Gespräch.</b>
+              Weizenbaum baut ELIZA. Testpersonen hielten es für einen Menschen.</span>
             </div>
           </div>
-          <div class="axis__mark axis__mark--up" data-frag="5"
-               style="left:809px;width:442px">
+          <div class="axis__mark axis__mark--up axis__mark--mile" data-frag="6"
+               style="left:1105px;width:470px">
             <div class="axis__t">
-              <span class="axis__y">1987</span>
-              <span class="axis__d"><b>Der zweite Einbruch.</b>
-              Nicht die Technik versagt, der Preis: normale Rechner werden billig.</span>
+              <span class="axis__y">1980</span>
+              <span class="axis__d"><b>Programme, die ihr Urteil begründen.</b>
+              Das Wissen steht als Regeln in einer eigenen Sammlung.</span>
             </div>
           </div>
-          <div class="axis__mark axis__mark--dn" data-frag="6"
-               style="left:1028px;width:288px">
+          <div class="axis__mark axis__mark--dn axis__mark--mile" data-frag="7"
+               style="left:1326px;width:462px;--tx:-120px">
             <div class="axis__t">
-              <span class="axis__y">1997</span>
-              <span class="axis__d"><b>Schachweltmeister geschlagen.</b>
-              Gerechnet, nicht gelernt: 200 Millionen Stellungen je Sekunde.</span>
-            </div>
-          </div>
-          <div class="axis__mark axis__mark--up" data-frag="7"
-               style="left:1291px;width:405px">
-            <div class="axis__t">
-              <span class="axis__y">2009</span>
-              <span class="axis__d"><b>3,2&#160;Mio. beschriftete Fotos.</b>
-              Endlich gibt es genug Material zum Lernen.</span>
-            </div>
-          </div>
-          <div class="axis__mark axis__mark--dn" data-frag="8"
-               style="left:1356px;width:340px">
-            <div class="axis__t">
-              <span class="axis__y">2012</span>
-              <span class="axis__d"><b>Bilderkennung: von 26 auf 15&#160;%&#160;Fehler.</b>
-              Auf genau diesen Fotos, in einem einzigen Jahr.</span>
+              <span class="axis__y">1986</span>
+              <span class="axis__d"><b>Neuronale Netze kehren zurück.</b>
+              Ein Lernverfahren macht mehrschichtige Netze nutzbar.
+              Die Rechenleistung dafür fehlt noch.</span>
             </div>
           </div>
         </div>
         <div class="marks marks--tight" data-anim style="left:112px;top:764px;width:1696px">
+          <div class="mark" data-frag="1">
+            <div class="mark__y">1950</div>
+            <div class="mark__t">Kann ein Mensch im Gespräch Maschine und Mensch unterscheiden? Diese Frage ist prüfbar, die andere nicht.</div>
+          </div>
           <div class="mark" data-frag="3">
-            <div class="mark__y">1973</div>
-            <div class="mark__t">Der Streit über das Gutachten wurde öffentlich im britischen Fernsehen ausgetragen.</div>
+            <div class="mark__y">1958</div>
+            <div class="mark__t">Die Idee ist älter: 1943 beschrieben McCulloch und Pitts das Neuron als An-Aus-Prinzip. Rosenblatt baute daraus etwas, das lernt.</div>
           </div>
           <div class="mark" data-frag="4">
-            <div class="mark__y">1979</div>
-            <div class="mark__t">65&#160;% der Therapievorschläge galten als akzeptabel, die Fachärzte kamen auf höchstens 63&#160;%. In die Praxis kam es nie.</div>
+            <div class="mark__y">1966</div>
+            <div class="mark__t">Es erkannte Schlüsselwörter und stellte die Sätze um. Verstanden hat es nichts.</div>
           </div>
           <div class="mark" data-frag="5">
-            <div class="mark__y">1987</div>
-            <div class="mark__t">Der Markt für KI-Spezialrechner bricht binnen eines Jahres zusammen, die Firmen dahinter verschwinden.</div>
+            <div class="mark__y">&#8212;</div>
+            <div class="mark__t">Späte 1960er bis 1970er Jahre: das Interesse bricht ein, Regierungen und Unternehmen kürzen die Förderung oder stellen sie ein.</div>
           </div>
-          <div class="mark" data-frag="7">
-            <div class="mark__y">2009</div>
-            <div class="mark__t">Menschen haben die Fotos von Hand beschriftet, bezahlt, in Kleinstarbeit.</div>
-          </div>
-          <div class="mark" data-frag="8">
-            <div class="mark__y">2012</div>
-            <div class="mark__t">Zwei handelsübliche Grafikkarten, fünf bis sechs Tage Rechenzeit. Kein Rechenzentrum.</div>
+          <div class="mark" data-frag="6">
+            <div class="mark__y">1980</div>
+            <div class="mark__t">Ein Programm für Antibiotika kam auf 65&#160;% brauchbare Vorschläge, blind bewertet. Keine Anwendung in der Praxis.</div>
           </div>
         </div>
       </div>
       <template class="notes">
-        <p><b>1950 · „Kann eine Maschine denken?"</b></p>
+        <p><b>1950 · „Kann eine Maschine denken?“</b></p>
         <ul>
           <li>Alan Turing, britischer Mathematiker, stellt die Frage in einem Aufsatz</li>
-          <li>Problem: über „denken" kann man ewig streiten</li>
-          <li>Sein Ausweg: eine prüfbare Frage — kann ein Mensch im Gespräch Maschine
-          und Mensch unterscheiden?</li>
-          <li>Der Aufsatz ist 76 Jahre alt</li>
+          <li>Problem: über „denken“ lässt sich endlos streiten</li>
+          <li>Sein Ausweg: eine prüfbare Frage stellen statt einer unklaren</li>
+          <li>Kann ein Mensch im Gespräch Maschine und Mensch unterscheiden?</li>
         </ul>
 
-        <p><b>1956 · Das Wort „KI" entsteht</b></p>
+        <p><b>1956 · Das Wort „KI“ entsteht</b></p>
         <ul>
-          <li>Zehn Forscher, ein Sommer am Dartmouth College, USA</li>
-          <li>Für den Förderantrag brauchen sie einen Namen: „artificial intelligence"</li>
-          <li>Der Begriff ist also älter als das Fachgebiet, das er bezeichnet</li>
-          <li>Der Förderantrag ist von 1955</li>
+          <li>Vier Forscher: McCarthy, Minsky, Rochester, Shannon</li>
+          <li>Sie schreiben es in einen Förderantrag, datiert 31.08.1955</li>
+          <li>Die Konferenz in Dartmouth fand im Sommer 1956 statt</li>
+          <li>Das Wort ist also ein Jahr älter als die Konferenz</li>
+          <li>Beantragt waren zehn Teilnehmer, bewilligt wurde die Hälfte des Geldes</li>
         </ul>
 
-        <p><b>1973 · Ein Gutachten streicht das Geld</b></p>
+        <p><b>1958 · Ein künstliches Neuron, das lernt</b></p>
         <ul>
-          <li>Die britische Regierung lässt die KI-Forschung begutachten</li>
-          <li>Urteil: in keinem Teilgebiet kam, was versprochen war</li>
-          <li>Folge: Förderung fast vollständig gestrichen</li>
-          <li>Der Streit darüber wurde öffentlich ausgetragen, in einer Fernsehdebatte</li>
-          <li>Das ist der erste von zwei Zusammenbrüchen</li>
+          <li>Frank Rosenblatt, Psychologe am Cornell Aeronautical Laboratory</li>
+          <li>Das Perzeptron: eine Rechenzelle, die aus Beispielen ihre Regeln selbst findet</li>
+          <li>Die Idee ist älter: 1943 beschrieben McCulloch und Pitts das Neuron als An-Aus-Prinzip</li>
+          <li>Erste Beschreibung im Januar 1957, simuliert auf einer IBM 704</li>
+          <li>Grenze: eine einzelne Schicht kann bestimmte Aufgaben nicht lösen. Das brachte die
+          Netzforschung für Jahrzehnte zum Stillstand</li>
         </ul>
 
-        <p><b>1979 · Und es funktionierte schon</b></p>
+        <p><b>1966 · Ein Programm führt ein Gespräch</b></p>
         <ul>
-          <li>Ein Programm schlägt Antibiotika bei Blutvergiftung vor</li>
-          <li>Verblindete Studie: acht Fachleute bewerten die Vorschläge, ohne zu wissen,
-          welcher vom Rechner kommt</li>
-          <li>65 % der Vorschläge des Programms galten als akzeptabel</li>
-          <li>Die menschlichen Fachärzte kamen auf höchstens 63 %</li>
-          <li>In die Praxis kam es nie: zu umständlich zu bedienen, keine Anbindung an
-          Krankenakten, Haftungsfrage ungeklärt</li>
-          <li><b>Gut genug im Test heißt nicht angekommen in der Praxis</b> — wer hier mit
-          Zulassung zu tun hat, weiß warum. Gilt heute noch</li>
+          <li>Joseph Weizenbaum am MIT, das Programm hieß ELIZA</li>
+          <li>Es spielte einen Psychotherapeuten, der nichts von der Welt wissen musste</li>
+          <li>Technisch: Schlüsselwörter erkennen, den Satz umstellen, zurückgeben</li>
+          <li>Weizenbaum selbst: Testpersonen waren schwer davon zu überzeugen, dass da kein
+          Mensch antwortet</li>
+          <li>Sein eigenes Fazit: wie leicht sich der Anschein von Verstehen erzeugen lässt</li>
         </ul>
 
-        <p><b>1987 · Der zweite Einbruch</b></p>
+        <p><b>Der erste KI-Winter</b></p>
         <ul>
-          <li>Diesmal versagte nicht die Technik, sondern die Rechnung</li>
-          <li>Für KI brauchte man teure Spezialrechner</li>
-          <li>Normale Arbeitsplatzrechner wurden schnell genug und kosteten einen Bruchteil</li>
-          <li>Der Markt für die Spezialrechner brach binnen eines Jahres zusammen, die
-          Firmen dahinter verschwanden</li>
+          <li>Späte 1960er bis 1970er Jahre</li>
+          <li>Die Versprechen der Jahre davor waren zu groß</li>
+          <li>Manche Forscher erwarteten Anfang der 1970er menschliche Intelligenz binnen
+          eines Jahrzehnts</li>
+          <li>Die Rechner waren dafür viel zu langsam</li>
+          <li>Folge: Geldgeber kürzten die Förderung oder stellten sie ein</li>
+          <li>Wichtig: geforscht wurde weiter, nur ohne öffentliches Interesse</li>
         </ul>
 
-        <p><b>1997 · Schachweltmeister geschlagen</b></p>
+        <p><b>um 1980 · Programme, die ihr Urteil begründen</b></p>
         <ul>
-          <li>IBM-Rechner gegen Garri Kasparow, 3,5:2,5</li>
-          <li>Wichtig: der Rechner hat nichts gelernt</li>
-          <li>Menschen hatten die Schachregeln einprogrammiert</li>
-          <li>200 Millionen Stellungen pro Sekunde durchprobiert</li>
-          <li>Das alte Prinzip: Mensch gibt die Regeln, Maschine rechnet schnell</li>
+          <li>Expertensysteme beenden den ersten KI-Winter</li>
+          <li>Neu ist die Trennung: das Wissen steht als Wenn-Dann-Regeln in einer eigenen
+          Sammlung, getrennt von dem Programm, das sie anwendet</li>
+          <li>Dazu ein Teil, der zeigt, welche Regeln zu welchem Ergebnis geführt haben</li>
+          <li>Medizinisches Beispiel: ein Programm für Antibiotika bei Blutvergiftung kam auf
+          65&#160;% brauchbare Vorschläge, der beste Facharzt auf 62,5&#160;%</li>
+          <li>Acht Gutachter, zehn Fälle, und sie wussten nicht, dass ein Programm dabei war</li>
+          <li>Keine Anwendung in der Praxis: zu teuer, zu langsam einzugeben, Haftungsfragen offen</li>
+          <li>Der kommerzielle Durchbruch kam 1980 mit einem System zur Rechnerkonfiguration</li>
         </ul>
 
-        <p><b>2009 · 3,2 Mio. beschriftete Fotos</b></p>
+        <p><b>1986 · Neuronale Netze kehren zurück</b></p>
         <ul>
-          <li>Forscher tragen Millionen Bilder aus dem Netz zusammen</li>
-          <li>Menschen beschriften sie von Hand: Katze, Auto, Kaffeetasse</li>
-          <li>Bezahlt, in Kleinstarbeit, über eine Plattform für Kleinaufträge</li>
-          <li>Klingt banal, war aber genau der Engpass: die Lernverfahren gab es längst,
-          es fehlte das Material</li>
+          <li>Rumelhart, Hinton und Williams veröffentlichen ein Lernverfahren für Netze mit
+          mehreren Schichten</li>
+          <li>Der Kern: die verborgenen Schichten finden selbst, worauf es bei der Aufgabe ankommt</li>
+          <li>Damit fällt die Grenze, an der das Perzeptron gescheitert war</li>
+          <li>Das Verfahren selbst ist älter, diese Arbeit machte es wirksam</li>
+          <li>Darauf beruht jedes heutige tiefe Netz</li>
+          <li>Warum trotzdem 26 Jahre vergingen: solche Netze zu rechnen war zu teuer.
+          Das Siegerpapier von 2012 schreibt das über sich selbst, bis dahin sei das
+          „prohibitively expensive" gewesen</li>
+          <li>Bezahlbar wurde es erst mit Grafikkarten und großen Bildersammlungen,
+          beides auf der nächsten Folie</li>
         </ul>
 
-        <p><b>2012 · Bilderkennung 26 % → 15 %</b></p>
-        <ul>
-          <li>Auf diesen Fotos lief ab 2010 ein jährlicher Wettbewerb</li>
-          <li>Bis dahin rang man um Zehntelpunkte, 2012 fielen elf Punkte auf einmal</li>
-          <li>Anschaulich: vorher jedes vierte Bild falsch, danach jedes siebte</li>
-          <li>Gerechnet auf zwei handelsüblichen Grafikkarten, fünf bis sechs Tage</li>
-          <li>Kein Rechenzentrum, kein Supercomputer, ein aufgerüsteter PC</li>
-          <li>Warum Grafikkarten: beim Lernen fällt millionenfach dieselbe simple Rechnung
-          an, dafür sind sie gebaut</li>
-        </ul>
+        <p><b>Wenn jemand fragt,</b> ob es den ersten KI-Winter wirklich gab: Ein Fachhistoriker
+        bestreitet ihn. Die Mitgliederzahl der größten KI-Fachgruppe verdreifachte sich zwischen
+        1973 und 1978. Eingebrochen ist das Geld für bestimmte Teilgebiete, nicht die Forschung
+        insgesamt.</p>
 
-        <p><b>Wenn jemand fragt:</b> Der Sieger von 2012 nutzte zusätzliche Trainingsdaten.
-        Ohne die waren es rund 16 statt 15 %. Schlägt die 26 immer noch deutlich.</p>
-
-        <p><b>Überleitung:</b> Ab hier überschlagen sich die Jahre.</p>
+        <p><b>Überleitung:</b> Ab 1986 gibt es das Werkzeug. Was fehlte, waren Daten und
+        Rechenleistung.</p>
       </template>
     </section>
 
-    <!-- 04 - Zeitachse 2017 bis 2024. Belege: quellenangabe.md -->
-    <section class="slide" data-title="KI wird erwachsen" data-section="1" data-fragments="5">
+    <!-- 04 - Zeitachse 1986 bis 2016, maßstäblich. Dieselbe Linienlänge für
+         30 Jahre, die Folie davor für 36. Geometrie mit achsen-rechnen.mjs,
+         Belege in quellenangabe.md. -->
+    <section class="slide" data-title="Vom Rechnen zum Lernen" data-section="1" data-fragments="5">
+      <div class="slide-inner">
+        <div class="col-l" data-anim style="top:220px;width:1400px">
+          <h2 class="h-1">Vom Rechnen zum Lernen.</h2>
+          <div class="rule"></div>
+        </div>
+        <div class="axis" data-anim style="left:112px;top:380px;width:1400px">
+          <div class="axis__line"></div>
+          <!-- Linke Kante scharf, 1987 ist datierbar. Rechte Kante weich, für das
+               Ende nennt keine der geprüften Darstellungen ein Ereignis. -->
+          <div class="axis__span axis__span--fade-r" data-frag="1"
+               style="left:44px;width:613px"></div>
+          <div class="axis__mark axis__mark--up" data-frag="1"
+               style="left:44px;width:470px">
+            <div class="axis__t">
+              <span class="axis__y">ab 1987</span>
+              <span class="axis__d"><b>Der zweite KI-Winter beginnt.</b>
+              Die Expertensysteme halten nicht, was sie versprochen haben.
+              Die Geldgeber kürzen erneut.</span>
+            </div>
+          </div>
+          <div class="axis__mark axis__mark--dn" data-frag="2"
+               style="left:481px;width:760px">
+            <div class="axis__t">
+              <span class="axis__y">1997</span>
+              <span class="axis__d"><b>Deep Blue schlägt Garri Kasparov.</b>
+              Gerechnet, nicht gelernt: 200 Millionen Stellungen je Sekunde.
+              Der Schachweltmeister verliert, KI ist wieder in den Zeitungen.</span>
+            </div>
+          </div>
+          <div class="axis__mark axis__mark--up axis__mark--mile" data-frag="3"
+               style="left:1138px;width:500px">
+            <div class="axis__t">
+              <span class="axis__y">2012</span>
+              <span class="axis__d"><b>Maschinen lernen sehen.</b>
+              In einem Wettbewerb zur Bilderkennung fällt die Fehlerquote von
+              26&#160;% auf 15&#160;%.</span>
+            </div>
+          </div>
+          <div class="axis__mark axis__mark--dn axis__mark--mile" data-frag="4"
+               style="left:1313px;width:355px">
+            <div class="axis__t">
+              <span class="axis__y">2016</span>
+              <span class="axis__d"><b>KI gewinnt in Go.</b>
+              Diesmal gelernt, aus 29 Millionen menschlichen Stellungen.</span>
+            </div>
+          </div>
+        </div>
+        <div class="marks marks--tight" data-anim style="left:112px;top:764px;width:1696px;--col:84px">
+          <div class="mark" data-frag="1">
+            <div class="mark__y">ab 1987</div>
+            <div class="mark__t">Die Pflege der Regelsammlungen überforderte die Unternehmen, ein Rechnerhersteller brauchte dafür 59 Fachkräfte. Der Markt für KI-Spezialrechner brach ein.</div>
+          </div>
+          <div class="mark" data-frag="2">
+            <div class="mark__y">1997</div>
+            <div class="mark__t">Menschen hatten die Regeln einprogrammiert, Großmeister die Bewertung von Hand entworfen.</div>
+          </div>
+          <div class="mark" data-frag="3">
+            <div class="mark__y">2012</div>
+            <div class="mark__t">Gerechnet auf zwei handelsüblichen Grafikkarten, fünf bis sechs Tage. Kein Rechenzentrum.</div>
+          </div>
+          <div class="mark" data-frag="4">
+            <div class="mark__y">2016</div>
+            <div class="mark__t">Lee Sedol, Profi im 9.&#160;Dan mit 18 internationalen Titeln.</div>
+          </div>
+        </div>
+      </div>
+      <template class="notes">
+        <p><b>Der zweite KI-Winter, ab 1987</b></p>
+        <ul>
+          <li>Die Expertensysteme hatten zu viel versprochen</li>
+          <li>Unternehmen bekamen den Aufbau und die Pflege der Regelsammlungen nicht in den Griff</li>
+          <li>Ein Rechnerhersteller beschäftigte 1989 neunundfünfzig Fachkräfte allein für die
+          Pflege seiner eigenen Regeln</li>
+          <li>Dazu brach der Markt für KI-Spezialrechner ein: eine gewöhnliche Arbeitsplatzmaschine
+          kostete einen Bruchteil</li>
+          <li>Kein Datum für das Ende. Die Erholung kam allmählich, nicht durch ein Ereignis</li>
+        </ul>
+
+        <p><b>1997 · Deep Blue schlägt Garri Kasparov</b></p>
+        <ul>
+          <li>IBM-Rechner Deep Blue gegen Garri Kasparov, 11.05.1997, Endstand 3,5:2,5</li>
+          <li>Wichtig: der Rechner hat nichts gelernt</li>
+          <li>Menschen hatten die Schachregeln einprogrammiert, Großmeister die Bewertung von
+          Stellungen von Hand entworfen</li>
+          <li>200 Millionen Stellungen pro Sekunde durchprobiert</li>
+          <li><b>Methodisch war das kein Meilenstein</b>, es war das alte Prinzip in schnell</li>
+          <li>Seine Wirkung war eine andere: nach dem KI-Winter stand KI wieder in allen Zeitungen</li>
+          <li>Der Sieg fiel mitten in den zweiten KI-Winter</li>
+        </ul>
+
+        <p><b>2012 · Maschinen lernen sehen</b></p>
+        <ul>
+          <li>Ein jährlicher Wettbewerb zur Bilderkennung, ausgetragen von 2010 bis 2017</li>
+          <li>Aufgabe: tausend Kategorien unterscheiden, Katze, Auto, Kaffeetasse</li>
+          <li>Ein tiefes neuronales Netz gewinnt mit 15&#160;% Fehlern, das beste herkömmliche
+          Verfahren lag bei 26&#160;%</li>
+          <li>Gerechnet auf zwei handelsüblichen Grafikkarten, fünf bis sechs Tage</li>
+          <li>Kein Rechenzentrum, kein Supercomputer, ein aufgerüsteter Arbeitsplatzrechner</li>
+          <li>Warum Grafikkarten: beim Lernen fällt millionenfach dieselbe simple Rechnung an,
+          dafür sind sie gebaut</li>
+          <li>Von hier läuft die Linie direkt zur heutigen Auswertung von Röntgenbildern</li>
+        </ul>
+
+        <p><b>2016 · KI gewinnt in Go, diesmal gelernt</b></p>
+        <ul>
+          <li>Go hat weit mehr mögliche Stellungen als Schach, Durchprobieren führt nicht zum Ziel</li>
+          <li>Gegner war Lee Sedol, Profi im 9.&#160;Dan mit 18 internationalen Titeln,
+          über ein Jahrzehnt einer der stärksten Spieler</li>
+          <li>Einen einzelnen Weltmeistertitel gibt es im Profi-Go nicht</li>
+          <li>Fünf Partien im März 2016 in Seoul, Endstand 4:1</li>
+          <li><b>Der Unterschied zu 1997</b>: das Programm lernte aus 29 Millionen Stellungen
+          menschlicher Partien und danach aus Partien gegen sich selbst</li>
+          <li>Die Entwickler schreiben das selbst so: Deep Blue hatte eine von Hand gebaute
+          Bewertung, hier wurde sie aus Partien gelernt</li>
+        </ul>
+
+        <p><b>Wenn jemand fragt,</b> was mit Watson und Jeopardy war: 2011, drei Tage im
+        US-Fernsehen, 77.147 Dollar gegen zwei menschliche Rekordhalter. Gelernt hat Watson dabei
+        vor allem das Gewichten vieler Einzelverfahren und die Spielstrategie, nicht die Aufgabe
+        selbst. Deshalb steht es nicht auf der Achse.</p>
+
+        <p><b>Überleitung:</b> Jetzt hatten die Maschinen Augen. Was noch fehlte, war die Sprache.</p>
+      </template>
+    </section>
+
+    <!-- 05 - Zeitachse 2017 bis 2026, letzte Station 2025. Belege: quellenangabe.md -->
+    <section class="slide" data-title="KI wird erwachsen" data-section="1" data-fragments="6">
       <div class="slide-inner">
         <div class="col-l" data-anim style="top:220px;width:1400px">
           <h2 class="h-1">KI wird erwachsen.</h2>
           <div class="rule"></div>
         </div>
-        <div class="axis" data-anim style="left:112px;top:480px;width:1400px">
+        <div class="axis" data-anim style="left:112px;top:432px;width:1400px">
           <div class="axis__line"></div>
-          <div class="axis__mark axis__mark--up" data-frag="1"
-               style="left:0px;width:620px">
+          <div class="axis__mark axis__mark--up axis__mark--mile" data-frag="1"
+               style="left:0px;width:572px;--tx:16px">
             <div class="axis__t">
               <span class="axis__y">2017</span>
-              <span class="axis__d"><b>Die Bauart, auf der heute alles aufbaut.</b>
-              Acht Forscher zeigen, wie ein Modell alle Wörter eines Satzes gleichzeitig ansieht und gewichtet, welche zusammengehören. Vorher las man Wort für Wort und verlor bei langen Sätzen den Anfang.</span>
+              <span class="axis__d"><b>Die Bauart, auf der heute alles aufbaut: Transformer.</b>
+              Acht Forscher zeigen, wie ein Modell alle Wörter eines Satzes gleichzeitig ansieht und gewichtet, welche zusammengehören. Ältere Modelle lasen Wort für Wort und verloren bei langen Sätzen den Anfang.</span>
             </div>
           </div>
           <div class="axis__mark axis__mark--dn" data-frag="2"
-               style="left:467px;width:560px">
+               style="left:467px;width:550px">
             <div class="axis__t">
               <span class="axis__y">2020</span>
-              <span class="axis__d"><b>Das Modell ist fertig. Bedienen kann es fast niemand.</b><span class="axis__ab">GPT-3: Generative Pre-trained Transformer, dritte Fassung</span>
+              <span class="axis__d"><b>Das Modell<span class="star">*</span> ist fertig. Bedienen kann es fast niemand.</b>
               Es schreibt, fasst zusammen, übersetzt. Der Zugang führt über eine Programmierschnittstelle, 175 Milliarden eingestellte Werte im Hintergrund.</span>
             </div>
           </div>
-          <div class="axis__mark axis__mark--up" data-frag="3"
-               style="left:778px;width:620px">
+          <div class="axis__mark axis__mark--up axis__mark--key" data-frag="3"
+               style="left:778px;width:488px;--tx:-90px">
             <div class="axis__t">
               <span class="axis__y">2022</span>
-              <span class="axis__d"><b>ChatGPT.</b><span class="axis__ab">Chat + Generative Pre-trained Transformer</span>
-              Keine neue Technik. Jemand setzt ein Textfeld davor, zweieinhalb Jahre nach dem Modell. Das war der ganze Unterschied.</span>
+              <span class="axis__d"><b>ChatGPT<span class="star">**</span>, dahinter GPT-3.5.</b>
+              Ein Modell, das Anweisungen befolgt und über ein Textfeld angesprochen wird. Zweieinhalb Jahre nach GPT-3.</span>
             </div>
           </div>
           <div class="axis__mark axis__mark--dn" data-frag="4"
@@ -362,6 +483,24 @@
               <span class="axis__d"><b>Zwei Nobelpreise in einer Woche.</b>
               Physik an John Hopfield und Geoffrey Hinton für die Grundlagen der neuronalen Netze. Chemie unter anderem an Demis Hassabis und John Jumper, deren Programm Proteinstrukturen vorhersagt.</span>
             </div>
+          </div>
+          <div class="axis__mark axis__mark--up" data-frag="5"
+               style="left:1244px;width:436px">
+            <div class="axis__t">
+              <span class="axis__y">2025</span>
+              <span class="axis__d"><b>KI-Agenten arbeiten selbstständig.</b>
+              Sie lesen und ändern Dateien, führen Programme aus und prüfen ihr Ergebnis. Seit 2025 für alle verfügbar.</span>
+            </div>
+          </div>
+        </div>
+        <div class="marks marks--tight" data-anim style="left:112px;top:866px;width:1696px;--col:84px">
+          <div class="mark" data-frag="2">
+            <div class="mark__y">*&#160;LLM</div>
+            <div class="mark__t">Large Language Model, ein großes Sprachmodell</div>
+          </div>
+          <div class="mark" data-frag="3">
+            <div class="mark__y">**&#160;GPT</div>
+            <div class="mark__t">Generative Pre-trained Transformer</div>
           </div>
         </div>
       </div>
@@ -376,7 +515,6 @@
           das Modell muss „Bogen" und „sitzt" verbinden, über acht Wörter hinweg</li>
           <li>Zweiter Vorteil: gleichzeitig heißt parallel rechenbar, also mit
           Grafikkarten trainierbar</li>
-          <li>Das „T" in ChatGPT kommt daher</li>
         </ul>
 
         <p><b>2020 · Das Modell ist fertig, bedienen kann es fast niemand</b></p>
@@ -387,6 +525,9 @@
           Frage neu</li>
           <li><b>Transformer</b> — die Bauart von 2017, siehe eben</li>
           <li>Die 3 ist schlicht die dritte Fassung</li>
+          <li><b>LLM</b>: Large Language Model, ein großes Sprachmodell. Der
+          Oberbegriff für diese Art Modell, ChatGPT und seine Konkurrenten gehören
+          alle dazu</li>
           <li>175 Milliarden eingestellte Werte — das sind die Stellschrauben, die beim
           Training gefunden wurden</li>
           <li>Es schreibt, fasst zusammen, übersetzt, also im Grunde das, was heute alle
@@ -399,9 +540,11 @@
         <p><b>2022 · ChatGPT, am 30. November</b></p>
         <ul>
           <li>Chat plus der Name des Modells von eben</li>
-          <li>Keine neue Technik, kein neues Modell</li>
-          <li>Jemand setzt ein Textfeld davor: schreib rein, was du willst</li>
-          <li>Zweieinhalb Jahre nach dem Modell</li>
+          <li>Dieselbe Bauart von 2017, keine neue Erfindung</li>
+          <li>Aber: das Modell wurde nachtrainiert, damit es Anweisungen befolgt,
+          statt Text nur fortzusetzen</li>
+          <li>Dazu ein Textfeld: hineinschreiben, was gebraucht wird, kein Handbuch</li>
+          <li>GPT-3.5 heißt die Fassung dahinter, zweieinhalb Jahre nach GPT-3</li>
           <li>Details gleich auf der nächsten Folie</li>
         </ul>
 
@@ -421,16 +564,29 @@
           wurde, bekommt die höchste wissenschaftliche Auszeichnung</li>
         </ul>
 
+        <p><b>2025 · KI-Agenten arbeiten selbstständig</b></p>
+        <ul>
+          <li>Bisher antwortet die KI. Ein Agent erledigt einen Auftrag</li>
+          <li>Er liest und ändert Dateien, führt Programme aus, prüft das Ergebnis
+          und macht weiter</li>
+          <li>Beispiel aus dem eigenen Werkzeugkasten: Claude Code von Anthropic,
+          im Februar 2025 als Vorschau, ab Mai 2025 für alle</li>
+          <li>Verfügbar heißt nicht verbreitet: Im Sommer 2026 setzen 11 % der
+          Unternehmen Agenten ein, dazu gleich mehr</li>
+        </ul>
+
         <p><b>Überleitung:</b> Zurück zum 30. November 2022. Was da wirklich passiert ist.</p>
       </template>
     </section>
 
-    <!-- 05 - die Pointe des Abschnitts. Belege: quellenangabe.md -->
-    <section class="slide" data-title="Wie kam es zu ChatGPT?" data-section="1" data-fragments="4">
+    <!-- 06 - die Pointe des Abschnitts. Belege: quellenangabe.md -->
+    <section class="slide" data-title="KI für alle - ChatGPT" data-section="1" data-fragments="4">
       <div class="slide-inner">
         <div class="col-l" data-anim style="top:220px;width:1400px">
-          <h2 class="h-1">Wie kam es zu ChatGPT?</h2>
+          <h2 class="h-1">KI für alle - ChatGPT.</h2>
           <div class="rule"></div>
+          <p class="sub">Forscher bei Google veröffentlichen die Bauart.<br>
+          OpenAI baut das Modell und macht es für alle bedienbar.</p>
         </div>
         <div class="cards cards--3" data-anim style="left:112px;top:480px;width:1696px">
           <div class="card glass" data-frag="1">
@@ -445,8 +601,8 @@
             <div class="card__d">GPT-3 ist die dritte Fassung mit 175 Milliarden Werten.
             Erreichbar ist sie nur über eine Schnittstelle für Entwickler.</div>
           </div>
-          <div class="card" data-frag="3">
-            <div class="card__yr">30.11.2022</div>
+          <div class="card card--key" data-frag="3">
+            <div class="card__yr"><span class="card__date">30.11.2022<i class="card__stroke" data-draw></i></span></div>
             <div class="card__t">Veröffentlichung</div>
             <div class="card__d">ChatGPT wird als Webseite öffentlich und kostenlos nutzbar.
             Das dahinterliegende Modell GPT-3.5 <b>befolgt Anweisungen</b>, statt Text nur
@@ -460,6 +616,12 @@
           <li>Fünf Jahre von der Erfindung bis zu dem Tag, an dem jeder damit arbeiten
           konnte</li>
           <li>Wer glaubt, im November 2022 sei die Technik erfunden worden, liegt falsch</li>
+        </ul>
+
+        <p><b>Woher die drei Schritte kommen</b></p>
+        <ul>
+          <li>Die Bauart kommt von Forschern bei Google</li>
+          <li>Modell und Webseite kommen von OpenAI</li>
         </ul>
 
         <p><b>2017 · Erfindung der Architektur</b></p>
@@ -481,13 +643,16 @@
 
         <p><b>30.11.2022 · Veröffentlichung</b></p>
         <ul>
+          <li><b>Das Datum, das man sich merken sollte.</b> Ab diesem Tag konnte jeder
+          Mensch mit Internetanschluss einer KI in normaler Sprache schreiben</li>
           <li>Eine Webseite, ein Textfeld, kostenlos, kein Handbuch</li>
           <li>Zweiter Teil, der oft untergeht: Das Modell wurde nachtrainiert, damit es
           Anweisungen <b>befolgt</b>, statt Text nur fortzusetzen</li>
           <li>Trainiert wurde das an menschlichen Bewertungen: Menschen haben Antworten
           in eine Rangfolge gebracht, daraus hat das Modell gelernt</li>
-          <li>Warum plötzlich 3.5: eine Zwischenfassung, Anfang 2022 fertig trainiert.
-          Die Zahl nicht betonen, sie wirft mehr Fragen auf, als sie beantwortet</li>
+          <li>Die 3.5 ist auf der Folie davor schon gefallen: eine Zwischenfassung,
+          Anfang 2022 fertig trainiert. Bei Nachfrage so erklären, sonst nicht
+          vertiefen</li>
         </ul>
 
         <p><b>Der Punkt für dieses Haus</b></p>
@@ -508,106 +673,456 @@
       </template>
     </section>
 
-    <!-- 06 - Referenzfolie: Text links, Bildpanel rechts (das Arbeitspferd) -->
-    <section class="slide" data-title="Die Folie, die am meisten trägt" data-section="1">
+    <!-- 07 - Abschnittstrenner 02 -->
+    <section class="slide" data-title="Was ist KI heute?" data-section="2" data-bare data-divider>
       <div class="slide-inner">
-        <div class="col-l" style="top:236px">
-          <h2 class="h-1" data-anim>Die Folie,<br>die am meisten trägt.</h2>
-          <div class="rule" data-anim></div>
-          <p class="lead" data-anim>Textspalte links, Panel rechts. Der Trennstrich bringt seine
-          Abstände selbst mit, er funktioniert in jedem Layout, nicht nur in diesem.</p>
-          <div data-anim style="margin-top:34px;display:flex;gap:12px;flex-wrap:wrap">
-            <span class="path"><svg><use href="#i-monitor"/></svg>908&#160;x&#160;511&#160;px</span>
-            <span class="path"><svg><use href="#i-gauge"/></svg>Faktor&#160;1,00</span>
-          </div>
-        </div>
-        <div class="shot" data-anim style="left:900px;top:270px;width:908px;height:511px">
-          <img class="shot__spill" src="assets/img/platzhalter.soft.jpg" alt="">
-          <div class="shot__frame">
-            <img src="assets/img/platzhalter.webp" width="908" height="511" alt="Platzhalter">
-          </div>
-          <img class="shot__soft" src="assets/img/platzhalter.soft.jpg" alt="">
-          <div class="shot__cap">Platzhalter, wird im Inhaltsschritt ersetzt</div>
+        <div class="eyebrow" data-anim><b>02</b></div>
+        <div class="div-block">
+          <h2 class="h-l" data-anim>Was ist KI heute?</h2>
+          <p class="sub" data-anim>Ein Wort für verschiedene Dinge.<br>
+          Ein Bruch mit allem, was Software vorher war.<br>
+          Eine Technik, die längst im Haus ist.</p>
         </div>
       </div>
       <template class="notes">
-        <p><b>Referenzfolie Arbeitspferd.</b> Panelhöhe ist aus dem <b>nativen</b>
-        Seitenverhältnis gerechnet, nicht geschätzt: 908 x 511 bei 908 px Anzeigebreite
-        ergibt Faktor 1,00.</p>
-        <p>Die drei Panelebenen gehören zusammen: <code>.shot__spill</code> wirft die Farben
-        nach hinten, <code>.shot__frame</code> trägt das Bild, <code>.shot__soft</code> blendet
-        beim Eintritt aus und lässt das Panel scharf werden. Beide Zwillinge sind 44 px breit,
-        sie <b>sind</b> die Weichzeichnung und deshalb in deck.config.json vom Bilddeckel
-        ausgenommen.</p>
+        <p><b>Ansage</b></p>
+        <ul>
+          <li>Rückblick ist durch, jetzt das Heute</li>
+          <li>Fünf Minuten, vier Folien</li>
+        </ul>
+        <p><b>Die vier Dinge, die alle „KI" heißen</b></p>
+        <ul>
+          <li><b>Künstliche Intelligenz</b> — der Oberbegriff, seit 1956</li>
+          <li><b>Maschinelles Lernen</b> — lernt aus Beispielen statt aus Regeln</li>
+          <li><b>Tiefe neuronale Netze</b> — lernt in vielen Schichten übereinander</li>
+          <li><b>Generative KI</b> — erzeugt neuen Text, neue Bilder</li>
+          <li>Die meisten meinen nur das letzte. Das klärt die nächste Folie</li>
+        </ul>
+
+        <p><b>Was der Abschnitt beantwortet</b></p>
+        <ul>
+          <li>Was heißt „KI" eigentlich, wenn vier verschiedene Dinge so heißen</li>
+          <li>Was unterscheidet sie von normaler Software</li>
+          <li>Was kann sie und was nicht</li>
+          <li>Wie weit ist sie schon da</li>
+        </ul>
+        <p><b>Überleitung:</b> Fangen wir mit dem Wort an, denn das ist schon
+        der erste Stolperstein.</p>
       </template>
     </section>
 
-    <!-- 07 - Referenzfolie: Kartenraster -->
-    <section class="slide" data-title="Drei Karten, gleich hoch" data-section="2">
+    <!-- 08 - Begriffsstaffelung. Belege: quellenangabe.md -->
+    <section class="slide" data-title="KI ist nicht eine Sache" data-section="2" data-fragments="5">
       <div class="slide-inner">
-        <div class="col-l" data-anim style="top:220px;width:1300px">
-          <h2 class="h-1">Drei Karten, gleich hoch.</h2>
+        <div class="col-l" data-anim style="top:220px;width:1400px">
+          <h2 class="h-1">KI ist nicht <i>eine</i> Sache.</h2>
           <div class="rule"></div>
         </div>
-        <div class="cards cards--3" data-anim style="left:112px;top:470px;width:1696px">
-          <div class="card glass">
-            <div class="card__ico"><svg><use href="#i-eye"/></svg></div>
-            <div class="card__t">Erkennen</div>
-            <div class="card__d">Platzhalter. Texte in einem Raster ähnlich lang halten,
-            sonst stehen die Karten unterschiedlich hoch.</div>
+        <div class="rings" data-anim style="left:112px;top:400px;width:900px;height:500px">
+          <div class="ring ring--1" data-frag="1">
+            <div class="ring__t">Künstliche Intelligenz</div>
+            <div class="ring__d">Der Oberbegriff. Das Wort gibt es seit 1956.</div>
           </div>
-          <div class="card">
-            <div class="card__ico"><svg><use href="#i-sparkle"/></svg></div>
-            <div class="card__t">Erzeugen</div>
-            <div class="card__d">Platzhalter. Die Piktogramme sind Konturzeichnungen und
-            holen ihre Linienstärke aus einer globalen Regel.</div>
+          <div class="ring ring--2" data-frag="2">
+            <div class="ring__t">Maschinelles Lernen</div>
+            <div class="ring__d">Lernt aus Beispielen, statt Regeln vorgesetzt zu bekommen.</div>
           </div>
-          <div class="card">
-            <div class="card__ico"><svg><use href="#i-brain"/></svg></div>
-            <div class="card__t">Entscheiden</div>
-            <div class="card__d">Platzhalter. Nur eine Karte je Folie darf echtes Glas sein,
-            hier die erste.</div>
+          <div class="ring ring--3" data-frag="3">
+            <div class="ring__t">Tiefe neuronale Netze</div>
+            <div class="ring__d">Lernt in vielen Schichten übereinander.</div>
+          </div>
+          <div class="ring ring--4" data-frag="4">
+            <div class="ring__t">Generative KI</div>
+            <div class="ring__d">Erzeugt neuen Text, neue Bilder. Das hier meinen alle.</div>
+          </div>
+        </div>
+        <div class="col-l" data-anim style="left:1088px;top:470px;width:720px">
+          <div data-frag="4">
+            <h3 class="h-2">Über 1.600 KI-Medizinprodukte sind zugelassen.<br>Keines davon sitzt im innersten Ring.</h3>
+            <p class="lead" style="margin-top:26px">Drei Viertel davon werten Röntgen- und Schnittbilder aus.
+            Das ist maschinelles Lernen, kein Sprachmodell.</p>
+            <p class="tiny" style="margin-top:22px">US-Zulassungsbehörde FDA, Stand Ende Juni 2026.
+            Für generative Systeme entwickelt die Behörde erst noch ein Verfahren.</p>
           </div>
         </div>
       </div>
       <template class="notes">
-        <p><b>Referenzfolie Kartenraster.</b> Prüft Rastermaße, gleich hohe Karten und die
-        <code>#i-*</code>-Piktogramme in ihrer Anzeigegröße von 44 px.</p>
-        <p><code>.glass</code> ist zunächst nur eine Attrappe, das echte
-        <code>backdrop-filter</code> setzt <code>liveGlass()</code> erst nach dem Übergang,
-        und höchstens einmal pro Folie.</p>
+        <p><b>Warum diese Folie überhaupt kommt</b></p>
+        <ul>
+          <li>Vier verschiedene Dinge heißen „KI", und die meisten meinen nur das innerste</li>
+          <li>Wer die Staffelung einmal gesehen hat, versteht hinterher jede Schlagzeile besser</li>
+        </ul>
+
+        <p><b>Künstliche Intelligenz</b></p>
+        <ul>
+          <li>Der Oberbegriff, seit 1956, das kam auf Folie 03 schon vor</li>
+          <li>Umfasst auch Verfahren, die gar nichts lernen, etwa das Schachprogramm von 1997</li>
+        </ul>
+
+        <p><b>Maschinelles Lernen</b></p>
+        <ul>
+          <li>Der Teil, der aus Beispielen lernt statt aus geschriebenen Regeln</li>
+          <li>Hier sitzt praktisch die gesamte zugelassene Medizintechnik</li>
+        </ul>
+
+        <p><b>Tiefe neuronale Netze</b></p>
+        <ul>
+          <li>Maschinelles Lernen mit vielen Schichten übereinander</li>
+          <li>Das ist die Technik, für die es 2024 den Physik-Nobelpreis gab</li>
+        </ul>
+
+        <p><b>Generative KI</b></p>
+        <ul>
+          <li>Erzeugt selbst neuen Text, neue Bilder, neuen Ton</li>
+          <li>ChatGPT sitzt hier, und nur hier</li>
+          <li>Der jüngste der vier Ringe, und der kleinste</li>
+        </ul>
+
+        <p><b>Die Zahl rechts</b></p>
+        <ul>
+          <li>Über 1.600 KI-gestützte Medizinprodukte hat die FDA zugelassen</li>
+          <li>FDA ist die US-Zulassungsbehörde für Arznei- und Medizinprodukte</li>
+          <li>Rund drei Viertel davon in der Radiologie, also Bildauswertung</li>
+          <li><b>Kein einziges beruht auf generativer KI</b></li>
+          <li>Die Behörde schreibt selbst, dass sie dafür erst noch ein Verfahren entwickelt</li>
+          <li>Das ist der Punkt für dieses Haus: Die zugelassene Medizin-KI und die KI
+          aus den Schlagzeilen sind zwei verschiedene Dinge</li>
+        </ul>
+
+        <p><b>Wenn jemand fragt,</b> ob die Ringe fachlich sauber sind: Nicht ganz.
+        Es gibt generative Verfahren ohne neuronale Netze, und die EU-Verordnung
+        nennt neben dem Lernen noch einen zweiten Zweig, die logikgestützten
+        Systeme. Die Staffelung zeigt den heute wichtigen Ast, nicht die ganze
+        Landkarte.</p>
+
+        <p><b>Überleitung:</b> Der zweite Ring ist der entscheidende. Dort passiert
+        etwas, das es vorher in der Softwaregeschichte nicht gab.</p>
       </template>
     </section>
 
-    <!-- 08 - Referenzfolie: Mehrstufige Folie -->
-    <section class="slide" data-title="Vier Zustände, drei Klicks" data-section="2" data-fragments="4">
+    <!-- 09 - Regeln vorgeben gegen Regeln finden. Das Wort „Regel" steht links
+         oben und rechts unten, und es wandert beim Klick dorthin. Diese
+         Bewegung ist die Aussage der Folie. Belege: quellenangabe.md -->
+    <section class="slide" data-title="Was unterscheidet KI von normaler Software?" data-section="2" data-fragments="4">
       <div class="slide-inner">
-        <div class="col-l" data-anim style="top:220px;width:1300px">
-          <h2 class="h-1">Vier Zustände, drei Klicks.</h2>
+        <div class="col-l" data-anim style="top:220px;width:1400px">
+          <h2 class="h-1">Was unterscheidet KI<br>von normaler Software?</h2>
           <div class="rule"></div>
         </div>
-        <div class="marks" data-anim style="left:112px;top:470px;width:1300px">
+        <div class="flow" data-anim style="left:112px;top:424px;width:1696px">
+          <div class="flow__side" data-frag="1">
+            <div class="flow__hd">Bisher</div>
+            <div class="flow__row"><span class="flow__n flow__n--key" data-travel="0,110">Der Mensch gibt die Regeln vor</span></div>
+            <div class="flow__pipe"></div>
+            <div class="flow__row"><span class="flow__n">Der Computer wendet sie an</span></div>
+            <div class="flow__note">Die Regeln stehen geschrieben.<br>Jeder kann sie nachlesen.</div>
+          </div>
+          <div class="flow__sep" data-frag="2"></div>
+          <div class="flow__side flow__side--now" data-frag="2">
+            <div class="flow__hd">Seit dem Lernen</div>
+            <div class="flow__row"><span class="flow__n">Der Mensch gibt Beispiele vor</span></div>
+            <div class="flow__pipe"></div>
+            <div class="flow__row"><span class="flow__n flow__n--key" data-travel="0,-110">Der Computer findet die Regeln selbst</span></div>
+            <div class="flow__note">Die Regeln stehen nirgends.<br>Niemand kann sie nachlesen.</div>
+          </div>
+        </div>
+        <div data-anim style="position:absolute;left:112px;top:790px;width:1696px">
+          <p class="tiny" data-frag="3"><b>Beispiel Karies:</b> Fachleute markieren auf vielen Röntgenbildern, wo Karies ist.<br>Woran sie zu erkennen ist, findet die KI daraus selbst.</p>
+        </div>
+      </div>
+      <template class="notes">
+        <p><b>Der Kern der Folie, in einem Satz</b></p>
+        <ul>
+          <li>Die Regel hat die Seite gewechselt: Früher ging sie hinein, heute
+          kommt sie heraus</li>
+        </ul>
+
+        <p><b>Bisher</b></p>
+        <ul>
+          <li>Ein Mensch schreibt die Regel auf: „Wenn Rechnungsbetrag über 500,
+          dann zweite Unterschrift"</li>
+          <li>Der Computer führt sie aus, millionenfach, fehlerfrei</li>
+          <li>Jede Regel steht irgendwo und kann nachgelesen werden</li>
+          <li>Das ist bis heute der allergrößte Teil aller Software, auch bei uns</li>
+        </ul>
+
+        <p><b>Seit dem Lernen</b></p>
+        <ul>
+          <li>Niemand schreibt eine Regel, der Mensch zeigt Beispiele</li>
+          <li>Zehntausend bezahlte Rechnungen, zehntausend abgelehnte</li>
+          <li>Der Computer findet die Regel selbst</li>
+          <li>Sie funktioniert oft besser als jede geschriebene Regel</li>
+          <li><b>Und sie steht nirgends.</b> Niemand kann sie aufschlagen und
+          nachlesen, prüfen lässt sich nur, ob das Ergebnis stimmt</li>
+        </ul>
+
+        <p><b>Beispiel Karies</b></p>
+        <ul>
+          <li>Fachleute markieren auf sehr vielen Röntgenbildern, wo Karies ist</li>
+          <li>Niemand schreibt dazu auf, <i>woran</i> Karies zu erkennen ist</li>
+          <li>Das findet die KI aus den markierten Bildern selbst</li>
+          <li>Genau so sind die zugelassenen Systeme für Röntgenbilder entstanden,
+          die Zahl dazu stand auf der Folie davor</li>
+        </ul>
+
+        <p><b>Wenn jemand nach dem Gesetz fragt:</b> Die EU-Verordnung über KI
+        zieht die Grenze an genau dieser Stelle. Nicht über Intelligenz, sondern
+        darüber, ob ein Mensch alle Regeln aufgeschrieben hat. Erwägungsgrund 12:
+        die Definition „sollte sich nicht auf Systeme beziehen, die auf
+        ausschließlich von natürlichen Personen definierten Regeln … beruhen".</p>
+
+        <p><b>Wenn jemand fragt,</b> ob sich das denn gar nicht prüfen lasse: Das
+        Verhalten schon, nur die Regel lässt sich nicht nachlesen. Deshalb sind in der
+        Medizin alle diese Systeme zulassungspflichtig und werden an Fällen
+        gemessen, nicht am Quelltext.</p>
+
+        <p><b>Überleitung:</b> So weit die Bauart. Jetzt die Frage, die alle
+        wirklich haben: Was kann das Ding?</p>
+      </template>
+    </section>
+
+    <!-- 10 - Fähigkeiten gegen Grenzen. Belege: quellenangabe.md -->
+    <section class="slide" data-title="Was sie kann und was nicht" data-section="2" data-fragments="4">
+      <div class="slide-inner">
+        <div class="col-l" data-anim style="top:220px;width:1400px">
+          <h2 class="h-1">Was sie kann und was nicht.</h2>
+          <div class="rule"></div>
+        </div>
+        <div class="cards cards--2" data-anim style="left:112px;top:430px;width:1696px">
+          <div class="card glass" data-frag="1">
+            <div class="card__t">Sie kann</div>
+            <div class="marks marks--inset">
+              <div class="mark">
+                <div class="mark__b"></div>
+                <div class="mark__t"><b>Gold bei der Mathematik-Olympiade gewinnen.</b>
+                Dieselben Aufgaben wie die besten Schüler der Welt.</div>
+              </div>
+              <div class="mark">
+                <div class="mark__b"></div>
+                <div class="mark__t"><b>Stundenlang selbstständig arbeiten.</b>
+                Werkzeuge bedienen, das eigene Zwischenergebnis prüfen, weitermachen.</div>
+              </div>
+              <div class="mark">
+                <div class="mark__b"></div>
+                <div class="mark__t"><b>Bild, Ton und Video erzeugen.</b>
+                In einem Durchgang, nicht mehr in getrennten Schritten.</div>
+              </div>
+            </div>
+          </div>
+          <div class="card" data-frag="2">
+            <div class="card__t">Sie kann nicht</div>
+            <div class="marks marks--inset">
+              <div class="mark mark--no">
+                <div class="mark__b"></div>
+                <div class="mark__t"><b>Eine analoge Uhr ablesen.</b>
+                Zeiger auf einem Zifferblatt: richtig gelesen in 50&#160;% der
+                Fälle. Also Münzwurf.</div>
+              </div>
+              <div class="mark mark--no">
+                <div class="mark__b"></div>
+                <div class="mark__t"><b>Aus Korrekturen lernen.</b>
+                Heute auf einen Fehler hingewiesen, macht sie ihn
+                morgen wieder.<span class="star">*</span></div>
+              </div>
+              <div class="mark mark--no">
+                <div class="mark__b"></div>
+                <div class="mark__t"><b>Merken, wenn sie <i>selbst</i> etwas erfindet.</b>
+                Sie erfindet Quellen und klingt dabei so sicher wie immer.
+                In über 800 Fällen sind Anwälte damit vor Gericht aufgeflogen.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div data-anim style="position:absolute;left:112px;top:840px;width:1696px">
+          <p class="tiny" data-frag="3"><span class="star">*</span> KI-Agenten schließen diese Lücke: Sie schreiben mit, was korrigiert wurde, und halten sich beim nächsten Mal daran. Das Modell selbst bleibt dasselbe.</p>
+        </div>
+      </div>
+      <template class="notes">
+        <p><b>Wie die Folie gemeint ist</b></p>
+        <ul>
+          <li>Die rechte Spalte ist keine Warnung, sie ist die Bedienungsanleitung</li>
+          <li>Die linke Seite kennt jeder aus der Zeitung, die rechte nicht</li>
+        </ul>
+
+        <p><b>Gold bei der Mathematik-Olympiade gewinnen</b></p>
+        <ul>
+          <li>Internationale Mathematik-Olympiade, der härteste Schülerwettbewerb der Welt</li>
+          <li>Ein System von Google kam auf Goldmedaillen-Niveau</li>
+        </ul>
+
+        <p><b>Stundenlang selbstständig</b></p>
+        <ul>
+          <li>Gemeint sind „Agenten": Sie bedienen Werkzeuge, führen Schritte aus,
+          prüfen ihr eigenes Zwischenergebnis und machen weiter</li>
+          <li>Aufgaben, an denen ein Fachmann Stunden sitzt</li>
+        </ul>
+
+        <p><b>Die analoge Uhr</b></p>
+        <ul>
+          <li>Zifferblatt mit Zeigern, richtig abgelesen in etwa der Hälfte der Fälle</li>
+          <li>Das ist kein Scherz und keine alte Zahl, das ist der Stand 2026</li>
+          <li>Warum: Alles, was genaues Hinsehen auf Winkel und Lage verlangt, ist
+          bis heute die Schwachstelle</li>
+        </ul>
+
+        <p><b>Aus Korrekturen lernen</b></p>
+        <ul>
+          <li>Der verbreitetste Irrtum überhaupt: „Die KI lernt aus meinem Chat"</li>
+          <li>Tut sie nicht. Trainiert wird einmal, danach wird das Modell nur noch
+          benutzt. Das sind zwei getrennte Vorgänge</li>
+          <li>Sie entschuldigt sich, korrigiert sich im Gespräch — und im nächsten
+          Gespräch ist alles wieder weg</li>
+        </ul>
+
+        <p><b>Wenn jemand nach der Zuverlässigkeit fragt</b></p>
+        <ul>
+          <li>Alles auf der linken Seite ist bei <b>50 % Erfolg</b> gemessen</li>
+          <li>Bei jedem zweiten Versuch klappt es, beim anderen nicht, und man sieht
+          es dem Ergebnis nicht an</li>
+          <li>Das Institut, das misst, sagt selbst, dass sich eine Quote von 99 %
+          mit den heutigen Aufgaben gar nicht bestimmen lässt</li>
+        </ul>
+
+        <p><b>Wenn sie etwas erfindet</b></p>
+        <ul>
+          <li>Der Punkt ist nicht, <i>dass</i> sie sich irrt. Das tun Menschen auch</li>
+          <li>Der Punkt ist, dass <b>sie es selbst nicht merkt</b>: Eine erfundene
+          Quelle klingt genauso sicher wie eine echte</li>
+          <li>Eine Datenbank sammelt Urteile, in denen ein Gericht festgestellt hat,
+          dass sich jemand auf erfundene Fundstellen gestützt hat</li>
+          <li>Über 2.000 Fälle. In 811 davon haben <b>Anwälte</b> die erfundenen
+          Urteile eingereicht, in 32 Fällen sogar Richter</li>
+          <li>Leute, die für Sorgfalt bezahlt werden, mit Prüfpflicht, unter
+          Sanktionsandrohung. Und es ist ihnen nicht aufgefallen</li>
+          <li>Im Sommer 2026 kamen rund acht Fälle pro Tag dazu</li>
+        </ul>
+
+        <p><b>Das Sternchen: KI-Agenten</b></p>
+        <ul>
+          <li>Genau diese Lücke schließen KI-Agenten</li>
+          <li>Sie schreiben mit, was korrigiert wurde, die Dokumentation wächst mit
+          den Aufgaben</li>
+          <li>Beim nächsten Mal lesen sie es wieder und halten sich daran</li>
+          <li>Dadurch „lernt" das System unsere Abläufe, ohne dass sich das Modell
+          ändert</li>
+          <li>Dazu später ein eigenes Kapitel</li>
+        </ul>
+
+        <p><b>Wenn jemand fragt,</b> ob das nicht besser geworden sei: Beim
+        Zusammenfassen eines <b>mitgelieferten</b> Textes ja, da liegen die besten
+        Systeme unter 3 % Fehler. Bei freien Fragen aus dem Gedächtnis nein. Der
+        Unterschied ist Faktor zehn, und daraus folgt die praktische Regel: Gib ihm
+        das Dokument, dann liegt es selten daneben.</p>
+
+        <p><b>Überleitung:</b> Klingt nach Zukunftsmusik. Ist es nicht.</p>
+      </template>
+    </section>
+
+    <!-- 11 - Verbreitung, mit dem dentalen Anker. Die rechte Zahl zählt hoch.
+         Belege: quellenangabe.md -->
+    <section class="slide" data-title="KI im Alltag" data-section="2" data-fragments="6">
+      <div class="slide-inner">
+        <div class="col-l" data-anim style="top:220px;width:1400px">
+          <h2 class="h-1">KI im Alltag.</h2>
+          <div class="rule"></div>
+        </div>
+        <div class="marks" data-anim style="left:112px;top:432px;width:830px">
           <div class="mark" data-frag="1">
             <div class="mark__b"></div>
-            <div class="mark__t"><b>Zustand 1.</b> Erscheint beim ersten Weiterklicken.</div>
+            <div class="mark__t"><b>Über 900 Millionen Menschen nutzen ChatGPT.</b><br>
+            Jede Woche (nach Angabe von OpenAI).</div>
           </div>
           <div class="mark" data-frag="2">
             <div class="mark__b"></div>
-            <div class="mark__t"><b>Zustand 2.</b> Der vorige bleibt stehen, Aufbau statt Sequenz.</div>
+            <div class="mark__t"><b>57&#160;% der Unternehmen in Deutschland setzen KI ein.</b><br>
+            Vor zwei Jahren waren es 20&#160;%.</div>
           </div>
           <div class="mark" data-frag="3">
             <div class="mark__b"></div>
-            <div class="mark__t"><b>Zustand 3.</b> Danach geht es zur nächsten Folie.</div>
+            <div class="mark__t"><b>Jedes neunte lässt KI schon selbstständig arbeiten.</b><br>
+            Weitere 60&#160;% planen es oder reden darüber.</div>
+          </div>
+          <div class="mark" data-frag="4">
+            <div class="mark__b"></div>
+            <div class="mark__t"><b>45&#160;% der Menschen fragen KI zu Gesundheitsfragen.</b><br>
+            Die Patienten kommen informiert in die Praxis.</div>
+          </div>
+        </div>
+        <div data-anim style="position:absolute;left:1032px;top:424px;width:776px;text-align:center">
+          <div data-frag="5">
+            <div class="h-3" style="color:var(--ink-2);margin-bottom:30px">Von allen vorhandenen Kariesstellen<br>auf dem Röntgenbild entdecken Behandler:</div>
+            <div class="duo" style="position:static;justify-content:center">
+              <div class="duo__c">
+                <div class="duo__n">58<span class="duo__u">%</span></div>
+                <div class="duo__l">ohne KI</div>
+              </div>
+              <div class="duo__c duo__c--key">
+                <div class="duo__n"><span data-count="58,76">76</span><span class="duo__u">%</span></div>
+                <div class="duo__l">mit KI</div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
       <template class="notes">
-        <p><b>Referenzfolie Aufbaustufen.</b> <code>data-fragments</code> ist die Anzahl der
-        <b>Zustände</b>, nicht der Einblendungen: Zustand 0 ist die Folie ohne jeden Punkt,
-        <code>data-frag="1"</code> erscheint ab Zustand 1. Drei Punkte ergeben also
-        <code>data-fragments="4"</code>.</p>
-        <p>Rückwärts betreten zeigt die Folie ihren letzten Zustand, sie muss nicht noch
-        einmal durchgeklickt werden. Im PDF wird jeder Zustand eine eigene Seite.</p>
+        <p><b>Über 900 Millionen nutzen ChatGPT</b></p>
+        <ul>
+          <li>Wöchentlich aktive Nutzer, Stand Februar 2026</li>
+          <li><b>Wichtig:</b> Das ist eine Angabe von OpenAI selbst, niemand hat sie
+          unabhängig geprüft. Deshalb steht „nach Angabe von OpenAI" auf der Folie</li>
+          <li>Zum Vergleich: gut jeder achte Mensch auf der Erde</li>
+        </ul>
+
+        <p><b>57&#160;% der Unternehmen</b></p>
+        <ul>
+          <li>Erstmals die Mehrheit, erhoben im Sommer 2026</li>
+          <li>603 Unternehmen ab 20 Beschäftigten, repräsentativ</li>
+          <li>Die Reihe ist das Eigentliche: 20, dann 36, dann 57</li>
+          <li>Nur noch 4 % sagen, KI sei für sie kein Thema. Vor einem Jahr 17 %</li>
+          <li>Und die Zahl, die selten genannt wird: <b>59 % schöpfen das Potenzial
+          überhaupt nicht aus.</b> Kein einziges Unternehmen sagt, es nutze es voll
+          aus. Das ist der Grund, warum wir heute hier sitzen</li>
+        </ul>
+
+        <p><b>Jedes neunte lässt KI selbstständig arbeiten</b></p>
+        <ul>
+          <li>Gemeint sind Agenten: Programme, die ein Ziel bekommen und die Schritte
+          dahin selbst festlegen</li>
+          <li>Genaue Zahlen aus derselben Erhebung: <b>11 % setzen ein, 29 % planen,
+          31 % diskutieren</b></li>
+          <li>Die Spannung ist die Nachricht: noch klein, aber zwei Drittel stehen
+          schon in der Warteschlange</li>
+          <li>Dazu kommt ein eigenes Kapitel später im Vortrag</li>
+        </ul>
+
+        <p><b>45&#160;% fragen KI zu Gesundheitsfragen</b></p>
+        <ul>
+          <li>Repräsentativ, 1.145 Personen, November 2025</li>
+          <li>Die Hälfte davon sagt, sie verstehe ihre Beschwerden damit besser als
+          über eine Suchmaschine</li>
+          <li>Für uns heißt das: Die Patienten benutzen das bereits, bevor sie in
+          der Praxis ankommen</li>
+        </ul>
+
+        <p><b>58 auf 76</b></p>
+        <ul>
+          <li>Von allen Kariesstellen, die wirklich auf den Röntgenbildern sind</li>
+          <li>Ohne KI finden die Behandler 58, mit KI 76</li>
+          <li><b>Dieselben Behandler, dieselben Bilder</b>, nur mit und ohne Assistenz</li>
+          <li>Und der Punkt, der zählt: Die KI allein wäre schlechter gewesen als
+          beide zusammen</li>
+          <li>Nicht statt uns, sondern mit uns</li>
+          <li>29 solcher Systeme sind in den USA zugelassen, von 13 Firmen</li>
+        </ul>
+
+        <p><b>Wenn jemand fragt,</b> wie viele Zahnarztpraxen in Deutschland KI
+        einsetzen: Dazu gibt es keine veröffentlichte Erhebung. Für Arztpraxen
+        insgesamt nennt eine Befragung 15 %, sie ist aber ausdrücklich nicht
+        repräsentativ. Lieber die Lücke benennen als eine Zahl schätzen.</p>
+
+        <p><b>Überleitung:</b> Damit ist klar, was sie kann und wo sie steht. Bleibt
+        die Frage, warum sie manchmal so überzeugt danebenliegt. Dafür müssen wir
+        einmal hineinschauen.</p>
       </template>
     </section>
 

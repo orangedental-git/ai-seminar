@@ -5,8 +5,9 @@ Teilnehmende. HTML, läuft offline.
 
 **Vorführen:** `index.html` doppelklicken. Bedienung steht in [`readme.txt`](readme.txt).
 
-> **Stand: Abschnitt 01 steht.** Der geschichtliche Rückblick ist gebaut und
-> belegt, fünf inhaltliche Folien. Die Abschnitte 02 und 03 kommen noch.
+> **Stand: Abschnitt 01 und 02 stehen.** Von den Anfängen bis ChatGPT und Was ist KI
+> heute sind gebaut und belegt, elf Folien. Die Abschnitte 03 und 04 kommen
+> noch.
 
 ---
 
@@ -18,7 +19,7 @@ einen USB-Stick kopieren.
 
 | | |
 |---|---|
-| Folien | 5 inhaltliche, 3 Referenzfolien als Muster; drei Abschnitte vorgesehen |
+| Folien | siehe die erzeugte Gliederung weiter unten. Vier Abschnitte vorgesehen, zwei davon gebaut |
 | Ziel | Chrome und Edge unter Windows |
 | Bühne | Inhalt fix 1920 × 1080, Hintergrund füllt jedes Fensterformat |
 | Besonderheiten | Referentenansicht mit Notizen, Folienübersicht, mehrstufige Folien |
@@ -39,6 +40,8 @@ einer Adresse zum Nachlesen belegt.
 index.html            das Deck: Bühne, Symbole, alle Folien
 deck.config.json      alle Projektzahlen (Raster, Schutzzonen, Bilddeckel)
 readme.txt            Bedienung
+referat.md            der gesprochene Vortrag, ein Kapitel je Folie
+quellenangabe.md      jede Zahl mit Beleg und Adresse zum Nachlesen
 README.md             diese Datei
 CLAUDE.md             Arbeitsregeln
 
@@ -63,6 +66,7 @@ assets/
 
 dev/                  alles, was nur beim Bauen gebraucht wird
   BRIEFING.md         Auftrag und Festlegungen
+  nicht-erzaehlen.md  was recherchiert wurde und absichtlich draußen bleibt
   platzhalter.png     Quellbild
   shots/              Prüfaufnahmen                                [erzeugt]
 
@@ -89,7 +93,8 @@ node "$SK/layout-audit.mjs"            # Folien fotografieren und Layout prüfen
 node "$SK/abnahme.mjs"                 # Layout + Referent + Kaltstart
 node "$SK/kontaktbogen.mjs" dev/shots  # ein Blatt zum Draufschauen
 node "$SK/deck-pdf.mjs"                # ki-seminar.pdf, erst ganz am Ende
-node "$SK/gliederung.mjs"              # Folientabelle für die Doku
+node "$SK/gliederung.mjs" --md README.md  # Folientabelle unten erzeugen
+node "$SK/achsen-rechnen.mjs" achse.json  # maßstäbliche Zeitachse rechnen
 node "$SK/bilder-aufbereiten.mjs" <bild> --out assets/img --breite <px> --weich
 ```
 
@@ -109,6 +114,41 @@ und kein `node_modules/` im Repository.
 
 ---
 
+## Die Folien
+
+Der folgende Abschnitt ist **erzeugt und wird nicht von Hand gepflegt**. Eine
+handgeschriebene Foliengliederung weicht ab der zweiten Änderung ab, und dann
+ist sie schlimmer als keine, weil man sich darauf verlässt. Nach jeder
+Folienänderung neu erzeugen:
+
+```bash
+node ~/.claude/skills/create-slides/scripts/gliederung.mjs --md README.md
+```
+
+<!-- GLIEDERUNG:START -->
+
+| Nr | Titel                                       | Abschnitt | Stufen | Material | Notiz |
+|---|---------------------------------------------|-----------|---|----------|---|
+|  1 | KI bei orangedental                         | —         | — | —        | 438 Z. |
+|  2 | Von den Anfängen bis ChatGPT                | 1         | — | —        | 437 Z. |
+|  3 | KI ist älter als die meisten denken         | 1         | 8 | —        | 3527 Z. |
+|  4 | Vom Rechnen zum Lernen                      | 1         | 5 | —        | 2575 Z. |
+|  5 | KI wird erwachsen                           | 1         | 6 | —        | 2918 Z. |
+|  6 | KI für alle - ChatGPT                       | 1         | 4 | —        | 2254 Z. |
+|  7 | Was ist KI heute?                           | 2         | — | —        | 669 Z. |
+|  8 | KI ist nicht eine Sache                     | 2         | 5 | —        | 1644 Z. |
+|  9 | Was unterscheidet KI von normaler Software? | 2         | 4 | —        | 1704 Z. |
+| 10 | Was sie kann und was nicht                  | 2         | 4 | —        | 2672 Z. |
+| 11 | KI im Alltag                                | 2         | 6 | —        | 2127 Z. |
+
+Folien: **11** · mehrstufig: **8** · mit Material: **0** · mit Sprechnotiz: **11**
+
+Automatisch erzeugt aus der Zieldatei von `gliederung.mjs`. Nicht von Hand ändern.
+
+<!-- GLIEDERUNG:END -->
+
+---
+
 ## Folien ändern
 
 **Folientexte stehen direkt in `index.html`**, jede Folie in einer eigenen
@@ -123,7 +163,7 @@ Folien-Attribute:
 | Attribut | Wirkung |
 |---|---|
 | `data-title` | Titel in Übersicht und Referentenansicht |
-| `data-section="1..3"` | erzeugt die Kopfzeile aus `SECTIONS` in `deck.js` |
+| `data-section="1..4"` | erzeugt die Kopfzeile aus `SECTIONS` in `deck.js` |
 | `data-bare` | unterdrückt Kopfzeile **und** Zähler (Titel, Trenner) |
 | `data-divider` | Abschnittstrenner: Aurora breiter, Lichtzeichen kräftiger |
 | `data-fragments="4"` | mehrstufige Folie, **Anzahl der Zustände** |

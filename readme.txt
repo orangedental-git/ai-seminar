@@ -86,11 +86,12 @@
   ABLAUF
   ---------------------------------------------------------------------------
 
-  Das Deck ist noch im Aufbau. Vorgesehen sind drei Abschnitte:
+  Das Deck ist noch im Aufbau. Vorgesehen sind vier Abschnitte:
 
-  01   Was ist KI heute
-  02   Wie KI funktioniert
-  03   KI bei orangedental
+  01   Von den Anfängen bis ChatGPT
+  02   Was ist KI heute
+  03   Wie KI funktioniert
+  04   KI bei orangedental
 
   Wer live etwas vorführen will, wechselt an der passenden Stelle in das
   Programm und kommt danach mit Zahl + Enter zurück.

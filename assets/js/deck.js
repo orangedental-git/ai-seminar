@@ -65,9 +65,10 @@
      DECK.sections mit, statt eine zweite Tabelle zu führen — zwei Tabellen
      laufen beim ersten Umbenennen auseinander. */
   var SECTIONS = {
-    1: 'Was ist KI heute',
-    2: 'Wie KI funktioniert',
-    3: 'KI bei orangedental',
+    1: 'Von den Anfängen bis ChatGPT',
+    2: 'Was ist KI heute?',
+    3: 'Wie KI funktioniert',
+    4: 'KI bei orangedental',
   };
 
   function decorate(slide, idx) {
@@ -261,6 +262,11 @@
         if (kids.length) w.gsap.set(kids, { opacity: 1, y: 0, clearProps: 'willChange' });
         var softs = sl.querySelectorAll('.shot__soft');
         if (softs.length) w.gsap.set(softs, { opacity: 0, scale: 1 });
+        /* Reise und Zählwerk auf den Stand des GELTENDEN Zustands setzen,
+           nicht auf ihren Endwert. Das PDF macht aus jedem Zustand eine
+           eigene Seite: wer hier pauschal fertigstellt, hat die Schlusszahl
+           schon auf der ersten Seite stehen, und keine Prüfung meldet es. */
+        if (T && T.stepExtras) T.stepExtras(sl, S.frag, true);
       } else {
         sl.classList.remove('is-active', 'is-leaving');
       }

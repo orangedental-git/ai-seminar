@@ -33,7 +33,7 @@
     "frame": "#frame",
     "slideContent": ".slide-inner *:not(.eyebrow):not(.eyebrow *):not(.counter):not(.counter *):not(.shot__spill):not(.shot__soft)",
     "images": "img:not(.shot__spill):not(.shot__soft)",
-    "guardLeaves": "img, p, h1, h2, h3, li, figcaption, .chip, .card, .step, .path, .badge, .mark__t, .card__d, .shot__cap, .title-sub, .div-meta, .axis__d, .axis__y, .axis__n, .axis__s"
+    "guardLeaves": "img, p, h1, h2, h3, li, figcaption, .chip, .card, .step, .path, .badge, .mark__t, .card__d, .shot__cap, .title-sub, .sub, .axis__d, .axis__y, .axis__n, .axis__s, .card__t, .ring__t, .ring__d, .flow__n, .flow__hd, .flow__note, .duo__n, .duo__l"
   },
   "_out": "Ausgabeverzeichnisse, relativ zu dieser Datei.",
   "out": {

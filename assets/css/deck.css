@@ -483,6 +483,26 @@ svg use, .ico svg, .path svg, .card__ico svg, .ico-arrow {
   color: var(--orange-deep);
 }
 
+/* Die eine Karte, die den Abschnitt trägt. Optik wie .flow__n--key, damit
+   „hervorgehoben“ im ganzen Deck gleich aussieht. Das Datum wird größer, die
+   Kopfhöhe bleibt 44 px, sonst stehen die Titel der Nachbarkarten nicht mehr
+   auf einer Linie. */
+.card--key {
+  background: var(--orange-soft);
+  border-color: rgba(246, 139, 26, 0.38);
+}
+.card--key .card__yr { font-size: 44px; font-weight: 600; }
+.card__date { position: relative; }
+/* Der Strich unter dem Datum. Grundzustand ist fertig gezeichnet: ohne GSAP
+   (body.no-anim) und im PDF steht er da. transitions.js zieht ihn einmal auf,
+   wenn die Karte erscheint (data-draw). */
+.card__stroke {
+  position: absolute; left: 0; right: 0; bottom: -9px;
+  height: 4px; border-radius: 2px;
+  background: var(--orange);
+  transform-origin: left center;
+}
+
 /* Karte mit Bildplatz — vorbereitet für später nachgelieferte Screenshots.
    Ein <img class="card__shot"> ersetzt das <svg> im .card__ico 1:1. */
 .card__shot {
@@ -510,9 +530,28 @@ svg use, .ico svg, .path svg, .card__ico svg, .ico-arrow {
    Station, das Jahr in der ersten Spalte an der Stelle der Raute. Die Zeilen
    bleiben stehen, am Ende der Folie steht die ganze Liste da. */
 .marks--tight { gap: 10px; }
-.marks--tight .mark { grid-template-columns: 62px 1fr; gap: 16px; align-items: baseline; }
+/* --col verbreitert die erste Spalte, wenn dort mehr als eine Jahreszahl
+   steht: eine Fußnotenmarke mit Abkürzung („** GPT" auf Folie 05) oder ein
+   Zeitraum („ab 1987" auf Folie 04). */
+.marks--tight .mark { grid-template-columns: var(--col, 62px) 1fr; gap: 16px; align-items: baseline; }
 .marks--tight .mark__t { font: 400 19px/1.35 var(--f-body); color: var(--ink-3); }
 .marks--tight .mark__y { font: 500 19px/1.35 var(--f-mono); }
+
+/* Dieselben Zeilen innerhalb einer Karte. Nur die absolute Lage fällt weg,
+   der Zeilenaufbau bleibt — deshalb eine Modifier-Klasse und keine zweite
+   Aufzählung. */
+.marks--inset { position: static; gap: 22px; }
+.marks--inset .mark { grid-template-columns: 26px 1fr; gap: 16px; }
+.marks--inset .mark__t { font: 400 21px/1.42 var(--f-body); }
+.marks--inset .mark__b { margin-top: 8px; }
+
+/* Der Gegenpol. Die Raute wechselt von Orange auf den kühlen Ton, sonst
+   ändert sich nichts: es sind gleichwertige Zeilen, keine Warnungen. */
+.mark--no .mark__b { background: var(--slate); }
+
+/* Sternchen, das auf eine Fußnote unter den Karten verweist. Orange, damit
+   Verweis und Fußnote als Paar erkennbar sind. */
+.star { color: var(--orange-deep); font-weight: 600; margin-left: 0.08em; }
 
 /* --------------------------------------------------------- 11 · Sequenzen */
 /* Mehrere Bilder, die an derselben Stelle übereinanderblenden. */
@@ -574,13 +613,18 @@ svg use, .ico svg, .path svg, .card__ico svg, .ico-arrow {
 .title-list b { font-weight: 400; color: var(--orange-deep); }
 
 /* --------------------------------------------------------- 13 · Divider */
-.div-block { position: absolute; left: var(--gutter); top: 392px; }
-.div-num {
-  font: 500 20px/1 var(--f-mono); letter-spacing: 0.18em;
-  color: var(--orange-deep); margin-bottom: 26px;
-}
+/* Die Überschrift beginnt auf derselben Höhe wie .h-1 in .col-l (top 220),
+   damit der Blick beim Wechsel vom Trenner auf die erste Inhaltsfolie nicht
+   springt. Die Abschnittsnummer steht nicht hier, sondern als .eyebrow in der
+   Kopfzeile, an derselben Stelle wie „01 · …“ auf den Inhaltsfolien. */
+.div-block { position: absolute; left: var(--gutter); top: 220px; }
 .div-block .h-l { max-width: 1180px; }
-.div-meta { font: 400 26px/1.5 var(--f-body); color: var(--ink-3); margin-top: 30px; }
+/* Die Unterzeile unter einer Überschrift, auf Trennern wie auf Inhaltsfolien.
+   Es gibt genau diese eine Stufe dafür. Eine zweite (etwa .lead) sieht auf
+   einer einzelnen Folie richtig aus und fällt erst im Vergleich auf. Nach dem
+   Strich entfällt der obere Abstand, den bringt .rule selbst mit. */
+.sub { font: 400 26px/1.5 var(--f-body); color: var(--ink-3); margin-top: 30px; }
+.rule + .sub { margin-top: 0; }
 
 /* -------------------------------------------------------- 14 · Zeitachse */
 /* Waagerechte Achse, MASSSTÄBLICH: die x-Position jeder Marke entspricht ihrem
@@ -620,7 +664,37 @@ svg use, .ico svg, .path svg, .card__ico svg, .ico-arrow {
   background: var(--paper); border: 2px solid var(--orange);
 }
 
-.axis__t { position: absolute; left: 0; right: 0; }
+/* Der Text beginnt am Punkt. --tx rückt ihn nach links, wenn eine
+   gleichseitige Nachbarmarke den Platz rechts braucht. Der Punkt bleibt auf
+   dem Jahr, nur der Textblock wandert. Der Versatz wird gerechnet, nicht
+   geschätzt, und steht inline an der Marke.
+
+   Jede Station steht auf einer Fläche, und zwar als Grundform, nicht als
+   Zeichen: eine Reihe ruhiger Felder liest sich als Reihe, einzelne Felder
+   zwischen freiem Text lesen sich als Auszeichnung. Was eine Station
+   auszeichnet, steckt deshalb in der FARBE und nicht im Vorhandensein der
+   Fläche.
+
+   Die negativen Ränder ziehen die Fläche unter dem Text hervor, damit sein
+   Satzspiegel bündig zum Punkt bleibt. Der Überstand von 16 px ist kein
+   Schönheitswert: er ist der Platz, den zwei benachbarte Flächen voneinander
+   brauchen, und er geht in die Rechnung von achsen-rechnen.mjs ein
+   (surfaceBleed). Wer ihn vergrößert, bringt 1950 und 1958 zum Stoßen. */
+.axis__t {
+  position: absolute;
+  left: calc(var(--tx, 0px) - 16px); right: calc(-16px - var(--tx, 0px));
+  padding: 14px 16px 13px;
+  background: rgba(255, 253, 250, 0.26);
+  border-radius: 18px;
+  /* Der Schatten ist keine Zier, er trägt die Fläche. Links auf jeder Achse
+     liegt der Grund fast weiß, und eine Fläche aus 26 % Off-White verschwindet
+     dort. Ohne Schatten ist das Feld mal da und mal nicht, je nachdem, wo die
+     Aurora gerade warm wird. Er bleibt flacher als der der --key-Karte, die
+     muss die stärkste Fläche der Achse bleiben. Kein filter, also auch kein
+     Blur-Budget. */
+  box-shadow: 0 1px 2px rgba(25, 23, 20, 0.04),
+              0 12px 26px -18px rgba(25, 23, 20, 0.18);
+}
 .axis__mark--up .axis__t { bottom: 196px; }
 .axis__mark--dn .axis__t { top: 196px; }
 
@@ -637,9 +711,174 @@ svg use, .ico svg, .path svg, .card__ico svg, .ico-arrow {
    das weitergereichte PDF ohne den Vortragenden verständlich bleibt. */
 .axis__ab { display: block; margin-top: 6px; font-style: italic; color: var(--ink-3); }
 
+/* Die eine Marke, die den Abschnitt trägt. Sie behält als einzige die großzügige
+   Polsterung und den Überstand von 28 px und ist damit auch körperlich die größte
+   Fläche der Achse. Dieselbe Optik wie .card.glass, aber ohne backdrop-filter: das
+   trägt im Deck nur .glass-live, und auf dem Verlaufsgrund ist die Attrappe nicht
+   davon zu unterscheiden. */
+.axis__mark--key .axis__t {
+  left: calc(var(--tx, 0px) - 28px); right: calc(-28px - var(--tx, 0px));
+  padding: 26px 28px 24px;
+  background: rgba(255, 253, 250, 0.52);
+  border: 1px solid var(--rule);
+  border-radius: 18px;
+  box-shadow: 0 1px 2px rgba(25, 23, 20, 0.04),
+              0 16px 34px -22px rgba(25, 23, 20, 0.20);
+}
+/* Der Abstand zur Linie bleibt der normale: rückt die Fläche näher heran,
+   legt sich ihr Schatten auf die Linie und die Achse reißt sichtbar ab. */
+.axis__mark--key.axis__mark--up .axis__t { bottom: 196px; }
+
+/* Der methodische Meilenstein. Er unterscheidet sich von einer gewöhnlichen Station allein
+   durch die Tönung seiner Fläche, nicht durch Größe, Rand oder Schatten. Die Tönung bedeutet
+   genau eine Sache: hier war das Verfahren neu. Eine Stufe darüber bleibt --key, und eine
+   Stufe darunter gibt es nicht, denn eine Fläche hat jede Station.
+
+   10 % Orange und nicht der Haus-Ton --orange-soft (12 % plus Rand 38 %): der gehört den
+   Stellen, die einen Abschnitt tragen, und die soll hier nichts einholen. */
+.axis__mark--mile .axis__t { background: rgba(246, 139, 26, 0.10); }
+
+/* Ein Zeitraum auf der Achse, kein Ereignis. Ein Punkt sagt „hier“, ein Band sagt „solange“.
+   left und width kommen inline, weil beide aus den Jahren gerechnet sind.
+
+   Das Band bleibt dünn und trägt KEINE Beschriftung. Unter der Linie sitzen die Textblöcke der
+   --dn-Marken; eine Beschriftung dort müsste sie nach unten drängen, und dann reißt das
+   Inhaltsband. Gemessen: mit Beschriftung braucht das Band 34 px, die unteren Textblöcke
+   beginnen dann bei 236 statt 196, und die Folie läuft 28 px über die Unterkante. Was die Phase
+   war, erklärt ihre Zeile im Detailband, die im selben Zustand erscheint.
+
+   Die Tönung steckt in der Farbe und NICHT in opacity: showFragment() zieht jedes Element mit
+   data-frag auf opacity 1 und würde einen Wert hier überschreiben. */
+.axis__span {
+  position: absolute; top: 176px; height: 10px;
+  border-radius: 5px;
+  background: rgba(54, 62, 75, 0.34);
+}
+/* Weiche Kanten, wo die Quellen keine Jahreszahl hergeben — bei den KI-Wintern nennt keine
+   Darstellung ein belegtes Anfangs- oder Endjahr. Eine harte Kante würde eine Genauigkeit
+   behaupten, die es nicht gibt. Gemacht mit einer Maske aus linear-gradient, nicht mit einem
+   Blur: das Blur-Budget bleibt unberührt. */
+.axis__span--fade-l {
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 90px);
+  mask-image: linear-gradient(to right, transparent, #000 90px);
+}
+.axis__span--fade-r {
+  -webkit-mask-image: linear-gradient(to left, transparent, #000 120px);
+  mask-image: linear-gradient(to left, transparent, #000 120px);
+}
+/* Trägt ein Band beide Kanten, sind die Verläufe kürzer: bei 479 px Breite bliebe sonst kaum
+   etwas auf voller Deckung stehen, und das Band liest sich als Schlagschatten der Linie statt
+   als eigenes Zeichen. Gemessen an Folie 03. */
+.axis__span--fade-l.axis__span--fade-r {
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 70px,
+                      #000 calc(100% - 70px), transparent);
+  mask-image: linear-gradient(to right, transparent, #000 70px,
+              #000 calc(100% - 70px), transparent);
+}
+
 /* ------------------------------------------------------ 15 · Zwei Spalten */
 .col-l { position: absolute; left: var(--gutter); width: 660px; }
 
+
+/* ------------------------------------------------ 15b · Begriffsringe */
+
+/* Vier ineinanderliegende Flächen für die Staffelung der Begriffe. Die
+   Verschachtelung IST die Aussage: was innen liegt, ist ein Sonderfall von
+   dem, was außen liegt. Deshalb echte Verschachtelung und nicht vier
+   nebeneinanderstehende Karten.
+
+   Die Einrückung ist konstant: 52 px seitlich, 92 px oben, 26 px unten. Die
+   92 px oben sind kein Zierrat, sie sind der Platz, den Titel und Beisatz
+   des darüberliegenden Ringes brauchen. Wer sie verkleinert, schiebt den
+   nächsten Ring in den Text des vorigen. */
+.rings { position: absolute; }
+
+.ring {
+  position: absolute;
+  border: 1px solid var(--rule);
+  border-radius: 22px;
+  padding: 22px 28px;
+}
+/* Nach innen wird es wärmer und kräftiger. Der innerste Ring ist der, den
+   alle meinen, wenn sie „KI“ sagen — er trägt deshalb als einziger Orange. */
+.ring--1 { inset: 0;                      background: rgba(54, 62, 75, 0.05); }
+.ring--2 { inset: 92px 52px 26px 52px;    background: rgba(54, 62, 75, 0.06); }
+.ring--3 { inset: 184px 104px 52px 104px; background: rgba(54, 62, 75, 0.07); }
+.ring--4 {
+  inset: 276px 156px 78px 156px;
+  background: var(--orange-soft);
+  border-color: rgba(246, 139, 26, 0.38);
+}
+
+.ring__t { font: 600 27px/1.25 var(--f-display); letter-spacing: -0.008em; }
+.ring--4 .ring__t { color: var(--orange-deep); }
+.ring__d { margin-top: 7px; font: 400 19px/1.35 var(--f-body); color: var(--ink-3); }
+
+/* ------------------------------------------------- 15c · Zwei Richtungen */
+
+/* Die Gegenüberstellung „Mensch schreibt die Regel“ gegen „Maschine bildet
+   die Regel“. Zwei gleich schwere Hälften, dazwischen eine senkrechte Linie
+   statt zweier Rahmen: ein Rahmen um jede Hälfte liest sich als zwei Karten,
+   und zwei Karten lesen sich als zwei Themen. Es ist aber ein Thema mit zwei
+   Seiten. */
+.flow { position: absolute; display: grid; grid-template-columns: 1fr 1px 1fr; gap: 56px; }
+.flow__sep { background: var(--rule); }
+/* Beide Seiten sind mittig gesetzt. Linksbündig lasen sich die Kästchen als
+   Liste, nicht als Fluss von oben nach unten. */
+.flow__side { text-align: center; }
+
+.flow__hd {
+  font: 500 19px/1 var(--f-mono); letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--ink-3); margin-bottom: 26px;
+}
+.flow__side--now .flow__hd { color: var(--orange-deep); }
+
+/* Ein Kästchen im Fluss. Auf beiden Seiten trägt genau EINES das Wort
+   „Regel“, und dass es links oben und rechts unten steht, ist der ganze Witz
+   der Folie. Dieses eine ist .flow__n--key.
+
+   Alle Kästchen sind gleich breit. Unterschiedlich breite Kästchen
+   übereinander lesen sich als Aufzählung, gleich breite als ein Weg. */
+.flow__n {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 480px; min-height: 64px; padding: 14px 24px;
+  border: 1px solid var(--rule); border-radius: 13px;
+  background: rgba(255, 255, 255, 0.66);
+  font: 500 23px/1.2 var(--f-display); color: var(--ink-2);
+}
+.flow__n--key {
+  background: var(--orange-soft);
+  border-color: rgba(246, 139, 26, 0.38);
+  color: var(--orange-deep); font-weight: 600;
+}
+.flow__row { display: flex; gap: 14px; flex-wrap: wrap; justify-content: center; }
+
+/* Der senkrechte Strich zwischen zwei Stufen. Eine reine Linie, keine Spitze:
+   die Leserichtung von oben nach unten braucht keine, und drei Pfeilspitzen
+   übereinander machen aus einer ruhigen Grafik ein Verkehrsschild. */
+.flow__pipe { width: 1px; height: 26px; margin: 10px auto; background: rgba(25, 23, 20, 0.22); }
+
+.flow__note { margin-top: 24px; font: 400 19px/1.45 var(--f-body); color: var(--ink-3); }
+
+/* ------------------------------------------------------- 15d · Großzahl */
+
+/* Ein Zahlenpaar, das einen Sprung zeigt. Mono, weil beide Zahlen dieselbe
+   Breite brauchen — in einer Proportionalschrift wackelt die Eins, und der
+   Sprung sieht kleiner aus, als er ist.
+
+   Die rechte Zahl trägt data-count und wird in transitions.js hochgezählt.
+   Sie MUSS ihren Endwert auch im Quelltext tragen, sonst steht im PDF und im
+   Prüflauf der Startwert. */
+.duo { position: absolute; display: flex; align-items: center; gap: 44px; }
+.duo__c { text-align: center; }
+.duo__n {
+  font: 500 112px/1 var(--f-mono); letter-spacing: -0.03em;
+  color: var(--ink-3);
+}
+.duo__c--key .duo__n { color: var(--orange-deep); }
+.duo__u { font-size: 0.42em; margin-left: 0.08em; }
+.duo__l { margin-top: 16px; font: 400 22px/1.3 var(--f-body); color: var(--ink-3); }
+.duo__c--key .duo__l { color: var(--ink-2); font-weight: 500; }
 
 /* --------------------------------------------------- 16 · Overlays / UI */
 /* Für die Notizen gibt es hier bewusst nichts: sie stehen ausschließlich im

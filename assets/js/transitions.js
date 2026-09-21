@@ -244,6 +244,98 @@
     });
   };
 
+  /* Gerichteter Einflug. Ein Element mit data-travel="dx,dy" startet um diesen
+     Versatz verschoben und fährt auf seinen Platz, sobald sein Block sichtbar
+     wird. Wofür das gut ist, zeigt die Folie „Der eine Unterschied": dort
+     wandert der Begriff „Regel" von der Eingangs- auf die Ausgangsseite, und
+     genau diese Bewegung ist die Aussage der Folie. Ein Standbild kann eine
+     Richtungsumkehr nicht zeigen.
+
+     Der Versatz steht im Attribut und nicht hier, weil er aus dem Layout
+     folgt: er ist der Weg zwischen zwei Stellen der Grafik.
+
+     Es wird EINMAL geflogen, beim Einschalten. Ohne die Merkung an __flew
+     würde das Element bei jedem weiteren Zustand der Folie erneut losfahren,
+     und aus einer Aussage würde eine Zappelei. */
+  function travelOne(el, on, fast) {
+    var d = (el.getAttribute('data-travel') || '').split(',');
+    var dx = parseFloat(d[0]) || 0;
+    var dy = parseFloat(d[1]) || 0;
+    var flew = el.__flew === true;
+
+    if (!on) { g.set(el, { x: dx, y: dy }); el.__flew = false; return; }
+    if (fast || flew) { g.set(el, { x: 0, y: 0 }); el.__flew = true; return; }
+
+    el.__flew = true;
+    g.fromTo(el, { x: dx, y: dy }, {
+      x: 0, y: 0, duration: 0.62, ease: 'power3.out', overwrite: 'auto',
+    });
+  }
+
+  /* Hochzählende Zahl. data-count="von,bis". Getweent wird ein Hilfsobjekt,
+     der gerundete Wert landet je Bild im Textknoten.
+
+     Der Endwert steht zusätzlich im Quelltext der Folie. Das ist keine
+     Doppelung aus Bequemlichkeit: ohne ihn zeigt jede Umgebung ohne GSAP —
+     und das ist auch die Rückfallebene body.no-anim — dauerhaft den
+     Startwert, und im PDF stünde eine falsche Zahl. */
+  function countOne(el, on, fast) {
+    var p = (el.getAttribute('data-count') || '').split(',');
+    var from = parseFloat(p[0]);
+    var to = parseFloat(p[1]);
+    if (isNaN(from) || isNaN(to)) return;
+
+    if (!on) { el.textContent = String(from); el.__ran = false; return; }
+    if (fast || el.__ran) { el.textContent = String(to); el.__ran = true; return; }
+
+    el.__ran = true;
+    var o = { v: from };
+    g.to(o, {
+      v: to, duration: 0.9, ease: 'power2.out', overwrite: 'auto',
+      onUpdate: function () { el.textContent = String(Math.round(o.v)); },
+      onComplete: function () { el.textContent = String(to); },
+    });
+  }
+
+  /* Aufgezogener Strich. Ein Element mit data-draw wächst einmal von links
+     auf volle Breite, kurz nachdem seine Karte eingeblendet ist. Auf der
+     Folie „KI für alle“ unterstreicht es den 30.11.2022, den Tag, auf den
+     der ganze Rückblick zuläuft.
+
+     Wie beim Zählwerk ist der Grundzustand im Stylesheet der fertige: ohne
+     GSAP steht der Strich einfach da. Gezeichnet wird EINMAL, die Merkung an
+     __drawn verhindert, dass er bei jedem weiteren Zustand neu anfängt. */
+  function drawOne(el, on, fast) {
+    if (!on) { g.set(el, { scaleX: 0 }); el.__drawn = false; return; }
+    if (fast || el.__drawn) { g.set(el, { scaleX: 1 }); el.__drawn = true; return; }
+
+    el.__drawn = true;
+    g.fromTo(el, { scaleX: 0 }, {
+      scaleX: 1, duration: 0.7, delay: 0.3, ease: 'power2.inOut', overwrite: 'auto',
+    });
+  }
+
+  /* Ab welchem Zustand ein Element sichtbar ist, entscheidet sein Block: die
+     Reise und das Hochzählen hängen am data-frag des Elternteils, nicht an
+     einem eigenen Attribut. Sonst stünden dieselbe Zahl zweimal in der Folie
+     und könnten auseinanderlaufen. */
+  function fragNeed(el) {
+    var host = el.closest ? el.closest('[data-frag]') : null;
+    if (!host) return 0;
+    var n = parseInt(host.getAttribute('data-frag'), 10);
+    return isNaN(n) ? 0 : n;
+  }
+
+  T.stepExtras = function (slide, idx, fast) {
+    var i;
+    var tr = slide.querySelectorAll('[data-travel]');
+    for (i = 0; i < tr.length; i++) travelOne(tr[i], idx >= fragNeed(tr[i]), fast);
+    var ct = slide.querySelectorAll('[data-count]');
+    for (i = 0; i < ct.length; i++) countOne(ct[i], idx >= fragNeed(ct[i]), fast);
+    var dr = slide.querySelectorAll('[data-draw]');
+    for (i = 0; i < dr.length; i++) drawOne(dr[i], idx >= fragNeed(dr[i]), fast);
+  };
+
   /* Sequenzfolien: drei Screenshots blenden an derselben Stelle uebereinander.
      Auch hier läuft nur opacity — die vorgeblurte Ebene liefert die Weichheit. */
   T.showFragment = function (slide, idx, fast) {
@@ -253,6 +345,7 @@
 
     for (i = 0; i < steps.length; i++) steps[i].classList.toggle('is-on', i === idx);
     T.movePointer(slide, idx, fast);
+    T.stepExtras(slide, idx, fast);
 
     if (!items.length) {
       /* Einfache Fragmentfolien: Elemente mit data-frag="n" erscheinen ab n. */
@@ -298,6 +391,13 @@
     for (var i = 0; i < frags.length; i++) {
       g.set(frags[i], { opacity: 0, y: 18 });
     }
+    /* Reise, Zählwerk und Strich auf Zustand 0. Ohne das zeigt eine rückwärts
+       betretene Folie noch den Stand ihres letzten Besuchs.
+       stepExtras erledigt dabei beide Fälle von selbst: was an einem
+       data-frag hängt, geht auf seinen Startwert zurück, was an keinem
+       hängt, steht sofort fertig da. Eine Rücksetzung von Hand wäre hier
+       also nicht nur überflüssig, sie wäre falsch. */
+    T.stepExtras(slide, 0, true);
     var items = slide.querySelectorAll('.seq__item');
     for (i = 0; i < items.length; i++) {
       items[i].classList.toggle('is-on', i === 0);

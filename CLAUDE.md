@@ -18,8 +18,23 @@ gebündelt und früh.
 
 ## Anrede
 
-Andrew wird geduzt. Das gilt auch für alles, was im Deck steht: es ist eine
-**interne** Veranstaltung, und intern wird bei orangedental geduzt.
+Zwei getrennte Dinge:
+
+- **Andrew als Entwickler wird geduzt**, in jeder Antwort, Rückfrage und
+  jedem Kommentar.
+- **Die Präsentation duzt niemanden.** Keine Folie, keine Sprechnotiz, kein
+  Satz in `referat.md` spricht das Publikum mit „du", „dein", „dir" an. Auch
+  keine Befehlsform wie „schreib rein" oder „zeig einem Computer".
+
+Dazu: **„man" so sparsam wie möglich.** Ein Satz mit „man" lässt offen, wer
+handelt. Auf der Folie steht stattdessen, wer es tut („Jeder kann sie
+nachlesen", „Ältere Modelle lasen Wort für Wort").
+
+Gegenprobe, muss leer bleiben:
+`grep -niE '\b(du|dein\w*|dir|dich)\b' index.html referat.md`
+
+Angeordnet am 18.09.2026. Vorher stand hier, auch das Deck duze, weil die
+Veranstaltung intern ist. Das gilt nicht mehr.
 
 ## Schreibweise
 
@@ -50,10 +65,14 @@ Unicode-Schnittstelle und gibt Umlaute auch bei Codepage 850 korrekt aus.
 Fullscreen-HTML-Präsentation für ein 15–20-minütiges Seminar vor rund 50
 Mitarbeitenden. Läuft per Doppelklick auf `index.html` offline ohne Server.
 
-Stand: **Abschnitt 01 steht, der geschichtliche Rückblick.** Fünf inhaltliche
-Folien und drei Referenzfolien, die herausfliegen, sobald das Deck steht. Es
-fehlen der Rest von Abschnitt 01, Abschnitt 02 („Wie KI funktioniert") und
-Abschnitt 03 („KI bei orangedental").
+Stand: **Abschnitt 01 und 02 stehen**, „Von den Anfängen bis ChatGPT" und „Was ist KI
+heute?". Elf Folien, die Referenzfolien sind herausgeflogen. Es fehlen
+Abschnitt 03 („Wie KI funktioniert") und Abschnitt 04 („KI bei orangedental").
+
+**Der Schnitt zwischen 02 und 03 ist eine Festlegung, keine Zufälligkeit.**
+Abschnitt 02 klärt den Begriff und den Stand, Abschnitt 03 geht ins
+Innenleben. Token, Wahrscheinlichkeit und Halluzinationen bleiben deshalb aus
+02 draußen, obwohl das Material dazu recherchiert ist.
 
 Der Auftrag und alle Festlegungen stehen in `dev/BRIEFING.md`, die Belege mit
 Adressen zum Nachlesen in `quellenangabe.md`.
@@ -178,6 +197,57 @@ teils so, dass es erst im Seminar auffällt.
     keine Erfindung" schon. Bei einer mehrzeiligen Überschrift den tragenden
     Teil nehmen, ohne Schlusspunkt.
 
+17. **Nie `data-anim` und `data-frag` am selben Element.** `T.enter()` zieht
+    beim Betreten der Folie **alle** `[data-anim]` auf sichtbar und überfährt
+    damit die Fragmentlogik: Der Punkt steht ab Zustand 0 da, und ein
+    Klick später passiert gar nichts mehr. Kein Prüflauf meldet das, die
+    Folie ist ja gültig. Das Muster ist immer dasselbe und steht schon auf
+    Folie 03: **Der Container trägt `data-anim`, seine Kinder tragen
+    `data-frag`.** Gegenprobe, muss leer bleiben:
+    `grep -n 'data-anim[^>]*data-frag\|data-frag[^>]*data-anim' index.html`
+    Die allgemeine Fassung steht im Skill, `references/buehne-und-system.md` §5.
+18. **`DECK.settle()` muss jede neue Animation kennen.** Es zieht erst alle
+    GSAP-Tweens auf ihr Ende und normalisiert dann **von Hand** — es kennt
+    nur die Elementarten, die dort aufgezählt sind. Und es setzt den
+    **geltenden** Zustand, nicht den Endzustand: Das PDF macht aus jedem
+    Zustand eine eigene Seite, wer dort pauschal fertigstellt, hat die
+    Schlusszahl schon auf der ersten Seite stehen. Deshalb ruft `settle()`
+    `T.stepExtras(sl, S.frag, true)` und nicht irgendein festes `gsap.set()`.
+    Die allgemeine Fassung steht im Skill, `references/buehne-und-system.md` §3.
+19. **Ein Abschnittsname steht an drei Stellen.** Die Kopfzeile jeder Folie
+    kommt nicht aus dem HTML, sondern aus `SECTIONS` in `assets/js/deck.js`.
+    Wer nur `data-title` und die Überschrift auf dem Trenner ändert, bekommt
+    eine Kopfzeile, die anders lautet als die Überschrift darunter, und zwar
+    auf **allen** Folien des Abschnitts gleichzeitig. Gegenprobe:
+    `grep -n "<Abschnittsname>" assets/js/deck.js index.html`
+20. **Jede Unterzeile unter einer Überschrift ist `.sub`.** Auf den Trennern
+    wie auf den Inhaltsfolien, direkt unter der Überschrift oder unter dem
+    Strich `.rule`. Nicht `.lead`, nicht `.tiny`, keine neue Klasse. Auf
+    Folie 06 (KI für alle - ChatGPT) stand die Unterzeile einmal in `.lead`,
+    30 px und dunkler als auf den Trennern. Auf der einzelnen Folie sah das
+    richtig aus, aufgefallen ist es erst im Vergleich. Gegenprobe, muss leer bleiben:
+    `grep -nA1 'class="rule"' index.html | grep '<p' | grep -v 'class="sub"'`
+    Angeordnet am 18.09.2026.
+21. **Ein Verbindungssatz ist selbst eine Behauptung.** Regel 14 sagt „nichts
+    erfinden", und trotzdem sind zwei Sätze an der Belegpflicht vorbeigerutscht,
+    weil sie wie Bindeglieder zwischen zwei belegten Zahlen aussahen: „Auf
+    diesen Fotos" setzte drei verschiedene Datenmengen gleich, „bis dahin rang
+    man um Zehntelpunkte" war schlicht falsch. Beide hatten **nie** einen
+    Eintrag in `quellenangabe.md`, weil niemand sie für eine Aussage hielt. Wer
+    zwei Belege nebeneinanderstellt, belegt damit nicht den Satz dazwischen.
+22. **Die Quellenhierarchie für die Zeitachse.** Die Seite der Klickpunkt
+    Schule (`klickpunktschule.bycs.de/beitrag/ki-geschichte-der-ki`, ISB
+    Bayern) bestimmt **Auswahl und Gliederung** der Stationen und die
+    Unterscheidung zwischen methodischem Meilenstein und Publikumsereignis. Bei
+    **Einzeldaten und Zahlen** entscheidet die Primärquelle. Die Seite hat sieben
+    nachgewiesene Mängel, sie ist als Schiedsinstanz über Zahlen nicht geeignet.
+    **Jede Abweichung wird in `quellenangabe.md` in der vierten Spalte
+    festgehalten, in beide Richtungen** — auch dort, wo das Deck der Seite gegen
+    andere Übersichten folgt, etwa bei der Datierung des ersten Winters.
+    Zweite Leitquelle für die Gliederung ist die Fraunhofer-Studie
+    „Maschinelles Lernen" (2018). Auch sie hat einen Fehler, siehe
+    `quellenangabe.md`. Angeordnet am 21.09.2026.
+
 ## Bauteile, die es nur hier gibt
 
 Über das aus dem byzz-Deck portierte Design-System hinaus. Wer eine Folie
@@ -189,18 +259,64 @@ baut, nimmt diese, statt neue zu erfinden.
 | `.title-list` | Die drei Zeilen unter dem Titel. Kein Aufzählungszeichen, das Fragewort in `<b>` trägt die **Farbe**, nicht das Gewicht: fett stünde neben der 128er Headline zu laut. |
 | `.axis` und `.axis__*` | Die waagerechte Zeitachse, siehe unten. |
 | `.card__yr` | Jahreszahl als Kartenkopf, anstelle des Piktogramms. Gleiche Höhe und gleicher Abstand wie `.card__ico`, damit Karten mit Jahr und Karten mit Piktogramm nebeneinander auf einer Linie stehen. Nicht zu verwechseln mit `.card__n`, das ist die kleine blasse Ordnungszahl oben rechts. |
-| `.card__ab` | Die englische Auflösung einer Abkürzung, unter dem Kartentitel. Steht auf der Folie, damit auch das PDF ohne den Vortragenden verständlich bleibt. Auf der Zeitachse heißt dasselbe `.axis__ab`. |
-| `.marks--tight` | Das Detailband unter einer Zeitachse. Eine Zeile je Station, das Jahr in der ersten Spalte an der Stelle der Raute. Die Zeilen bleiben stehen, am Ende steht die ganze Liste da. |
+| `.card__ab` | Die englische Auflösung einer Abkürzung, unter dem Kartentitel. Steht auf der Folie, damit auch das PDF ohne den Vortragenden verständlich bleibt. Auf der Zeitachse gibt es dafür `.axis__ab`, derzeit von keiner Folie benutzt: Auflösungen auf einer Zeitachse stehen im Detailband (`.marks--tight`), sonst doppeln sie sich über mehrere Stationen. |
+| `.marks--tight` | Das Detailband unter einer Zeitachse. Eine Zeile je Station, das Jahr in der ersten Spalte an der Stelle der Raute. Die Zeilen bleiben stehen, am Ende steht die ganze Liste da. Auf Folie 05 (KI wird erwachsen) ist das Band eine Fußnotenleiste: die erste Spalte trägt Sternchen und Abkürzung („\* LLM", „\*\* GPT"), dasselbe Sternchen steht als `.star` am Wort in der Station („Modell\*", „ChatGPT\*\*"), und die Zeile erscheint mit dieser Station. Für die breitere Spalte setzt der Container `--col` (Standard 62px, hier 84px). Oberkante gemessen: Unterkante des tiefsten unteren Textblocks + 30 px. |
 | `.ico-arrow` | Freistehender Pfeil zwischen zwei Werten. Steht außerhalb von `.card__ico` und `.path` und ist deshalb **eigens** im Kontur-Selektor eingetragen. |
+| `.rings` und `.ring--1` bis `--4` | Die vier ineinanderliegenden Begriffsflächen auf Folie 08 (KI ist nicht eine Sache). Die Verschachtelung **ist** die Aussage, deshalb echte Verschachtelung und nicht vier Karten nebeneinander. Die Einrückung ist konstant, die 92 px oben sind der Platz für Titel und Beisatz des darüberliegenden Ringes. Wer sie verkleinert, schiebt den nächsten Ring in den Text des vorigen. Die Höhe steht **inline**, weil sie zum Inhalt gehört. |
+| `.flow` und `.flow__*` | Die Gegenüberstellung auf Folie 09 (Was unterscheidet KI von normaler Software?). Zwei gleich schwere Hälften, dazwischen eine Linie statt zweier Rahmen: zwei Rahmen lesen sich als zwei Themen, es ist aber ein Thema mit zwei Seiten. **Zwei Kästchen je Seite, alle gleich breit**, davon genau **eines** `--key` mit dem Wort „Regeln", links oben und rechts unten. Das ist der ganze Witz der Folie. Die Beschriftungen sind ganze Sätze, keine Substantive: ein Kästchen, in dem nur „Regeln" steht, ist ein Datenflussdiagramm für Informatiker. |
+| `.duo` und `.duo__*` | Das Zahlenpaar auf Folie 11 (KI im Alltag). Mono, weil beide Zahlen dieselbe Breite brauchen, sonst wackelt die Eins und der Sprung sieht kleiner aus, als er ist. **Beide Zahlen tragen das Prozentzeichen** — eine nackte 58 neben einer 76 % liest sich wie zwei verschiedene Größen. |
+| `.card--key` | Die eine Karte, die einen Abschnitt trägt, auf Folie 06 (KI für alle - ChatGPT) der 30.11.2022. Optik wie `.flow__n--key`, das Datum in `.card__yr` wird größer, die Kopfhöhe bleibt 44 px, damit die Titel der Nachbarkarten auf einer Linie stehen. Das Datum steht in `.card__date`, darunter `.card__stroke` mit `data-draw`. |
+| `.star` | Das orange Sternchen, das auf eine Fußnote verweist: auf Folie 10 (Was sie kann und was nicht) hinter „…morgen wieder.", auf Folie 05 (KI wird erwachsen) an „Modell" und „ChatGPT" (Fußnoten im Band unter der Achse). Es steht mit der Karte da, die Fußnote in `.tiny` kommt einen Klick später. Dasselbe `.star` beginnt auch die Fußnote, damit beide als Paar erkennbar sind. |
+| `.sub` | Die Unterzeile unter einer Überschrift, 26 px in `--ink-3`. Auf den Trennern unter `.h-l`, auf Inhaltsfolien unter `.rule`. Es gibt keine zweite Stufe dafür, siehe Regel 20. `.lead` ist Fließtext, keine Unterzeile. |
+| `.axis__span` | Ein **Zeitraum** auf der Achse, kein Ereignis. Ein Punkt sagt „hier", ein Band sagt „solange". 10 px hoch, liegt bei `top:176` unter der Linie, `left` und `width` inline aus den Jahren gerechnet. **Trägt bewusst keine Beschriftung:** unter der Linie sitzen die Textblöcke der `--dn`-Marken, und eine Beschriftung dort bräuchte 34 px statt 10, die unteren Blöcke müssten auf 236 rücken, und die Folie liefe 28 px über das Inhaltsband. Was die Phase war, erklärt ihre Zeile im Detailband, die im selben Zustand erscheint. Die Tönung steckt in der **Farbe**, nicht in `opacity`: `showFragment()` zieht jedes `data-frag`-Element auf `opacity: 1` und würde einen Wert dort überschreiben. |
+| `.axis__span--fade-l` / `--fade-r` | Weiche Kante links oder rechts, frei kombinierbar. Sie ist kein Schmuck, sondern die einzige Form, die **keine Jahreszahl behauptet, die niemand hat**. Der erste KI-Winter trägt beide Kanten („späte 1960er bis 1970er Jahre"), der zweite nur die rechte, weil 1987 als Anfang datierbar ist und für das Ende keine geprüfte Darstellung ein Ereignis nennt. Gemacht mit einer Maske aus `linear-gradient`, nicht mit Blur, das Blur-Budget bleibt unberührt. Trägt ein Band beide Kanten, sind die Verläufe kürzer (70 statt 120 px), sonst bleibt bei 479 px Breite nichts auf voller Deckung stehen und das Band liest sich als Schlagschatten der Linie. |
+| `.axis__t` | Der Textblock jeder Station, und zugleich **die Fläche, auf der er steht**. Sie ist die Grundform und kein Zeichen: `rgba(255,253,250,0.26)`, Polsterung 14/16/13, kein Rand. Die Fläche ragt **16 px** über die Textbreite hinaus, links wie rechts, damit der Satzspiegel bündig zum Punkt bleibt. Diese 16 px sind der Platz, den zwei benachbarte Flächen brauchen, und sie stehen als `surfaceBleed` in der Rechnung. Dazu ein flacher Schatten, `0 12px 26px -18px` bei 0.18: Links auf jeder Achse liegt der Grund fast weiß, und 26 % Off-White darauf sieht niemand. Er bleibt flacher als der der `--key`-Karte, die muss die stärkste Fläche bleiben. |
+| `.axis__mark--mile` | Die **Tönung** der Fläche, `rgba(246,139,26,0.10)`, sonst nichts: keine andere Größe, kein Rand, kein Schatten. Sie bedeutet **genau eine Sache: hier war das Verfahren neu.** Publikumswirkung steht im Satz der Station, nicht als Zeichen — Deep Blue 1997 bleibt deshalb neutral, AlphaGo 2016 ist getönt. Nicht der Haus-Ton `--orange-soft` (12 % plus Rand 38 %): der gehört den Stellen, die einen Abschnitt tragen. |
+| `.marks--inset` | Dieselben `.mark`-Zeilen innerhalb einer Karte. Nur die absolute Lage fällt weg. `.mark--no` färbt die Raute kühl statt orange, für die Gegenspalte auf Folie 10 (Was sie kann und was nicht). Es sind gleichwertige Zeilen, keine Warnungen. |
 
 ### Die Zeitachse
+
+**Die Geometrie wird gerechnet, nicht geschätzt, und zwar von
+`achsen-rechnen.mjs` im Skill.** Das Skript nimmt eine Stationenliste, verteilt
+die Seiten, rechnet Positionen und maximale Textbreiten, prüft Kollisionen,
+Überlauf am rechten Rand und Bänder, und **bricht mit Rückgabewert 1 ab**,
+statt stillschweigend etwas Krummes zu liefern. Gegen die frühere Achse
+1950–2012 geprüft: Es reproduziert deren acht Positionen und Breiten aufs Pixel.
+
+```bash
+node ~/.claude/skills/create-slides/scripts/achsen-rechnen.mjs achse.json --html
+```
+
+Zwei Dinge, die das Skript kennt und die man beim Schätzen übersieht: Eine
+Fläche ragt 16 px über ihren Text hinaus (die von 2022 als einzige 28), am
+rechten Rand zählt deshalb sie und nicht der Text. Und ein Band liegt waagerecht
+dort, wo die Textblöcke der `--dn`-Marken stehen — wo beides zusammenfällt,
+meldet das Skript einen Fehler.
+
+**Die Werte, mit denen die drei Achsen dieses Decks gerechnet sind**, gehören in
+jede `achse.json`, sonst rechnet das Skript mit seinen Voreinstellungen und die
+Flächen stoßen aneinander:
+
+```json
+{ "textGap": 60, "textGapKey": 68, "surfaceBleed": 16, "spannedAxis": true }
+```
+
+60 px zwischen zwei Textblöcken sind 16 px Überstand links, 16 px rechts und
+28 px sichtbare Luft dazwischen. Weil jede Station eine Fläche hat, trägt in der
+`achse.json` auch **jede** Station `"mile": true` — das Feld heißt dort „hat eine
+Fläche", die Tönung im Deck ist eine andere Frage.
 
 ```
 .axis                 absolut, Höhe 380, Breite inline
   .axis__line         die Linie, steht ab Zustand 0
+  .axis__span         ein Zeitraum, --fade-l und --fade-r für weiche Kanten
+                      left und width INLINE, ohne Beschriftung   <-- data-frag
   .axis__mark         eine Marke, --up oder --dn   <-- HIER sitzt data-frag
+                      --mile tönt die Fläche: hier war das Verfahren neu
+                      --key macht sie hell, mit Rand und Schatten, für die eine
+                      Station, die den Abschnitt trägt
                       left und width kommen INLINE, weil beide gerechnet sind
-    .axis__t          der Textblock
+    .axis__t          der Textblock UND seine Fläche
       .axis__y        das Jahr, Mono
       .axis__d        der Satz dazu, <b> für den Kopf
         .axis__ab     die englische Auflösung einer Abkürzung
@@ -218,7 +334,37 @@ Jahr:
 left = (jahr - startjahr) * (achsenbreite / (endjahr - startjahr))
 ```
 
-Fünf Punkte, die Arbeit gekostet haben:
+Zehn Punkte, die Arbeit gekostet haben:
+
+- **Der Text beginnt am Punkt, mit einer Ausnahme: `--tx`.** Braucht eine
+  gleichseitige Nachbarmarke rechts den Platz, rückt der Textblock um `--tx`
+  nach links, der Punkt bleibt auf seinem Jahr. Der Versatz wird gerechnet:
+  Textende ≤ Punkt der Nachbarmarke − 40 (− 28 bei `--key`), Textanfang ≥
+  Textende der Marke links davon + 40 (+ 28 bei `--key`). Auf Folie 05
+  (KI wird erwachsen) steht so 2022 mit `--tx:-90px` und 488 px Breite, damit
+  2025 Platz hat. Auf Folie 03 (KI ist älter als die meisten denken) dient
+  derselbe Versatz einem anderen Zweck: 1986 steht am rechten Rand und braucht
+  Breite für einen zweiten Satz, `--tx:-120px` bei 462 px.
+
+- **`--tx` macht die Marke nicht schmaler, nur ihren Text.** Das Element
+  `.axis__mark` beginnt weiter auf seinem Jahr und ist `width` breit, der
+  Versatz bewegt allein den Textblock darin. Bei der letzten Marke einer Achse
+  ragt der unsichtbare Kasten deshalb über den Rahmen hinaus, und genau das
+  meldet `layout-audit` als Überlauf, obwohl auf dem Bild nichts übersteht.
+  **Es sind zwei Grenzen, und sie liegen 112 px auseinander.** Die sichtbare
+  Fläche endet am Bundsteg, containerrelativ also bei 1696 — das rechnet
+  `achsen-rechnen.mjs` über `contentRight` und den Überstand. Der unsichtbare
+  Kasten `left` + `width` darf bis 1808 gehen, das ist der Rahmenrand, und erst
+  dort meldet `layout-audit` einen Überlauf. Wer nur auf den Prüflauf schaut,
+  baut also bis zu 112 px in den Bundsteg hinein, ohne dass sich etwas
+  beschwert. Wer mehr Breite braucht, kürzt den Satz.
+
+- **Eine Marke bei `left:0` braucht `--tx:16px`.** Sonst ragt ihre Fläche 16 px
+  in den Bundsteg und beginnt links von der Überschrift darüber. Der Versatz
+  schiebt die Fläche auf die Kante, der Text rückt dafür 16 px vom Punkt ab.
+  Das betrifft 1950 auf Folie 03 und 2017 auf Folie 05. `layout-audit` meldet
+  es **nicht**, es prüft nur den Rahmen und das Inhaltsband, und 96 liegt in
+  beidem.
 
 - **Positionen werden gerechnet, nicht geschätzt.** Eine geschätzte Position
   macht aus einer maßstäblichen Achse eine, die nur so aussieht — schlimmer
@@ -227,7 +373,7 @@ Fünf Punkte, die Arbeit gekostet haben:
   etwas Krummes zu liefern.
 - **Die Marken wechseln zwischen `--up` und `--dn`.** Nur deshalb geht der
   Maßstab auf: zwei gleichseitige Marken brauchen rund 170 px Abstand, über
-  Kreuz dürfen sie sich beliebig nahe kommen. 2009 und 2012 liegen 65 px
+  Kreuz dürfen sie sich beliebig nahe kommen. 1956 und 1958 liegen 74 px
   auseinander und kollidieren trotzdem nicht.
 - **Die Achse ist 1400 px breit, nicht 1696.** Der Text der letzten Marke
   läuft über das Linienende hinaus und braucht den Rest bis zum Rahmenrand.
@@ -235,15 +381,73 @@ Fünf Punkte, die Arbeit gekostet haben:
 - **`data-frag` sitzt an der einzelnen `.axis__mark`**, eine Station je Klick.
   `.axis__line` trägt keines: sonst beginnt die Folie mit einem leeren Bild
   und sieht aus, als sei sie nicht fertig geladen.
-- **Zwischen zwei benachbarten Textblöcken bleiben 40 px Luft.** Ohne diesen
-  Zuschlag stoßen sie aneinander und lesen sich als ein Absatz. Der Generator
-  prüft das, die Breite einer Marke ist deshalb höchstens der Abstand zur
-  nächsten gleichseitigen Marke minus 40.
-- **Der Maßstab steht nicht auf der Folie.** Folie 03 zeigt 62 Jahre, Folie 04
-  dieselbe Linienlänge für 9 Jahre. Eine Zeile wie „maßstäblich" oder
+- **Zwischen zwei benachbarten Textblöcken bleiben 60 px Luft.** Davon gehen
+  zweimal 16 px für den Überstand der Flächen ab, sichtbar bleiben 28. Ohne
+  diesen Zuschlag stoßen die Flächen aneinander und lesen sich als eine. Der
+  Generator prüft das, die Breite einer Marke ist deshalb höchstens der Abstand
+  zur nächsten gleichseitigen Marke minus 60.
+- **Keine Fläche rückt näher an die Linie als 196 px.** Rückt sie näher heran,
+  legt sich ihr Schlagschatten auf die Achsenlinie, und die Achse reißt
+  zwischen den Marken sichtbar ab. Das galt zuerst nur für `--key`, seit jede
+  Station eine Fläche mit Schatten trägt, gilt es für alle. Die Flächen sind
+  Attrappen: Optik wie `.card.glass`, aber **ohne** `backdrop-filter`. Sie
+  kosten kein Blur-Budget, und mit Taste B verschwinden sie nicht.
+- **Der Maßstab steht nicht auf der Folie.** Folie 03 zeigt 36 Jahre, Folie 04
+  dieselbe Linienlänge für 30 Jahre, Folie 05 für 9. Eine Zeile wie „maßstäblich" oder
   „7,1-fach vergrößert" erklärt dem Publikum die Machart der Folie statt ihres
   Inhalts und hat dort nichts verloren. Dass der Maßstab innerhalb **einer**
   Achse stimmt, bleibt Pflicht — nur gesagt wird es nicht.
+
+### Die drei Animationen
+
+Bewegt wird mit **GSAP**, das als `assets/js/vendor/gsap.min.js` im Projekt
+liegt und schon die Folienübergänge trägt. **HyperFrames kommt hier nicht in
+Frage**, auch wenn es dieselbe Bibliothek benutzt: Es ist eine
+Video-Render-Umgebung mit npx-Laufzeit und erzeugt eine MP4-Datei. Dieses Deck
+ist interaktiv, läuft per Doppelklick unter `file://` und hat Fragmente und
+eine Referentenansicht. Wer einen gerenderten Clip will, baut ihn getrennt und
+bindet ihn als `<video>` ein, das geht unter `file://`.
+
+Über die Folienübergänge hinaus bewegt sich im ganzen Deck an genau **drei
+Stellen** etwas, und jedes Mal, weil die Bewegung selbst etwas sagt, das ein
+Standbild nicht sagen kann. Alle drei hängen in `transitions.js` an `T.stepExtras`, das von
+`T.showFragment` aufgerufen wird — also dort, wo auch `T.movePointer` sitzt.
+
+| Attribut | Was es tut |
+|---|---|
+| `data-travel="dx,dy"` | Das Element startet um diesen Versatz verschoben und fährt auf seinen Platz. Auf Folie 09 (Was unterscheidet KI von normaler Software?) fährt so auf beiden Seiten das Kästchen mit „Regeln" an seinen Platz, gespiegelt: links von unten nach oben (`0,110`), rechts von oben nach unten (`0,-110`). **Der Versatz steht im Attribut**, weil er aus dem Layout folgt: er ist der Weg zwischen zwei Stellen der Grafik. |
+| `data-count="von,bis"` | Zählt beim Erscheinen hoch. Auf Folie 11 (KI im Alltag) von 58 auf 76. |
+| `data-draw` | Ein Strich wächst einmal von links auf volle Breite, kurz nachdem seine Karte erscheint. Auf Folie 06 (KI für alle - ChatGPT) unter dem 30.11.2022, dem Tag, auf den der Rückblick zuläuft. |
+
+Vier Dinge, die daran hängen:
+
+- **Der Zustand kommt vom Elternteil.** Alle drei Attribute lesen das `data-frag`
+  des nächsten Vorfahren, sie tragen keine eigene Zustandsangabe. Sonst stünde
+  dieselbe Zahl zweimal in der Folie und könnte auseinanderlaufen.
+- **Geflogen wird einmal.** Ohne die Merkung an `__flew` fährt das Element bei
+  jedem weiteren Zustand der Folie erneut los, und aus einer Aussage wird
+  Zappelei.
+- **Der Endwert steht auch im Quelltext.** `<span data-count="58,76">76</span>`
+  ist keine Doppelung aus Bequemlichkeit: Ohne ihn zeigt jede Umgebung ohne
+  GSAP dauerhaft den Startwert, und das ist auch die Rückfallebene
+  `body.no-anim`. Aus demselben Grund steht `.card__stroke` im Stylesheet
+  fertig gezeichnet da, erst `transitions.js` setzt ihn auf null zurück.
+- **Nicht mehr davon.** Die dritte Stelle kam auf ausdrücklichen Wunsch, weil
+  das Datum das Zentrum des Abschnitts ist. Eine vierte wäre Masche. Das Deck
+  ist ruhig, und das ist der Punkt.
+
+Geprüft wird das nicht von `layout-audit` oder `abnahme` — die kennen Geometrie
+und Start, nicht den Wert einer Zahl in einem bestimmten Zustand. Wer hier
+etwas ändert, klickt diese drei Folien **von Hand vorwärts und rückwärts durch**:
+06 (KI für alle - ChatGPT), 09 (Was unterscheidet KI von normaler Software?) und
+11 (KI im Alltag).
+Der Skill führt diese Lücke inzwischen in `references/pruefen.md` unter „Was
+kein Werkzeug prüft".
+
+**Der Reiseversatz wird gemessen, nicht geschätzt.** Er hängt an den
+Kästchenhöhen und ändert sich mit jeder Layoutänderung — beim Umbau von drei
+auf zwei Kästchen halbierte er sich von 220 auf 110. Wer ihn schätzt, lässt
+das Wort an einer Stelle starten, an der nichts ist.
 
 ## Abkürzungen werden aufgelöst
 
@@ -320,6 +524,65 @@ dieses Deck sie besonders oft gebraucht hat.
 Angeordnet am 17.09.2026, nachdem ein ganzer Foliensatz Sprechnotizen
 enthielt, die über Pixelgrößen redeten statt über den Inhalt.
 
+## Eine Quellenzeile muss erklären, nicht belegen
+
+**Herausgeber, Datum und Stichprobengröße gehören in `quellenangabe.md`, nicht
+auf die Folie.** Eine Zeile wie „Bitkom, September 2026, 603 Unternehmen ab 20
+Beschäftigten" liest im Vortrag niemand, im PDF auch nicht, und erklärt nichts.
+Sie kostet nur Platz und Aufmerksamkeit.
+
+Auf die Folie kommt eine solche Zeile **nur, wenn sie eine Aussage hinzufügt**,
+die der Zuhörer sonst nicht hätte. Gesetzt wird sie in **`.tiny`** (19 px), der
+Stufe, die auch das Detailband unter einer Zeitachse trägt. Die eine, die im
+Deck steht, tut das:
+
+| Folie | Zeile | Warum sie bleibt |
+|---|---|---|
+| 08 | „Für generative Systeme entwickelt die Behörde erst noch ein Verfahren." | Das ist der Beweis für die Aussage darüber, nicht ihr Beleg |
+
+Auf Folie 11 (KI im Alltag) stand einmal „Dieselben Behandler, dieselben
+Bilder." Andrew hat
+die Zeile gestrichen, die Aussage steht jetzt nur in Sprechnotiz und Referat.
+
+Der Unterschied ist nicht die Länge, sondern die Frage: **Versteht der Zuhörer
+ohne diese Zeile weniger?** Wenn nein, gehört sie in die Quellendatei.
+
+**Und keine eigene Schriftstufe dafür erfinden.** Es gab hier einmal eine
+Klasse `.src` mit 17 px, für genau das, was `.tiny` mit 19 px schon leistete.
+Vier Stufen für dieselbe Sache ergeben einen sichtbaren Bruch, und genau so ist
+es aufgefallen: Auf einer Folie stand der Beleg plötzlich in einer anderen
+Größe als auf allen anderen. Das ist Regel 11, und sie gilt auch für
+Schriftstufen.
+
+Angeordnet am 18.09.2026, nachdem auf zwei Folien reine Nachweiszeilen standen.
+
+## Das Publikum ist der Maßstab, nicht die Fachlichkeit
+
+Rund die Hälfte der Zuhörer hat keinen IT-Hintergrund. Daraus folgt eine
+Prüfung, die **jede** Zeile bestehen muss, bevor sie auf eine Folie kommt:
+
+- **Keine erfundenen Wörter.** „Stundenleistung" stand auf einer Folie und
+  bedeutet nichts.
+- **Kein Verweis auf die Nachbarspalte.** „Die Zahl nebenan" zwingt den Leser,
+  zwischen zwei Stellen hin- und herzuspringen, und im PDF ohne Vortragenden
+  bricht der Bezug ganz weg.
+- **Fachwörter auch dann nicht, wenn sie stimmen.** „Er leitet die Regel daraus
+  ab" ist fachlich richtig und für Laien eine Hürde. „Er findet die Regel
+  selbst" sagt dasselbe. Ebenso **„blind bewertet"** statt „verblindet
+  bewertet": Der Terminus ist korrekt und sagt trotzdem niemand. Im Beleg bleibt
+  die Fachsprache stehen, dort ist sie richtig.
+- **Substantive erklären nichts.** Ein Kästchen mit „Regeln" darin ist ein
+  Datenflussdiagramm für Informatiker. „Der Mensch gibt die Regel vor" ist ein
+  Satz, den jeder versteht.
+- **Wer handelt, muss im Satz stehen.** „Merken, wenn sie etwas erfindet" lässt
+  offen, wer was merkt. „Merken, wenn sie *selbst* etwas erfindet" nicht.
+
+Die Gegenprobe ist einfach und unbestechlich: **Stockt man beim Vorlesen, ist
+die Zeile kaputt.** Auch dann, wenn sie stimmt.
+
+Angeordnet am 18.09.2026, nachdem ein ganzer Abschnitt aus fachlich korrekten
+Sätzen bestand, die beim Gegenlesen niemand auf Anhieb verstanden hat.
+
 ## Prozentzahlen ohne Nachkommastellen
 
 **Auf der Folie steht `26 %`, nicht `26,2 %`.** Vor einem Laienpublikum ist
@@ -337,7 +600,22 @@ Nachprüfbarkeit, für die er da ist.
 SK=~/.claude/skills/create-slides/scripts
 node "$SK/layout-audit.mjs"    # Folien fotografieren und Layout prüfen
 node "$SK/abnahme.mjs"         # Layout + Referent + Kaltstart, sammelnd
+
+# Unterzeilen nur als .sub (Regel 20), muss leer bleiben
+grep -nA1 'class="rule"' index.html | grep '<p' | grep -v 'class="sub"'
 ```
+
+**Ist eine Folie dazugekommen oder weggefallen, gehört ein Schritt dazu:**
+
+```bash
+node "$SK/gliederung.mjs" --md README.md
+```
+
+Der Abschnitt „Die Folien" in `README.md` steht zwischen zwei Markern und wird
+erzeugt, nicht gepflegt. Und danach **die Folienverweise in der Doku prüfen**:
+Sie tragen Nummer und Titel zusammen („Folie 09 (Was unterscheidet KI von
+normaler Software?)"), damit ein Verschieben sichtbar wird, statt sich zu
+verstecken. Widerspricht ein Titel seiner Nummer, ist die Nummer alt.
 
 **Das PDF wird erst ganz zum Schluss erzeugt**, wenn das Deck inhaltlich fertig
 ist. Nicht zwischendurch, auch nicht „nur zur Kontrolle". Solange sich Folien
@@ -348,7 +626,7 @@ einem aktuellen Deck ist schlimmer als gar keins. `pdf.bat` und
 **Rückgabewert 0 ist das Abnahmekriterium, nicht die Textausgabe.** Vorsicht bei
 `| tail`, dann liest `$?` das letzte Pipeglied und meldet immer Erfolg.
 
-**Die Zeile „Folien im Deck" gegenlesen — es müssen 8 sein.** Kein Prüflauf
+**Die Zeile „Folien im Deck" gegenlesen — es müssen 11 sein.** Kein Prüflauf
 meldet, dass Folien *fehlen*: ein kürzeres Deck ist ein gültiges Deck, und alle
 Tests bleiben grün. In diesem Projekt sind so schon einmal zwei Folien
 verschwunden, zurückgeholt aus `git show HEAD:index.html`.
