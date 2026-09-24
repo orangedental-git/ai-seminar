@@ -28,10 +28,10 @@
     }
   ],
   "imageScaleMax": 1.15,
-  "_selectors": "Die beiden :not()-Listen sind Absicht. .eyebrow und .counter hängen in .slide-inner, sitzen aber bei y 112 und damit bewusst OBERHALB des Inhaltsbands, ohne Ausnahme meldet der Prüfstand sie auf jeder Folie. .shot__spill und .shot__soft sind 44 px breite Miniaturen, die absichtlich auf Panelbreite gezogen werden: sie SIND die Weichzeichnung, kein Inhaltsbild. Niemals stattdessen content.top senken oder imageScaleMax anheben, das gäbe die Prüfung für echte Inhalte auf.",
+  "_selectors": "Die beiden :not()-Listen sind Absicht. .eyebrow und .counter hängen in .slide-inner, sitzen aber bei y 112 und damit bewusst OBERHALB des Inhaltsbands, ohne Ausnahme meldet der Prüfstand sie auf jeder Folie. .shot__spill und .shot__soft sind 44 px breite Miniaturen, die absichtlich auf Panelbreite gezogen werden: sie SIND die Weichzeichnung, kein Inhaltsbild. .backdrop ist ein zurückgenommenes Hintergrundbild und darf Band und Folienrand verlassen, die Schutzzonen hält dann der Blick auf die Aufnahme frei. Aus images ist es bewusst NICHT ausgenommen, der Bilddeckel gilt weiter. Niemals stattdessen content.top senken oder imageScaleMax anheben, das gäbe die Prüfung für echte Inhalte auf.",
   "selectors": {
     "frame": "#frame",
-    "slideContent": ".slide-inner *:not(.eyebrow):not(.eyebrow *):not(.counter):not(.counter *):not(.shot__spill):not(.shot__soft)",
+    "slideContent": ".slide-inner *:not(.eyebrow):not(.eyebrow *):not(.counter):not(.counter *):not(.shot__spill):not(.shot__soft):not(.backdrop):not(.backdrop *)",
     "images": "img:not(.shot__spill):not(.shot__soft)",
     "guardLeaves": "img, p, h1, h2, h3, li, figcaption, .chip, .card, .step, .path, .badge, .mark__t, .card__d, .shot__cap, .title-sub, .sub, .axis__d, .axis__y, .axis__n, .axis__s, .card__t, .ring__t, .ring__d, .flow__n, .flow__hd, .flow__note, .duo__n, .duo__l"
   },

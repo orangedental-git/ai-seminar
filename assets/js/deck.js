@@ -68,7 +68,8 @@
     1: 'Von den Anfängen bis ChatGPT',
     2: 'Was ist KI heute?',
     3: 'Wie KI funktioniert',
-    4: 'KI bei orangedental',
+    4: 'KI-Agenten',
+    5: 'KI bei orangedental',
   };
 
   function decorate(slide, idx) {

@@ -5,9 +5,10 @@ Teilnehmende. HTML, läuft offline.
 
 **Vorführen:** `index.html` doppelklicken. Bedienung steht in [`readme.txt`](readme.txt).
 
-> **Stand: Abschnitt 01 und 02 stehen.** Von den Anfängen bis ChatGPT und Was ist KI
-> heute sind gebaut und belegt, elf Folien. Die Abschnitte 03 und 04 kommen
-> noch.
+> **Stand: alle fünf Abschnitte stehen,** achtundzwanzig Folien. Von den
+> Anfängen bis ChatGPT, Was ist KI heute, Wie KI funktioniert, KI-Agenten und
+> KI bei orangedental sind gebaut und belegt. Auf Folie 26 (Was sich an der
+> byzz app geändert hat) fehlt noch die Bestätigung der Eckdaten.
 
 ---
 
@@ -19,7 +20,7 @@ einen USB-Stick kopieren.
 
 | | |
 |---|---|
-| Folien | siehe die erzeugte Gliederung weiter unten. Vier Abschnitte vorgesehen, zwei davon gebaut |
+| Folien | siehe die erzeugte Gliederung weiter unten. Fünf Abschnitte vorgesehen, drei davon gebaut |
 | Ziel | Chrome und Edge unter Windows |
 | Bühne | Inhalt fix 1920 × 1080, Hintergrund füllt jedes Fensterformat |
 | Besonderheiten | Referentenansicht mit Notizen, Folienübersicht, mehrstufige Folien |
@@ -67,6 +68,7 @@ assets/
 dev/                  alles, was nur beim Bauen gebraucht wird
   BRIEFING.md         Auftrag und Festlegungen
   nicht-erzaehlen.md  was recherchiert wurde und absichtlich draußen bleibt
+  claude/             Nachschlagedateien zu CLAUDE.md, je Vorhaben eine
   platzhalter.png     Quellbild
   shots/              Prüfaufnahmen                                [erzeugt]
 
@@ -127,21 +129,38 @@ node ~/.claude/skills/create-slides/scripts/gliederung.mjs --md README.md
 
 <!-- GLIEDERUNG:START -->
 
-| Nr | Titel                                       | Abschnitt | Stufen | Material | Notiz |
-|---|---------------------------------------------|-----------|---|----------|---|
-|  1 | KI bei orangedental                         | —         | — | —        | 438 Z. |
-|  2 | Von den Anfängen bis ChatGPT                | 1         | — | —        | 437 Z. |
-|  3 | KI ist älter als die meisten denken         | 1         | 8 | —        | 3527 Z. |
-|  4 | Vom Rechnen zum Lernen                      | 1         | 5 | —        | 2575 Z. |
-|  5 | KI wird erwachsen                           | 1         | 6 | —        | 2918 Z. |
-|  6 | KI für alle - ChatGPT                       | 1         | 4 | —        | 2254 Z. |
-|  7 | Was ist KI heute?                           | 2         | — | —        | 669 Z. |
-|  8 | KI ist nicht eine Sache                     | 2         | 5 | —        | 1644 Z. |
-|  9 | Was unterscheidet KI von normaler Software? | 2         | 4 | —        | 1704 Z. |
-| 10 | Was sie kann und was nicht                  | 2         | 4 | —        | 2672 Z. |
-| 11 | KI im Alltag                                | 2         | 6 | —        | 2127 Z. |
+| Nr | Titel                                       | Abschnitt | Stufen | Material    | Notiz |
+|---|---------------------------------------------|-----------|---|-------------|---|
+|  1 | KI bei orangedental                         | —         | — | —           | 438 Z. |
+|  2 | Von den Anfängen bis ChatGPT                | 1         | — | —           | 437 Z. |
+|  3 | KI ist älter als die meisten denken         | 1         | 8 | —           | 4214 Z. |
+|  4 | Vom Rechnen zum Lernen                      | 1         | 6 | —           | 3176 Z. |
+|  5 | KI wird erwachsen                           | 1         | 5 | —           | 2959 Z. |
+|  6 | KI für alle - ChatGPT                       | 1         | 4 | chatgpt.svg | 2185 Z. |
+|  7 | Was ist KI heute?                           | 2         | — | —           | 672 Z. |
+|  8 | KI ist nicht eine Sache                     | 2         | 5 | —           | 1609 Z. |
+|  9 | Was unterscheidet KI von normaler Software? | 2         | 4 | —           | 1704 Z. |
+| 10 | Was sie kann und was nicht                  | 2         | 4 | —           | 3746 Z. |
+| 11 | KI im Alltag                                | 2         | 6 | —           | 2266 Z. |
+| 12 | Wie KI funktioniert                         | 3         | — | —           | 507 Z. |
+| 13 | Vom Training zum Einsatz                    | 3         | 5 | —           | 3223 Z. |
+| 14 | Sie schätzt das nächste Stück               | 3         | 4 | —           | 3298 Z. |
+| 15 | Warum sie erfindet                          | 3         | 5 | —           | 2255 Z. |
+| 16 | Was sie braucht und was sie behält          | 3         | 3 | —           | 2351 Z. |
+| 17 | KI-Agenten                                  | 4         | — | —           | 630 Z. |
+| 18 | Was ein Agent anders macht                  | 4         | 5 | —           | 1891 Z. |
+| 19 | Wer das heute anbietet                      | 4         | 4 | —           | 1548 Z. |
+| 20 | Was Agenten schaffen                        | 4         | 4 | —           | 1808 Z. |
+| 21 | Wo Agenten versagen                         | 4         | 5 | —           | 2112 Z. |
+| 22 | KI bei orangedental                         | 5         | — | —           | 417 Z. |
+| 23 | Fragen ist noch nicht Arbeiten              | 5         | 4 | —           | 1151 Z. |
+| 24 | Der Posteingang                             | 5         | 5 | —           | 1307 Z. |
+| 25 | Support und Wissen                          | 5         | 5 | —           | 1631 Z. |
+| 26 | Was sich an der byzz app geändert hat       | 5         | 5 | —           | 947 Z. |
+| 27 | Was als Nächstes kommen könnte              | 5         | 3 | —           | 875 Z. |
+| 28 | Wie der Einstieg gelingen kann              | 5         | 3 | —           | 1770 Z. |
 
-Folien: **11** · mehrstufig: **8** · mit Material: **0** · mit Sprechnotiz: **11**
+Folien: **28** · mehrstufig: **22** · mit Material: **1** · mit Sprechnotiz: **28**
 
 Automatisch erzeugt aus der Zieldatei von `gliederung.mjs`. Nicht von Hand ändern.
 
@@ -163,7 +182,7 @@ Folien-Attribute:
 | Attribut | Wirkung |
 |---|---|
 | `data-title` | Titel in Übersicht und Referentenansicht |
-| `data-section="1..4"` | erzeugt die Kopfzeile aus `SECTIONS` in `deck.js` |
+| `data-section="1..5"` | erzeugt die Kopfzeile aus `SECTIONS` in `deck.js` |
 | `data-bare` | unterdrückt Kopfzeile **und** Zähler (Titel, Trenner) |
 | `data-divider` | Abschnittstrenner: Aurora breiter, Lichtzeichen kräftiger |
 | `data-fragments="4"` | mehrstufige Folie, **Anzahl der Zustände** |
