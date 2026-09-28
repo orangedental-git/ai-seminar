@@ -1,7 +1,7 @@
 # KI bei orangedental
 
 Fullscreen-Präsentation für ein internes Seminar, 15–20 Minuten, rund 50
-Teilnehmende. HTML, läuft offline.
+Teilnehmer. HTML, läuft offline.
 
 **Vorführen:** `index.html` doppelklicken. Bedienung steht in [`readme.txt`](readme.txt).
 
@@ -140,10 +140,10 @@ node ~/.claude/skills/create-slides/scripts/gliederung.mjs --md README.md
 |  7 | Was ist KI heute?                           | 2         | — | —           | 672 Z. |
 |  8 | KI ist nicht eine Sache                     | 2         | 5 | —           | 1609 Z. |
 |  9 | Was unterscheidet KI von normaler Software? | 2         | 4 | —           | 1704 Z. |
-| 10 | Was sie kann und was nicht                  | 2         | 4 | —           | 3746 Z. |
-| 11 | KI im Alltag                                | 2         | 6 | —           | 2266 Z. |
+| 10 | Was sie kann und was nicht                  | 2         | 3 | —           | 3746 Z. |
+| 11 | KI im Alltag                                | 2         | 6 | —           | 2265 Z. |
 | 12 | Wie KI funktioniert                         | 3         | — | —           | 507 Z. |
-| 13 | Vom Training zum Einsatz                    | 3         | 5 | —           | 3223 Z. |
+| 13 | Vom Training zum Einsatz                    | 3         | 4 | —           | 3223 Z. |
 | 14 | Sie schätzt das nächste Stück               | 3         | 4 | —           | 3298 Z. |
 | 15 | Warum sie erfindet                          | 3         | 5 | —           | 2255 Z. |
 | 16 | Was sie braucht und was sie behält          | 3         | 3 | —           | 2351 Z. |
@@ -152,15 +152,15 @@ node ~/.claude/skills/create-slides/scripts/gliederung.mjs --md README.md
 | 19 | Wer das heute anbietet                      | 4         | 4 | —           | 1548 Z. |
 | 20 | Was Agenten schaffen                        | 4         | 4 | —           | 1808 Z. |
 | 21 | Wo Agenten versagen                         | 4         | 5 | —           | 2112 Z. |
-| 22 | KI bei orangedental                         | 5         | — | —           | 417 Z. |
+| 22 | KI bei orangedental                         | 5         | — | —           | 387 Z. |
 | 23 | Fragen ist noch nicht Arbeiten              | 5         | 4 | —           | 1151 Z. |
 | 24 | Der Posteingang                             | 5         | 5 | —           | 1307 Z. |
-| 25 | Support und Wissen                          | 5         | 5 | —           | 1631 Z. |
+| 25 | Support und Wissen                          | 5         | 5 | —           | 1629 Z. |
 | 26 | Was sich an der byzz app geändert hat       | 5         | 5 | —           | 947 Z. |
-| 27 | Was als Nächstes kommen könnte              | 5         | 3 | —           | 875 Z. |
-| 28 | Wie der Einstieg gelingen kann              | 5         | 3 | —           | 1770 Z. |
+| 27 | Was als Nächstes kommen könnte              | 5         | 3 | —           | 881 Z. |
+| 28 | Fragen?                                     | —         | — | od3.webp    | 141 Z. |
 
-Folien: **28** · mehrstufig: **22** · mit Material: **1** · mit Sprechnotiz: **28**
+Folien: **28** · mehrstufig: **21** · mit Material: **2** · mit Sprechnotiz: **28**
 
 Automatisch erzeugt aus der Zieldatei von `gliederung.mjs`. Nicht von Hand ändern.
 

@@ -433,6 +433,19 @@ body.no-blur .shot__soft { opacity: 0 !important; }
 .backdrop { position: absolute; pointer-events: none; }
 .backdrop img { display: block; width: 100%; height: 100%; opacity: 0.03; }
 
+/* Foto als gerahmte Karte, in voller Deckkraft. Radius wie .card, der
+   Schatten kräftiger als dort, weil die Fläche viel größer ist. box-shadow ist
+   kein Filter und zählt nicht ins Blur-Budget. overflow schneidet das Bild auf
+   die runden Ecken zu. Als .backdrop, damit die Fläche das Inhaltsband
+   verlassen darf, der Bilddeckel gilt weiter. */
+.backdrop--photo {
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(25, 23, 20, 0.06),
+              0 34px 64px -24px rgba(25, 23, 20, 0.38);
+}
+.backdrop--photo img { opacity: 1; }
+
 .cards { position: absolute; display: grid; gap: 28px; }
 .cards--2 { grid-template-columns: repeat(2, 1fr); }
 .cards--3 { grid-template-columns: repeat(3, 1fr); }

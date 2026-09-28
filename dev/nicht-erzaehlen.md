@@ -803,20 +803,21 @@ firm-led investments boost adoption", die Fassung vom März 2026 gar nichts mehr
 dazu. Ebenso die „2,8 % Zeitersparnis": Die Juni-Fassung nennt „average time
 savings of 3%", die heutige keinen Wert.
 
-*Stattdessen sagbar:* der begutachtete Satz aus PNAS, Beschäftigte werden
+*Stattdessen sagbar:* der begutachtete Satz aus PNAS, Arbeitnehmer werden
 „often hindered by employer restrictions and a perceived need for training".
-Er trägt die Unterzeile von Folie 28.
+Er trug die Unterzeile der früheren Folie 28 (Wie der Einstieg gelingen kann),
+die am 28.09.2026 entfallen ist.
 
 ### „70 Prozent bekommen keine KI-Schulung."
 
 Bitkom, Juli 2025, korrekt zitiert, aber überholt. Dieselbe Frage im April 2026
 ergibt 21 % mit genutzter Fortbildung, 37 % ohne Angebot und 24 %, die keins
-vermuten. Auf der Folie steht die neuere Zahl.
+vermuten. Die neuere Zahl stand auf der früheren Folie 28, die entfallen ist.
 
 ### „12 Prozent nutzen KI heimlich."
 
 Die Zahl stimmt, die Bezugsgröße wird meist weggelassen. Es sind 12 % derer,
-die KI im Job nutzen, nicht 12 % aller Beschäftigten. Deshalb nur in der
+die KI im Job nutzen, nicht 12 % aller Erwerbstätigen. Deshalb nur in der
 Sprechnotiz, mit Bezugsgröße.
 
 ### „Acht von zehn Beschäftigten nutzen KI."
@@ -829,7 +830,7 @@ oft fälschlich dem ifo zugeschrieben werden.
 
 Eine Faustregel aus der Werbung eines Lehrgangsanbieters, ohne Beleg.
 
-*Stattdessen sagbar:* die Augsburger Studie, die solche Ansprechpersonen
+*Stattdessen sagbar:* die Augsburger Studie, die solche Ansprechpartner
 beschreibt, mit dem Zusatz, dass ihre Wirkung nicht gemessen ist.
 
 ### „Mit KI spart man einen Tag pro Woche."

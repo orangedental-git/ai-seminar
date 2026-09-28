@@ -47,18 +47,22 @@ Dinge, die nur hier gelten:
   gerade gültigen Codepage liest. Gemessen und in der echten Konsole
   gegengeprüft. Neue `.bat` übernehmen diesen Kopf. Node-Skripte brauchen das
   nicht.
+- **Kein Gendern**, Regel in `~\.claude\CLAUDE.md`. Paarformen wie „Kolleginnen
+  und Kollegen" sind erlaubt. Gegenprobe, muss leer bleiben:
+  `grep -nE '\w+(\*|:|_)innen|\w+Innen\b|Mitarbeitende|Teilnehmende|Nutzende|Ansprechperson|Beschäftigte' index.html referat.md`
 
 ---
 
 # Projekt: KI-Seminar bei orangedental
 
 Fullscreen-HTML-Präsentation für ein 15–20-minütiges Seminar vor rund 50
-Mitarbeitenden. Läuft per Doppelklick auf `index.html` offline ohne Server.
+Mitarbeitern. Läuft per Doppelklick auf `index.html` offline ohne Server.
 
 Stand: **Alle fünf Abschnitte stehen**, „Von den Anfängen bis ChatGPT", „Was ist
 KI heute?", „Wie KI funktioniert", „KI-Agenten" und „KI bei orangedental".
 **Achtundzwanzig Folien.** Abschnitt 05 ist am 24.09.2026 gebaut, auf Folie 26
-(byzz app) fehlt noch Andrews Bestätigung der Eckdaten. Aus vier Abschnitten
+(byzz app) fehlt noch Andrews Bestätigung der Eckdaten. Folie 28 ist seit dem
+28.09.2026 die Abschlussfolie „Fragen?", allein mit dem Bild des Firmengebäudes. Aus vier Abschnitten
 sind am 22.09.2026 fünf geworden, weil das Kapitel zu agentischen Systemen als
 „mehr als ein Folienpunkt" bestellt war.
 
@@ -139,7 +143,8 @@ Dateien zitiert und bleiben stabil.
    `.shot__soft` sind 44-px-Miniaturen und *sind* die Weichzeichnung.
    `.backdrop` ist ein zurückgenommenes Hintergrundbild und darf Inhaltsband und
    Folienrand verlassen, die Schutzzonen hält dann der Blick auf die Aufnahme
-   frei. Niemals stattdessen `content.top` senken oder `imageScaleMax` anheben.
+   frei. Das gilt auch für `.backdrop--photo`, das Foto in voller Deckkraft
+   auf Folie 28. Niemals stattdessen `content.top` senken oder `imageScaleMax` anheben.
 9. **Schutzzonen bleiben frei:** Logo x 100–372 / y 948–1034, Wortmarke
    x 1655–1820 / y 970–1034. Inhalt zwischen y = 200 und y = 940.
 10. **Blur-Budget einhalten:** Aurora nur als `radial-gradient`, maximal zwei

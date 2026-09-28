@@ -373,7 +373,7 @@ nachvollziehbar". Wer mit Zulassung zu tun hat, weiß sofort, was das bedeutet.
 
 ## 10 · Was sie kann und was nicht
 
-> Zwei Karten, dann die Fußnote zum Sternchen, drei Klicks.
+> Zwei Karten, zwei Klicks. Die Fußnote zum Sternchen kommt mit der zweiten.
 
 Die linke Seite kennt jeder aus der Zeitung. Die rechte nicht. Und die rechte
 ist keine Warnung, sie zeigt, worauf es bei der Arbeit damit ankommt.
@@ -492,7 +492,7 @@ merkt, wenn sie etwas erfindet.
 
 ## 13 · Vom Training zum Einsatz
 
-> Drei Karten nacheinander, dann die Fußzeile.
+> Drei Karten nacheinander. Die Fußnoten zu den Sternchen kommen mit ihrer Karte.
 
 Der wichtigste Satz zuerst: Bauen und Benutzen sind zwei verschiedene Dinge.
 Der Europäische Datenschutzausschuss nennt es Entwicklungsphase und
@@ -852,8 +852,7 @@ Bisher ging es um KI allgemein. Jetzt um die eigene Arbeit. Die meisten fragen
 ab und zu ChatGPT. Das ist ein Anfang, aber noch kein Arbeiten mit KI.
 
 Drei Fragen: Was nimmt sie im Büro und im Posteingang ab? Wo hilft sie im
-Support und in der Entwicklung? Und was kommt als Nächstes, und wie gelingt der
-Einstieg?
+Support und in der Entwicklung? Und was könnte als Nächstes kommen?
 
 ---
 
@@ -911,7 +910,7 @@ wie auf Folie 21. Deshalb schlägt die KI vor, und ein Mensch entscheidet.
 
 > Drei Karten nacheinander, dann die Fußzeile mit der Studie.
 
-Die KI hilft den Mitarbeitenden, sie spricht nicht an ihrer Stelle mit den
+Die KI hilft den Mitarbeitern, sie spricht nicht an ihrer Stelle mit den
 Kunden. Ein Chatbot direkt für die Praxen wäre ein anderes Vorhaben: Er spricht
 ohne Prüfung mit Kunden und muss sich nach der KI-Verordnung als KI zu
 erkennen geben.
@@ -987,37 +986,8 @@ Systeme vorzugswürdig. Dafür liegen Anschaffung, Betrieb und Wartung bei uns.
 
 ---
 
-## 28 · Wie der Einstieg gelingen kann
+## 28 · Fragen?
 
-> Links die Lage, rechts die Folgerung.
+> Abschlussfolie, nur das Bild des Firmengebäudes.
 
-Eine große Studie aus Dänemark mit 18.000 Beschäftigten: Viele sehen den
-Nutzen, werden aber durch Verbote des Arbeitgebers und fehlende Schulung
-gebremst. Ablehnung ist selten der Grund.
-
-**Wie es in Deutschland aussieht.** Bitkom, Befragung Anfang 2026: 48 % der
-Erwerbstätigen nutzen KI bei der Arbeit, 48 % gar nicht. Nur 21 % haben eine
-KI-Fortbildung ihres Arbeitgebers genutzt. 11 % haben KI vom Arbeitgeber und
-nutzen sie trotzdem nicht, Zugang allein reicht also nicht. Und von denen, die
-KI im Job nutzen, tun es 12 % ohne Wissen des Arbeitgebers.
-
-**Ein Firmenkonto statt privater Konten.** Das rät die Datenschutzkonferenz.
-Bei Firmenkonten fließen die Eingaben nach Angabe von Microsoft, Anthropic und
-Google nicht ins Training.
-
-**Keine Patientendaten in Werkzeuge ohne Firmenvertrag.** Wer als Dienstleister
-einer Zahnarztpraxis Patientengeheimnisse weitergibt, macht sich selbst
-strafbar, § 203 Strafgesetzbuch. Namen zu löschen reicht nicht, oft ergibt
-sich der Bezug aus dem Zusammenhang.
-
-**Üben an der eigenen Arbeit, und zwar mehr als einmal.** Ein Vortrag ist ein
-Anfang, keine Schulung. Die KI-Verordnung verpflichtet Firmen, die KI
-einsetzen, die KI-Kompetenz ihrer Beschäftigten zu unterstützen.
-
-**Eine Ansprechperson für Fragen.** Eine Studie der Universität Augsburg
-beschreibt Betriebe mit Ansprechpersonen in den Teams und einer wöchentlichen
-KI-Sprechstunde. Wie viel das bringt, ist dort nicht gemessen.
-
-Wer nach der Zeitersparnis fragt: Die dänische Studie findet zwei Jahre nach
-ChatGPT keine messbare Wirkung auf Lohn und Arbeitszeit. Was sich verändert,
-sind die Aufgaben selbst.
+Danke fürs Zuhören. Jetzt ist Zeit für Fragen, gern auch zu einzelnen Folien.

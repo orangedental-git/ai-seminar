@@ -12,7 +12,7 @@ Antwort auf „warum ist das so?".
 ## Anlass und Ziel
 
 **Interne Schulung, ein Vortragender führt.** Andrew hält vor rund 50
-Mitarbeitenden ein Seminar über KI. Daraus folgt für den Bau:
+Mitarbeitern ein Seminar über KI. Daraus folgt für den Bau:
 
 - **Sprechnotizen ja.** Die Folien tragen nicht allein, Andrew erzählt dazu.
   Jede Folie bekommt ein `<template class="notes">`.
@@ -200,10 +200,10 @@ Dateien, die im Vortrag gelesen werden.
   bei der KZBV noch bei den Landeskammern. Die Lücke wird im Vortrag benannt,
   nicht gefüllt.
 - **Der EU AI Act ist recherchiert, aber bewusst nicht im Abriss.** Er steht
-  seit dem 24.09.2026 in der Sprechnotiz zu Folie 28, weil er die Zuhörer
-  selbst betrifft. Art. 4 zur KI-Kompetenz gilt seit dem 02.02.2025 und ist seit
+  vom 24.09. bis 28.09.2026 in der Sprechnotiz zur früheren Folie 28 (Wie der
+  Einstieg gelingen kann), die entfallen ist. Derzeit steht er nirgends im Deck. Art. 4 zur KI-Kompetenz gilt seit dem 02.02.2025 und ist seit
   dem 27.07.2026 neu gefasst: Firmen, die KI einsetzen, „unterstützen“ die
-  KI-Kompetenz ihrer Beschäftigten, statt sie „sicherzustellen“. Die Fristen
+  KI-Kompetenz ihrer Mitarbeiter, statt sie „sicherzustellen“. Die Fristen
   sind geklärt, siehe „EU AI Act, Fristen“ unter „Offen“.
 
 ## Offen
@@ -212,12 +212,12 @@ Dateien, die im Vortrag gelesen werden.
 |---|---|
 | Orangewert `#F68B1A` vs. `#F08319` | Entscheidung Andrew, siehe oben |
 | Live-Demos | Ob und wo aus dem Deck herausgesprungen wird |
-| Vortragsdatum | Für die Schlussfolie |
+| Vortragsdatum | Nicht mehr für die Schlussfolie: Folie 28 trägt seit dem 28.09.2026 nur das Gebäudebild, ohne Datum. Offen nur noch für Titel oder Weitergabe, falls gewünscht |
 | Repository privat oder öffentlich | Vor dem ersten Push, siehe Kopf dieser Datei |
-| Datenschutz-Folie | **Keine eigene Folie**, entschieden am 24.09.2026. Firmenkonto und keine Patientendaten stehen auf Folie 28, § 203 StGB in deren Sprechnotiz. Die OpenAI-Voreinstellung vorher **von Hand im eigenen Konto nachsehen**, sie war an der Quelle nicht abrufbar |
+| Datenschutz-Folie | **Keine eigene Folie**, entschieden am 24.09.2026. Firmenkonto, keine Patientendaten und § 203 StGB standen auf der früheren Folie 28 und sind mit ihr am 28.09.2026 entfallen, Andrews Entscheidung. Sie stehen derzeit nirgends im Deck. Die OpenAI-Voreinstellung vorher **von Hand im eigenen Konto nachsehen**, sie war an der Quelle nicht abrufbar |
 | Abschnitt 03, wie KI funktioniert | **Erledigt am 22.09.2026.** Trenner und vier Inhaltsfolien stehen, die Belege sind einzeln gegengelesen. Folie 13 ist am selben Abend noch einmal überarbeitet worden, siehe unten |
 | Abschnitt 04, KI-Agenten | **Gebaut am 23.09.2026**, Trenner plus vier Inhaltsfolien, 17 bis 21, am selben Tag überarbeitet. Der Trenner 17 steht seit demselben Abend, zusammen mit 07 und 12 als Fragen, siehe Regel 20 in `CLAUDE.md` |
-| Abschnitt 05, KI bei orangedental | **Gebaut am 24.09.2026**, Trenner plus sechs Inhaltsfolien, 22 bis 28. Offen sind Andrews Eckdaten zur byzz app (Folie 26) und die Copilot-Stufe im eigenen Microsoft 365, siehe „Entscheidungen vom 24.09.2026" |
+| Abschnitt 05, KI bei orangedental | **Gebaut am 24.09.2026**, Trenner plus sechs Inhaltsfolien, 22 bis 28. Seit 28.09.2026 ist 28 die Abschlussfolie „Fragen?“, der Abschnitt hat damit fünf Inhaltsfolien. Offen sind Andrews Eckdaten zur byzz app (Folie 26) und die Copilot-Stufe im eigenen Microsoft 365, siehe „Entscheidungen vom 24.09.2026" |
 | EU AI Act, Fristen | **Geklärt am 24.09.2026** über dejure.org und die EU-Kommission, EUR-Lex war nicht abrufbar. Die Verordnung (EU) 2026/1744 verschiebt Hochrisiko-KI nach Anhang I, also auch Medizinprodukte, auf den 02.08.2028. Art. 4 heißt jetzt „unterstützen" statt „sicherstellen". Die Sprechnotiz zu Folie 21 ist nachgezogen |
 
 ## Material für das Kapitel zu agentischen Systemen
@@ -571,13 +571,13 @@ gelesen. Andrews Auswahl aus der Ideensammlung:
 
 | Punkt | Entscheidung |
 |---|---|
-| Kern | **Der Posteingang und Support und Wissen.** Dazu Alltag mit Excel und Word, weil die Mitarbeitenden Microsoft 365 mit Firmenkonto haben |
+| Kern | **Der Posteingang und Support und Wissen.** Dazu Alltag mit Excel und Word, weil die Mitarbeiter Microsoft 365 mit Firmenkonto haben |
 | Ausblick | n8n und ein eigenes Modell im Haus als **Zukunftsmusik**, auf Folie 27 ausdrücklich als noch nicht entschieden |
-| Die eigentliche Frage | Wie gewinnt man Mitarbeitende, die bisher allenfalls „mal ChatGPT fragen"? Antwort auf Folie 28, gestützt auf Bitkom 2026 und die dänische Studie in PNAS |
+| Die eigentliche Frage | Wie gewinnt man Mitarbeiter, die bisher allenfalls „mal ChatGPT fragen"? Beantwortet auf der früheren Folie 28, gestützt auf Bitkom 2026 und die dänische Studie in PNAS. Die Folie ist am 28.09.2026 entfallen, an ihrer Stelle steht die Abschlussfolie „Fragen?“ |
 | Eigene Erfahrungen | **Nicht „Hausfälle" nennen.** Andrews Fälle sind vor allem Entwicklung und etwas Marketing, deshalb nur knapp. Ausnahme ist die **byzz app**, weil die Folgen in byzz und in der App spürbar sind. Sie bekommt Folie 26 |
-| Spielregeln | Keine eigene Folie. Firmenkonto und keine Patientendaten stehen als Punkte auf Folie 28, § 203 StGB in der Sprechnotiz |
+| Spielregeln | Keine eigene Folie. Standen auf der früheren Folie 28, mit ihr am 28.09.2026 entfallen |
 | Folie 23 | Überschrift „Fragen ist noch nicht Arbeiten", Beispiele aus Excel und Word, die im Saal nachmachbar sind, wenn die Lizenz es hergibt |
-| Folie 25 | Assistent für Mitarbeitende, **nicht** Chatbot für Kunden. Die Studie im Quarterly Journal of Economics trägt die Fußzeile |
+| Folie 25 | Assistent für Mitarbeiter, **nicht** Chatbot für Kunden. Die Studie im Quarterly Journal of Economics trägt die Fußzeile |
 | Folie 27 | Kein Satz, der die offenen Modelle abwertet. „Die stärksten gibt es so nicht" hatte keine Quelle |
 
 ### Offen
@@ -588,4 +588,4 @@ gelesen. Andrews Auswahl aus der Ideensammlung:
 | Folie 26, byzz app | Andrew bestätigt die Eckdaten aus seinen Tagesnotizen und ergänzt, was der Umbau ohne KI gekostet hätte. In der Sprechnotiz steht dafür ein Platzhalter |
 | Copilot-Stufe | Im eigenen Word und Excel nachsehen, welches Etikett erscheint. „Copilot Chat (Basic)" hieße: kein Copilot in Word und Excel, Folie 23 wäre im Saal nicht nachmachbar |
 | Priorisieren in Outlook | Laut Microsoft zunächst nur für „Tier 1 languages". Ob Deutsch dazu zählt, im eigenen Outlook nachsehen |
-| Folie 28 | Nichts versprechen, was die Geschäftsführung nicht mitträgt. Die rechte Karte sagt „Was daraus folgt", nicht „Was wir tun" |
+| Folie 28 | Entfallen am 28.09.2026, ersetzt durch die Abschlussfolie „Fragen?“ |
