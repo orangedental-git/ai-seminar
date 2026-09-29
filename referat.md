@@ -974,16 +974,36 @@ in anderer Form wieder eingebaut.
 
 ## 27 · Was als Nächstes kommen könnte
 
-> Zwei Karten nacheinander.
+> Sieben Kacheln in vier Schritten: zuerst die große, dann je zwei.
 
-Zwei Möglichkeiten für später, beide noch nicht entschieden.
+Ideen aus dem Haus, noch nicht entschieden. Jede Kachel zeigt, was hineingeht
+und was herauskommt.
+
+**Ein KI-System mit unserem Wissen.** Aus der Aufnahme eines Webinars wird
+automatisch der gesprochene Text. Zusammen mit Broschüren und Produkttexten
+entsteht daraus eine geordnete Sammlung, die Fragen beantwortet und die Stelle
+nennt, an der die Antwort steht.
+
+**Protokoll mit Aufgaben.** Werkzeuge wie Fireflies nehmen an Besprechungen
+teil, schreiben mit, fassen zusammen und listen die Aufgaben auf. Teams kann
+das mit einer Zusatzlizenz selbst. Mitschreiben ist Verarbeitung
+personenbezogener Daten, auch ohne Tonaufnahme. Alle müssen es wissen und
+widersprechen können.
+
+**Der freie Termin für alle.** Copilot in Outlook sieht nach Angabe von
+Microsoft in die Kalender aller Teilnehmer und schlägt eine gemeinsame Zeit vor.
+
+**Dashboard fürs Controlling.** Copilot in Excel baut ein Diagramm aus einer
+Beschreibung in normalen Sätzen. Die Zahlen selbst prüft weiterhin das
+Controlling.
+
+**Ein kurzes Video.** Modelle wie Veo von Google machen aus einem Produktfoto
+ein Video von acht Sekunden.
 
 **Abläufe, die sich selbst anstoßen.** Werkzeuge wie n8n verbinden Programme
 miteinander. Eine Mail kommt an, die KI ordnet sie ein und legt einen
-Antwortentwurf in das richtige Postfach. Oder aus einer neuen Version werden
-Versionshinweise und ein Newsletter-Entwurf. Anders als ein Agent folgt so ein
-Ablauf festen Schritten, und gerade deshalb ist er berechenbar. Ein Mensch gibt
-jeweils frei.
+Antwortentwurf in das richtige Postfach. Anders als ein Agent folgt so ein
+Ablauf festen Schritten, und gerade deshalb ist er berechenbar.
 
 **Ein Modell im eigenen Haus.** Offene Modelle lassen sich auf eigenen
 Rechnern betreiben. Das größte offene Modell von OpenAI läuft nach

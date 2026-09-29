@@ -69,6 +69,7 @@ dev/                  alles, was nur beim Bauen gebraucht wird
   BRIEFING.md         Auftrag und Festlegungen
   nicht-erzaehlen.md  was recherchiert wurde und absichtlich draußen bleibt
   claude/             Nachschlagedateien zu CLAUDE.md, je Vorhaben eine
+  bilder/             Quellbilder, alle mit Gemini erzeugt
   platzhalter.png     Quellbild
   shots/              Prüfaufnahmen                                [erzeugt]
 
@@ -157,7 +158,7 @@ node ~/.claude/skills/create-slides/scripts/gliederung.mjs --md README.md
 | 24 | Der Posteingang                             | 5         | 5 | —                    | 1307 Z. |
 | 25 | Support und Wissen                          | 5         | 5 | —                    | 1629 Z. |
 | 26 | Was sich an der byzz app geändert hat       | 5         | 5 | —                    | 947 Z. |
-| 27 | Was als Nächstes kommen könnte              | 5         | 3 | —                    | 881 Z. |
+| 27 | Was als Nächstes kommen könnte              | 5         | 5 | —                    | 2604 Z. |
 | 28 | Fragen?                                     | —         | — | od3.webp             | 141 Z. |
 
 Folien: **28** · mehrstufig: **21** · mit Material: **8** · mit Sprechnotiz: **28**

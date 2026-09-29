@@ -573,7 +573,7 @@ gelesen. Andrews Auswahl aus der Ideensammlung:
 | Punkt | Entscheidung |
 |---|---|
 | Kern | **Der Posteingang und Support und Wissen.** Dazu Alltag mit Excel und Word, weil die Mitarbeiter Microsoft 365 mit Firmenkonto haben |
-| Ausblick | n8n und ein eigenes Modell im Haus als **Zukunftsmusik**, auf Folie 27 ausdrücklich als noch nicht entschieden |
+| Ausblick | n8n und ein eigenes Modell im Haus als **Zukunftsmusik**, auf Folie 27 ausdrücklich als noch nicht entschieden. Seit dem 29.09.2026 stehen dort zusätzlich Andrews Ideen (Wissenssammlung aus Webinaren und Marketingtexten, Protokoll, Kalender, Controlling, Video aus Produktfotos) als Kacheln |
 | Die eigentliche Frage | Wie gewinnt man Mitarbeiter, die bisher allenfalls „mal ChatGPT fragen"? Beantwortet auf der früheren Folie 28, gestützt auf Bitkom 2026 und die dänische Studie in PNAS. Die Folie ist am 28.09.2026 entfallen, an ihrer Stelle steht die Abschlussfolie „Fragen?“ |
 | Eigene Erfahrungen | **Nicht „Hausfälle" nennen.** Andrews Fälle sind vor allem Entwicklung und etwas Marketing, deshalb nur knapp. Ausnahme ist die **byzz app**, weil die Folgen in byzz und in der App spürbar sind. Sie bekommt Folie 26 |
 | Spielregeln | Keine eigene Folie. Standen auf der früheren Folie 28, mit ihr am 28.09.2026 entfallen |

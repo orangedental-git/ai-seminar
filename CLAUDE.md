@@ -156,7 +156,7 @@ Dateien zitiert und bleiben stabil.
     ohne Fehlermeldung. Wer eine neue Stelle mit Icons baut, **muss** sie in den
     globalen Kontur-Selektor in `deck.css` aufnehmen, sonst füllt der Browser
     die Pfade zu schwarzen Klecksen. Stand jetzt im Selektor: `svg use`,
-    `.ico svg`, `.path svg`, `.card__ico svg`, `.ico-arrow`. Das gilt auch für
+    `.ico svg`, `.path svg`, `.card__ico svg`, `.ico-arrow`, `.bento__from svg`. Das gilt auch für
     Schriftstufen: keine neue erfinden.
 12. **`#stage` und `#frame` nicht zusammenlegen.** `#frame` ist der komponierte
     Bereich und immer exakt 1920 × 1080. `#stage` wächst über `--stage-w` /
