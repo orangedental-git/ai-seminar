@@ -863,7 +863,7 @@ Support und in der Entwicklung? Und was könnte als Nächstes kommen?
 
 ## 23 · Fragen ist noch nicht Arbeiten
 
-> Links Excel, rechts Word, dann die Fußzeile.
+> Links Excel, darunter Word, mit Word erscheint rechts das Bild.
 
 Wer ChatGPT etwas fragt, bekommt eine Antwort und muss sie selbst übertragen.
 Copilot in Excel und Word arbeitet in der Datei, die gerade offen ist. Die
@@ -877,7 +877,9 @@ bleibt die Datei unverändert.
 
 **In Word.** Einen Absatz kürzen oder freundlicher formulieren. Ein langes
 Dokument in fünf Punkten zusammenfassen. Aus Stichpunkten einen ersten
-Entwurf schreiben.
+Entwurf schreiben. Das Bild zeigt Claude in Word: Es geht eine
+Programmierrichtlinie durch und schlägt Änderungen vor, die sich direkt
+übernehmen lassen.
 
 Microsoft schreibt selbst, Copilot kann Fehler machen, und alles Erstellte
 ist vor der Verwendung zu prüfen. Für Entscheidungen in Finanz-, Rechts- oder
