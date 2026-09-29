@@ -557,6 +557,7 @@ Dokumentation etwas nicht beschreibt, belegt nicht das Gegenteil.**
 | 20 | **Keine Messwerte mehr**, drei Fälle mit Vorher und Nachher: Bun (ein Jahr in elf Tagen), Salesforce (231 Personentage in 13 Tagen), Doctolib (Stunden statt Wochen). Unterzeile „Mit einem Menschen, der steuert." Andrews eigener Fall bleibt für Abschnitt 05 |
 | 18, zweite Runde | Unterzeile auf Andrews Wortlaut: „Ein Agent arbeitet mit Programmen und Dateien auf dem Rechner." |
 | 21, zweite Runde | **Allgemein statt Einzelfall, nur heutige Agenten.** Versteckte Befehle, Handlungen, die keiner wollte, schwer nachzuvollziehen. Grundlage BSI-Verbraucherseite und Cowork-Sicherheitsseite. Der Operator-Test von 2025 und das Restaurant-Beispiel sind raus |
+| 18, dritte Runde (28.09.2026) | **Die Fußzeile zur KI-Verordnung ist raus.** Stattdessen ein Sternchen an Karte 3 und die Fußnote „Aus Prompt Engineering wird Context Engineering …", Wortlaut von Andrew gewählt. Der Schlusssatz „nur so gut wie der Kontext" ist eine Zuspitzung und in `quellenangabe.md` als solche ausgewiesen. Die Fußnote kommt mit Karte 3, `data-fragments` deshalb 4, und sitzt zweizeilig auf `top:856` |
 | 21, erste Runde | **Alltagsbilder statt Mechanismen, keine Vorfälle.** Versteckte Befehle (BSI), anders als gemeint (Operator-Test von OpenAI), mit den Rechten des Nutzers (OpenAI-Hilfe). Fußzeile mit dem BSI-Rat, einem Agenten nie Mail, Bankkonto und Dateien zugleich zu geben. Die Frage zur Dreierprobe ist damit erledigt |
 
 **Was daraus fürs Weitere folgt:** Ein Datum ohne erklärtes Kriterium ist

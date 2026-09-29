@@ -148,7 +148,7 @@ node ~/.claude/skills/create-slides/scripts/gliederung.mjs --md README.md
 | 15 | Warum sie erfindet                          | 3         | 5 | —           | 2255 Z. |
 | 16 | Was sie braucht und was sie behält          | 3         | 3 | —           | 2351 Z. |
 | 17 | KI-Agenten                                  | 4         | — | —           | 630 Z. |
-| 18 | Was ein Agent anders macht                  | 4         | 5 | —           | 1891 Z. |
+| 18 | Was ein Agent anders macht                  | 4         | 4 | —           | 2183 Z. |
 | 19 | Wer das heute anbietet                      | 4         | 4 | —           | 1548 Z. |
 | 20 | Was Agenten schaffen                        | 4         | 4 | —           | 1808 Z. |
 | 21 | Wo Agenten versagen                         | 4         | 5 | —           | 2112 Z. |

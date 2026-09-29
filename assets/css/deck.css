@@ -446,6 +446,16 @@ body.no-blur .shot__soft { opacity: 0 !important; }
 }
 .backdrop--photo img { opacity: 1; }
 
+/* Foto, das sichtbar über dem Grund schwebt. Gestaffelter Schatten statt
+   eines einzelnen: die enge Stufe zeichnet die Kante, die weite erzeugt die
+   Höhe. box-shadow ist kein Filter und zählt nicht ins Blur-Budget. */
+.backdrop--lift {
+  box-shadow: 0 1px 2px rgba(25, 23, 20, 0.12),
+              0 6px 14px -2px rgba(25, 23, 20, 0.18),
+              0 22px 44px -8px rgba(25, 23, 20, 0.30),
+              0 56px 96px -16px rgba(25, 23, 20, 0.58);
+}
+
 .cards { position: absolute; display: grid; gap: 28px; }
 .cards--2 { grid-template-columns: repeat(2, 1fr); }
 .cards--3 { grid-template-columns: repeat(3, 1fr); }

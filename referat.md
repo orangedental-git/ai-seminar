@@ -607,7 +607,7 @@ wie wahr. Ein Satz, der richtig klingt, ist damit noch nicht richtig.
 
 ## 15 · Warum sie erfindet
 
-> Drei Karten nacheinander, dann die Fußzeile.
+> Drei Karten nacheinander, die Fußzeile kommt mit der dritten.
 
 Auf Folie 10 stand, dass sie selbst nicht merkt, wenn sie etwas erfindet. Hier
 kommt der Grund. Er ist nachgewiesen, und zwar in einer begutachteten Arbeit
@@ -713,7 +713,7 @@ sie? Und wo liegen die Risiken?
 
 ## 18 · Was ein Agent anders macht
 
-> Drei Karten nacheinander, dann die Fußzeile.
+> Drei Karten nacheinander, die Fußzeile kommt mit der dritten.
 
 Ein Chatbot schreibt Antworten, was damit geschieht, entscheidet der Mensch. Ein
 Agent arbeitet selbst mit Programmen und Dateien auf dem Rechner. Claude Code, Codex und
@@ -742,9 +742,14 @@ der Agent selbst anlegt, und Anleitungen mit Skripten für wiederkehrende
 Abläufe. Beim nächsten Mal liest er sie wieder. Es sind Hinweise, keine
 erzwungenen Regeln, und das Modell bleibt dasselbe.
 
-Rechtlich ist ein Agent nichts Eigenes. Das KI-Büro der EU schreibt, der
-Begriff sei gesetzlich nicht bestimmt. Ein Agent ist ein KI-System, der
-Begriff von Folie 13.
+Dazu das Sternchen: Aus Prompt Engineering wird Context Engineering. Prompt
+Engineering hieß, die eine Eingabe möglichst geschickt zu formulieren. Beim
+Context Engineering geht es um alles, was der Agent vor sich hat: Regeln,
+Werkzeuge, Dateien, Suchergebnisse und den bisherigen Verlauf. Und zwar nicht
+möglichst viel, sondern das Richtige, denn der Platz ist begrenzt. Das
+KI-System von Folie 13 legt jeder Eingabe weitere Informationen bei, und was
+es beilegt, entscheidet über das Ergebnis. Ein KI-System, und damit auch ein
+Agent, ist nur so gut wie der Kontext, in dem es arbeitet.
 
 ---
 
@@ -810,7 +815,7 @@ es einen Agenten, aktuelle Modelle und jemanden, der weiß, was er will.
 
 ## 21 · Wo Agenten versagen
 
-> Drei Karten nacheinander, dann die Fußzeile.
+> Drei Karten nacheinander, die Fußzeile kommt mit der dritten.
 
 Ein falscher Satz ist ärgerlich, eine falsche Handlung kann Ärger verursachen. Das
 BSI schreibt selbst, Agenten seien noch in einem frühen Stadium,
@@ -885,7 +890,7 @@ der Firma.
 
 ## 24 · Der Posteingang
 
-> Drei Karten nacheinander, dann die Fußzeile.
+> Drei Karten nacheinander, die Fußzeile kommt mit der dritten.
 
 Für alle drei Aufgaben bietet Microsoft in Outlook eine Funktion an. Was davon
 im eigenen Konto erscheint, hängt an der Lizenz.

@@ -143,8 +143,8 @@ Dateien zitiert und bleiben stabil.
    `.shot__soft` sind 44-px-Miniaturen und *sind* die Weichzeichnung.
    `.backdrop` ist ein zurückgenommenes Hintergrundbild und darf Inhaltsband und
    Folienrand verlassen, die Schutzzonen hält dann der Blick auf die Aufnahme
-   frei. Das gilt auch für `.backdrop--photo`, das Foto in voller Deckkraft
-   auf Folie 28. Niemals stattdessen `content.top` senken oder `imageScaleMax` anheben.
+   frei. Das gilt auch für `.backdrop--photo`, die Fotos in voller Deckkraft
+   auf Folie 02, 07, 12, 17, 22 und 28. Niemals stattdessen `content.top` senken oder `imageScaleMax` anheben.
 9. **Schutzzonen bleiben frei:** Logo x 100–372 / y 948–1034, Wortmarke
    x 1655–1820 / y 970–1034. Inhalt zwischen y = 200 und y = 940.
 10. **Blur-Budget einhalten:** Aurora nur als `radial-gradient`, maximal zwei
