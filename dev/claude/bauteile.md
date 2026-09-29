@@ -8,7 +8,7 @@ baut, nimmt diese, statt neue zu erfinden.
 
 | Klasse | Wofür |
 |---|---|
-| `.h-title` | Schriftstufe 128 px, zwischen `.h-xl` (168) und `.h-l` (96). Die Titelfolie. `.h-xl` bleibt im Stylesheet, wird derzeit aber von keiner Folie benutzt. |
+| `.h-title` | Schriftstufe 128 px, zwischen `.h-xl` (168) und `.h-l` (96). Die Titelfolie. `.h-xl` bleibt im Stylesheet, wird derzeit aber von keiner Folie benutzt. Im Titel stehen „KI" und die Silbe „orange" von „orangedental" in `var(--orange)`, wie in Wortmarke und Logo, per `<span style>` ohne eigene Klasse. Das Wort bleibt kleingeschrieben (Regel 15), ist im Quelltext aber geteilt: **eine Suche nach „orangedental" in `index.html` findet den Titel nicht.** `data-title` trägt den ungeteilten Text. |
 | `.title-list` | Die drei Zeilen unter dem Titel. Kein Aufzählungszeichen, das Fragewort in `<b>` trägt die **Farbe**, nicht das Gewicht: fett stünde neben der 128er Headline zu laut. |
 | `.axis` und `.axis__*` | Die waagerechte Zeitachse, siehe `dev/claude/zeitachse.md`. |
 | `.card__yr` | Jahreszahl als Kartenkopf, anstelle des Piktogramms. Gleiche Höhe und gleicher Abstand wie `.card__ico`, damit Karten mit Jahr und Karten mit Piktogramm nebeneinander auf einer Linie stehen. Nicht zu verwechseln mit `.card__n`, das ist die kleine blasse Ordnungszahl oben rechts. |
