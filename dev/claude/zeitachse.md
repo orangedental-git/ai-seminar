@@ -5,14 +5,14 @@ Klassen `.axis__*`, `.marks--tight` und `.axis__span` sind in
 `dev/claude/bauteile.md` beschrieben.
 
 **Die Geometrie wird gerechnet, nicht geschätzt, und zwar von
-`achsen-rechnen.mjs` im Skill.** Das Skript nimmt eine Stationenliste, verteilt
+`timeline-geometry.mjs` im Skill.** Das Skript nimmt eine Stationenliste, verteilt
 die Seiten, rechnet Positionen und maximale Textbreiten, prüft Kollisionen,
 Überlauf am rechten Rand und Bänder, und **bricht mit Rückgabewert 1 ab**,
 statt stillschweigend etwas Krummes zu liefern. Gegen die frühere Achse
 1950–2012 geprüft: Es reproduziert deren acht Positionen und Breiten aufs Pixel.
 
 ```bash
-node ~/.claude/skills/create-slides/scripts/achsen-rechnen.mjs achse.json --html
+node ~/.claude/skills/create-slides/scripts/timeline-geometry.mjs axis.json --html
 ```
 
 Zwei Dinge, die das Skript kennt und die man beim Schätzen übersieht: Eine
@@ -22,7 +22,7 @@ dort, wo die Textblöcke der `--dn`-Marken stehen — wo beides zusammenfällt,
 meldet das Skript einen Fehler.
 
 **Die Werte, mit denen die drei Achsen dieses Decks gerechnet sind**, gehören in
-jede `achse.json`, sonst rechnet das Skript mit seinen Voreinstellungen und die
+jede `axis.json`, sonst rechnet das Skript mit seinen Voreinstellungen und die
 Flächen stoßen aneinander:
 
 ```json
@@ -31,7 +31,7 @@ Flächen stoßen aneinander:
 
 60 px zwischen zwei Textblöcken sind 16 px Überstand links, 16 px rechts und
 28 px sichtbare Luft dazwischen. Weil jede Station eine Fläche hat, trägt in der
-`achse.json` auch **jede** Station `"mile": true` — das Feld heißt dort „hat eine
+`axis.json` auch **jede** Station `"mile": true` — das Feld heißt dort „hat eine
 Fläche", die Tönung im Deck ist eine andere Frage.
 
 ```
@@ -79,7 +79,7 @@ Zehn Punkte, die Arbeit gekostet haben:
   meldet `layout-audit` als Überlauf, obwohl auf dem Bild nichts übersteht.
   **Es sind zwei Grenzen, und sie liegen 112 px auseinander.** Die sichtbare
   Fläche endet am Bundsteg, containerrelativ also bei 1696 — das rechnet
-  `achsen-rechnen.mjs` über `contentRight` und den Überstand. Der unsichtbare
+  `timeline-geometry.mjs` über `contentRight` und den Überstand. Der unsichtbare
   Kasten `left` + `width` darf bis 1808 gehen, das ist der Rahmenrand, und erst
   dort meldet `layout-audit` einen Überlauf. Wer nur auf den Prüflauf schaut,
   baut also bis zu 112 px in den Bundsteg hinein, ohne dass sich etwas

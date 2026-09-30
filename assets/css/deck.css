@@ -749,7 +749,7 @@ svg use, .ico svg, .path svg, .card__ico svg, .ico-arrow, .bento__from svg {
    Die negativen Ränder ziehen die Fläche unter dem Text hervor, damit sein
    Satzspiegel bündig zum Punkt bleibt. Der Überstand von 16 px ist kein
    Schönheitswert: er ist der Platz, den zwei benachbarte Flächen voneinander
-   brauchen, und er geht in die Rechnung von achsen-rechnen.mjs ein
+   brauchen, und er geht in die Rechnung von timeline-geometry.mjs ein
    (surfaceBleed). Wer ihn vergrößert, bringt 1950 und 1958 zum Stoßen. */
 .axis__t {
   position: absolute;

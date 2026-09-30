@@ -25,8 +25,8 @@ node_modules/
 /dev/shots/
 # deck-pdf.mjs
 /ki-seminar.pdf
-# kontaktbogen.mjs
-/kontaktbogen.jpg
+# contact-sheet.mjs
+/contact-sheet.jpg
 
 # ------------------------------------------------------------------- Persoenliches
 # .claude/settings.json bleibt verfolgt (Projektrechte), die lokale Fassung nicht.

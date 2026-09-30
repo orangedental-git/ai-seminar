@@ -296,7 +296,7 @@ nicht. Die Nachprüfung bestätigte das und legte ein größeres Problem frei.
 | McCulloch und Pitts 1943 | Nur Sprechnotiz und Referat. Im Detailband stand einmal „das Neuron als An-Aus-Prinzip", ein Etikett ohne Aussage. Jetzt sagt die Zeile, was An-Aus heißt, und nennt das Perzeptron. Jahr und Namen trägt der Vortrag |
 | XAI 2016 | Draußen |
 | 2009, die Fotosammlung | Draußen |
-| Achsenskript | `achsen-rechnen.mjs`, dauerhaft im Skill |
+| Achsenskript | `timeline-geometry.mjs`, dauerhaft im Skill |
 | bosch.com als Quelle | Geprüft und **ohne Rang**, weder für die Gliederung noch für Einzeldaten. Sieben Mängel mit Gegenbeleg in `quellenangabe.md`, der Rang in Regel 22 |
 | Was daraus übernommen wird | NETtalk bei 1986, Siri bei der Lücke 1997 bis 2012, die Bildgeneratoren bei 2022. **Alle drei nur in Sprechnotiz und Referat**, keine neue Station auf einer Achse |
 | MYCIN und die Haftungsfragen | Gestrichen. Die Begründung stand in Notiz und Referat und ist nicht belegt: Das Buch nennt in Kapitel 36 selbst zu teure Rechner und ein zu schmales Wissensgebiet. Siehe `dev/nicht-erzaehlen.md` |

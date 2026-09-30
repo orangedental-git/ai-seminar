@@ -10,72 +10,74 @@ rem  Erzeugt die statische Fassung des Decks als PDF.
 rem
 rem  Nicht direkt gedruckt, sondern erst fotografiert: Chrome lässt im
 rem  Druckpfad backdrop-filter weg, rechnet Blur anders und stellt <video>
-rem  überhaupt nicht dar. Jede Aufbaustufe wird eine eigene Seite.
+rem  überhaupt nicht dar. Jede Folie wird eine Seite, im Stand nach dem
+rem  letzten Klick.
 rem
-rem  Argumente werden durchgereicht:  --klein  halbe Auflösung, viel kleiner
-rem                                   --out    anderer Zielpfad
+rem  Argumente werden durchgereicht:  --small      halbe Auflösung, viel kleiner
+rem                                   --all-steps  eine Seite je Aufbaustufe
+rem                                   --out        anderer Zielpfad
 
 set "SKILL=%USERPROFILE%\.claude\skills\create-slides\scripts"
 
-if not exist "%~dp0index.html"       goto :fehlt_index
-if not exist "%~dp0deck.config.json" goto :fehlt_config
+if not exist "%~dp0index.html"       goto :missing_index
+if not exist "%~dp0deck.config.json" goto :missing_config
 where node >nul 2>nul
-if errorlevel 1                      goto :kein_node
-if not exist "%SKILL%\deck-pdf.mjs"  goto :kein_skill
-if not exist "%SKILL%\node_modules"  goto :keine_pakete
+if errorlevel 1                      goto :no_node
+if not exist "%SKILL%\deck-pdf.mjs"  goto :no_skill
+if not exist "%SKILL%\node_modules"  goto :no_packages
 
 echo.
-echo   Das dauert einige Minuten. Chrome öffnet und schließt sich dabei.
+echo   This takes a few minutes. Chrome opens and closes along the way.
 echo.
 
 node "%SKILL%\deck-pdf.mjs" --config "%~dp0deck.config.json" %*
-if errorlevel 1 goto :fehler_lauf
+if errorlevel 1 goto :run_failed
 
-if not "%~1"=="" goto :fertig_mit_argument
+if not "%~1"=="" goto :done_with_args
 echo.
-echo   Fertig:  %~dp0ki-seminar.pdf
-goto :ende
+echo   Done:  %~dp0ki-seminar.pdf
+goto :end
 
-:fertig_mit_argument
+:done_with_args
 echo.
-echo   Fertig. Der Zielpfad steht oben in der Zeile "PDF -^>".
-goto :ende
+echo   Done. The target path is shown above in the line "PDF ->".
+goto :end
 
-:fehler_lauf
+:run_failed
 echo.
-echo   Der Lauf ist fehlgeschlagen. Die Meldung steht oben.
-goto :ende
+echo   The run failed. The message is shown above.
+goto :end
 
-:fehlt_index
+:missing_index
 echo.
-echo   index.html fehlt neben dieser Datei.
-goto :ende
+echo   index.html is missing next to this file.
+goto :end
 
-:fehlt_config
+:missing_config
 echo.
-echo   deck.config.json fehlt neben dieser Datei.
-goto :ende
+echo   deck.config.json is missing next to this file.
+goto :end
 
-:kein_node
+:no_node
 echo.
-echo   node ist nicht im Suchpfad. Node.js installieren, dann neu versuchen.
-goto :ende
+echo   node is not on the PATH. Install Node.js, then try again.
+goto :end
 
-:kein_skill
+:no_skill
 echo.
-echo   Der Skill create-slides liegt nicht am erwarteten Ort:
+echo   The create-slides skill is not in the expected location:
 echo     %SKILL%
-goto :ende
+goto :end
 
-:keine_pakete
+:no_packages
 echo.
-echo   Der Skill create-slides ist nicht eingerichtet. Einmalig:
+echo   The create-slides skill is not set up. Run once:
 echo.
 echo     cd /d "%SKILL%"
 echo     npm install
-goto :ende
+goto :end
 
-:ende
+:end
 echo.
 pause
 endlocal

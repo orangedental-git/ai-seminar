@@ -18,7 +18,7 @@ Edit-Werkzeug, `perl -pe` nur für reine ASCII-Muster.
 ## Ist eine Folie dazugekommen oder weggefallen
 
 ```bash
-node "$SK/gliederung.mjs" --md README.md
+node "$SK/outline.mjs" --md README.md
 ```
 
 Der Abschnitt „Die Folien" in `README.md` steht zwischen zwei Markern und wird
@@ -41,15 +41,15 @@ aktuellen Deck ist schlimmer als gar keins. `pdf.bat` und
 **Rückgabewert 0 ist das Abnahmekriterium, nicht die Textausgabe.** Vorsicht bei
 `| tail`, dann liest `$?` das letzte Pipeglied und meldet immer Erfolg.
 
-**Die Zeile „Folien im Deck" gegenlesen.** Kein Prüflauf meldet, dass Folien
+**Die Zeile „Slides in deck" gegenlesen.** Kein Prüflauf meldet, dass Folien
 *fehlen*: ein kürzeres Deck ist ein gültiges Deck, und alle Tests bleiben grün.
 In diesem Projekt sind so schon einmal zwei Folien verschwunden, zurückgeholt
 aus `git show HEAD:index.html`.
 
 ## Aufnahmen sind nicht immer frisch
 
-**`abnahme.mjs` erzeugt keine Aufnahmen**, es startet die Layoutprüfung mit
-`--keine-bilder`. Wer danach ein Bild ansieht, begutachtet einen alten Stand.
+**`acceptance.mjs` erzeugt keine Aufnahmen**, es startet die Layoutprüfung mit
+`--no-images`. Wer danach ein Bild ansieht, begutachtet einen alten Stand.
 Für frische Bilder `layout-audit.mjs` einzeln laufen lassen und **vor jeder
 Sichtprüfung den Zeitstempel ansehen**:
 `ls -l --time-style=+%H:%M:%S dev/shots`.

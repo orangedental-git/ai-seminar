@@ -38,15 +38,19 @@ Es gelten die allgemeinen Regeln aus `~\.claude\CLAUDE.md` (Umlaute, Komma
 statt Gedankenstrich, kein Strichpunkt, Zitate bleiben wörtlich). Dazu zwei
 Dinge, die nur hier gelten:
 
-- **Dateinamen sind Bezeichner und bleiben, wie sie sind.** `pruefen.bat`,
-  `references/buehne-und-system.md`, `references/pruefen.md`. Wer beim
-  Nachziehen der Umlaute pauschal ersetzt, bricht diese Verweise ohne
-  Fehlermeldung.
+- **Dateinamen sind Bezeichner und bleiben, wie sie sind.**
+  `references/buehne-und-system.md`, `references/pruefen.md`,
+  `dev/claude/pruefen.md`. Wer beim Nachziehen der Umlaute pauschal ersetzt,
+  bricht diese Verweise ohne Fehlermeldung. Skripte (`check.bat`,
+  `acceptance.mjs`) tragen englische Namen, Regel in `~\.claude\CLAUDE.md`.
 - **Die `.bat`-Dateien:** `chcp 65001 >nul` als erste Zeile nach `@echo off`,
   UTF-8 **ohne BOM**, alles davor reines ASCII, weil `cmd.exe` die Datei mit der
   gerade gültigen Codepage liest. Gemessen und in der echten Konsole
   gegengeprüft. Neue `.bat` übernehmen diesen Kopf. Node-Skripte brauchen das
-  nicht.
+  nicht. **Zeilenenden CRLF.** Mit reinem LF zerlegt `cmd.exe` die Datei nach
+  `chcp 65001` falsch und bricht mit „Syntaxfehler" ab, beim Doppelklick
+  schließt sich das Fenster sofort. Write-Werkzeug und `sed -i` schreiben LF,
+  danach `file *.bat` prüfen, jede muss „with CRLF line terminators" melden.
 - **Kein Gendern**, Regel in `~\.claude\CLAUDE.md`. Paarformen wie „Kolleginnen
   und Kollegen" sind erlaubt. Gegenprobe, muss leer bleiben:
   `grep -nE '\w+(\*|:|_)innen|\w+Innen\b|Mitarbeitende|Teilnehmende|Nutzende|Ansprechperson|Beschäftigte' index.html referat.md`
@@ -248,7 +252,7 @@ und `dev/claude/vortragstexte.md`:
 ```bash
 SK=~/.claude/skills/create-slides/scripts
 node "$SK/layout-audit.mjs"    # Folien fotografieren und Layout prüfen
-node "$SK/abnahme.mjs"         # Layout + Referent + Kaltstart, sammelnd
+node "$SK/acceptance.mjs"         # Layout + Referent + Kaltstart, sammelnd
 
 # Unterzeilen nur als .sub (Regel 20), muss leer bleiben
 grep -nA1 'class="rule"' index.html | grep '<p' | grep -v 'class="sub"'
@@ -259,13 +263,13 @@ for f in index.html referat.md quellenangabe.md dev/*.md dev/claude/*.md README.
 ```
 
 - **Rückgabewert 0 ist das Kriterium**, nicht die Textausgabe. Kein `| tail`.
-- **„Folien im Deck" gegenlesen, es müssen 28 sein.** Fehlende Folien meldet
+- **„Slides in deck" gegenlesen, es müssen 28 sein.** Fehlende Folien meldet
   kein Prüflauf.
 - **Text mit Umlauten nie mit `perl -pe` ändern**, das schreibt Latin-1-Bytes
   und kein Prüflauf merkt es. Edit-Werkzeug oder `sed`.
-- **`abnahme.mjs` erzeugt keine Aufnahmen.** Vor jeder Sichtprüfung den
+- **`acceptance.mjs` erzeugt keine Aufnahmen.** Vor jeder Sichtprüfung den
   Zeitstempel in `dev/shots` ansehen.
-- **Folie dazu oder weg:** `node "$SK/gliederung.mjs" --md README.md`, danach
+- **Folie dazu oder weg:** `node "$SK/outline.mjs" --md README.md`, danach
   die Folienverweise „Folie NN (Titel)" in der Doku prüfen.
 - **Das PDF erst ganz am Schluss**, nie zwischendurch.
 - **Einmal wirklich `index.html` doppelklicken.** Nie über einen Dev-Server

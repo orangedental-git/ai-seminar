@@ -25,7 +25,7 @@
        setInterval in verdeckten Fenstern.
      - Tastendrücke im Popup werden vom Opener aus abgefangen, sonst kann der
        Referent aus seinem Fenster nicht blättern.
-     - Die Uhr trägt id="clock" und data-clock. test-referent.mjs sucht genau
+     - Die Uhr trägt id="clock" und data-clock. test-presenter.mjs sucht genau
        danach; eine Uhr, die nur eine Klasse hat, lässt den Prüfstand
        fehlschlagen, obwohl sie sichtbar tickt.
 
@@ -118,7 +118,7 @@
     var pos = el('span', 'pos', top);
     var ttl = el('div', 'ttl', top);
     var clk = el('div', 'clk', top);
-    /* test-referent.mjs sucht '#clock, [data-clock]'. Beides setzen kostet
+    /* test-presenter.mjs sucht '#clock, [data-clock]'. Beides setzen kostet
        nichts und macht die Uhr für den Prüfstand auffindbar. */
     clk.id = 'clock';
     clk.setAttribute('data-clock', '');

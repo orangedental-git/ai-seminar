@@ -19,55 +19,55 @@ rem
 rem  robocopy /MIR läuft bewusst nur auf assets\, nie auf publish\ selbst:
 rem  sonst würde ein dort angelegtes .git mitgelöscht.
 
-set "QUELLE=%~dp0"
-set "ZIEL=%~dp0publish"
+set "SOURCE=%~dp0"
+set "TARGET=%~dp0publish"
 
-if not exist "%QUELLE%index.html" goto :fehlt_index
-if not exist "%QUELLE%readme.txt" goto :fehlt_readme
-if not exist "%QUELLE%assets"     goto :fehlt_assets
+if not exist "%SOURCE%index.html" goto :missing_index
+if not exist "%SOURCE%readme.txt" goto :missing_readme
+if not exist "%SOURCE%assets"     goto :missing_assets
 
-if not exist "%ZIEL%" mkdir "%ZIEL%"
+if not exist "%TARGET%" mkdir "%TARGET%"
 
-robocopy "%QUELLE%assets" "%ZIEL%\assets" /MIR /NFL /NDL /NJH /NJS /NP >nul
-if errorlevel 8 goto :fehler_kopie
+robocopy "%SOURCE%assets" "%TARGET%\assets" /MIR /NFL /NDL /NJH /NJS /NP >nul
+if errorlevel 8 goto :copy_failed
 
-copy /Y "%QUELLE%index.html" "%ZIEL%\index.html" >nul
-if errorlevel 1 goto :fehler_kopie
-copy /Y "%QUELLE%readme.txt" "%ZIEL%\readme.txt" >nul
-if errorlevel 1 goto :fehler_kopie
+copy /Y "%SOURCE%index.html" "%TARGET%\index.html" >nul
+if errorlevel 1 goto :copy_failed
+copy /Y "%SOURCE%readme.txt" "%TARGET%\readme.txt" >nul
+if errorlevel 1 goto :copy_failed
 
-if exist "%QUELLE%ki-seminar.pdf" copy /Y "%QUELLE%ki-seminar.pdf" "%ZIEL%\ki-seminar.pdf" >nul
+if exist "%SOURCE%ki-seminar.pdf" copy /Y "%SOURCE%ki-seminar.pdf" "%TARGET%\ki-seminar.pdf" >nul
 
-for /f %%N in ('dir /s /b /a-d "%ZIEL%" 2^>nul ^| find /c /v ""') do set "ANZAHL=%%N"
+for /f %%N in ('dir /s /b /a-d "%TARGET%" 2^>nul ^| find /c /v ""') do set "COUNT=%%N"
 
 echo.
-echo   Fertig:  %ZIEL%
-echo   %ANZAHL% Datei^(en^). Der Ordner läuft per Doppelklick auf index.html.
-goto :ende
+echo   Done:  %TARGET%
+echo   %COUNT% file^(s^). The folder runs by double-clicking index.html.
+goto :end
 
-:fehler_kopie
+:copy_failed
 echo.
-echo   Beim Kopieren ist etwas schiefgegangen. Ist publish\ in einem
-echo   anderen Programm geöffnet?
-goto :ende
+echo   Something went wrong while copying. Is publish\ open in
+echo   another program?
+goto :end
 
-:fehlt_index
+:missing_index
 echo.
-echo   index.html fehlt neben dieser Datei.
-goto :ende
+echo   index.html is missing next to this file.
+goto :end
 
-:fehlt_readme
+:missing_readme
 echo.
-echo   readme.txt fehlt. Sie ist die Bedienungsanleitung und gehört mit
-echo   in den Weitergabeordner.
-goto :ende
+echo   readme.txt is missing. It is the operating manual and belongs
+echo   in the handover folder.
+goto :end
 
-:fehlt_assets
+:missing_assets
 echo.
-echo   Das Verzeichnis assets\ fehlt.
-goto :ende
+echo   The assets\ directory is missing.
+goto :end
 
-:ende
+:end
 echo.
 pause
 endlocal

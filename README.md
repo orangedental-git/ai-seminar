@@ -46,7 +46,7 @@ quellenangabe.md      jede Zahl mit Beleg und Adresse zum Nachlesen
 README.md             diese Datei
 CLAUDE.md             Arbeitsregeln
 
-pruefen.bat          Doppelklick: Abnahme
+check.bat          Doppelklick: Abnahme
 pdf.bat               Doppelklick: PDF erzeugen (erst am Ende)
 publish.bat           Doppelklick: Weitergabe-Ordner ohne dev\
 .gitignore            was nicht ins Repository gehört
@@ -93,12 +93,12 @@ dieses Projekt über `deck.config.json`:
 SK=~/.claude/skills/create-slides/scripts
 
 node "$SK/layout-audit.mjs"            # Folien fotografieren und Layout prüfen
-node "$SK/abnahme.mjs"                 # Layout + Referent + Kaltstart
-node "$SK/kontaktbogen.mjs" dev/shots  # ein Blatt zum Draufschauen
+node "$SK/acceptance.mjs"                 # Layout + Referent + Kaltstart
+node "$SK/contact-sheet.mjs" dev/shots  # ein Blatt zum Draufschauen
 node "$SK/deck-pdf.mjs"                # ki-seminar.pdf, erst ganz am Ende
-node "$SK/gliederung.mjs" --md README.md  # Folientabelle unten erzeugen
-node "$SK/achsen-rechnen.mjs" achse.json  # maßstäbliche Zeitachse rechnen
-node "$SK/bilder-aufbereiten.mjs" <bild> --out assets/img --breite <px> --weich
+node "$SK/outline.mjs" --md README.md  # Folientabelle unten erzeugen
+node "$SK/timeline-geometry.mjs" axis.json  # maßstäbliche Zeitachse rechnen
+node "$SK/prepare-images.mjs" <bild> --out assets/img --width <px> --soft
 ```
 
 **Das PDF entsteht erst zum Schluss**, wenn das Deck inhaltlich fertig ist. Solange sich
@@ -125,7 +125,7 @@ ist sie schlimmer als keine, weil man sich darauf verlässt. Nach jeder
 Folienänderung neu erzeugen:
 
 ```bash
-node ~/.claude/skills/create-slides/scripts/gliederung.mjs --md README.md
+node ~/.claude/skills/create-slides/scripts/outline.mjs --md README.md
 ```
 
 <!-- GLIEDERUNG:START -->
@@ -163,7 +163,7 @@ node ~/.claude/skills/create-slides/scripts/gliederung.mjs --md README.md
 
 Folien: **28** · mehrstufig: **21** · mit Material: **8** · mit Sprechnotiz: **28**
 
-Automatisch erzeugt aus der Zieldatei von `gliederung.mjs`. Nicht von Hand ändern.
+Automatisch erzeugt aus der Zieldatei von `outline.mjs`. Nicht von Hand ändern.
 
 <!-- GLIEDERUNG:END -->
 
