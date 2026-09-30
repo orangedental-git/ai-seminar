@@ -986,7 +986,18 @@ svg use, .ico svg, .path svg, .card__ico svg, .ico-arrow, .bento__from svg {
 #overview .ov-i:hover { border-color: var(--orange); transform: translateY(-2px); }
 #overview .ov-i.is-cur { border-color: var(--orange); box-shadow: 0 0 0 2px var(--orange-soft); }
 #overview .ov-n { font: 500 10px/1 var(--f-mono); color: var(--ink-3); display: block; margin-bottom: 8px; }
-#overview .ov-s { font: 500 9px/1 var(--f-mono); color: var(--orange-deep); position: absolute; left: 14px; bottom: 10px; letter-spacing: .08em; }
+#overview .ov-i.is-divider { background: var(--orange-soft); }
+/* Kapitelband: volle Rasterbreite, damit das Kapitel links in einer neuen
+   Zeile beginnt. Die Linie läuft über ::after bis zum rechten Rand. */
+#overview .ov-band {
+  grid-column: 1 / -1;
+  display: flex; align-items: center; gap: 14px;
+  margin-top: 18px;
+  font: 500 10px/1 var(--f-mono); color: var(--orange-deep);
+  letter-spacing: .08em; text-transform: uppercase;
+}
+#overview .ov-band:first-child { margin-top: 0; }
+#overview .ov-band::after { content: ''; flex: 1; height: 1px; background: var(--rule); }
 
 #hint {
   position: fixed; right: 22px; bottom: 18px;

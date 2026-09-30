@@ -32,7 +32,8 @@
   ---------------------------------------------------------------------------
 
   F     Vollbild ein und aus       (F11 tut dasselbe)
-  O     Übersicht aller Folien    Klick auf eine Folie springt hin
+  O     Übersicht aller Folien     Klick auf eine Folie springt hin,
+                                   jedes Kapitel beginnt eine eigene Zeile
   P     Referentenansicht          zweites Fenster mit Notizen
   B     Weichzeichnung abschalten  wenn der Rechner ruckelt
   Esc   Übersicht schließen

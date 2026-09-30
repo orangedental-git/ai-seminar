@@ -5,6 +5,10 @@
    Bewusst textbasiert statt mit Miniaturbildern: echte Vorschaubilder würden
    entweder alle Folien gleichzeitig gerendert verlangen oder eine Canvas-Kopie,
    und Canvas ist unter file:// nach dem Zeichnen lokaler Bilder tainted.
+
+   Gegliedert wird über data-divider: Vor jeder Trennerfolie steht ein Band über
+   die ganze Rasterbreite, dadurch beginnt jedes Kapitel eine neue Zeile. Die
+   Bänder sind keine .ov-i, der Index der Karten bleibt der Folienindex.
    ========================================================================== */
 (function (w, d) {
   'use strict';
@@ -28,9 +32,22 @@
 
     for (var i = 0; i < n; i++) {
       var sl = DECK.slideAt(i);
+      var sec = sl.getAttribute('data-section');
+      var isDivider = sl.hasAttribute('data-divider');
+
+      /* Trenner ohne Abschnitt (Titel, Schluss) bekommen ein Band ohne Text:
+         eigene Zeile ja, erfundene Überschrift nein. */
+      if (isDivider) {
+        var band = d.createElement('div');
+        band.className = 'ov-band';
+        band.setAttribute('aria-hidden', 'true');
+        band.textContent = sec ? sectionLabel(sec) : '';
+        grid.appendChild(band);
+      }
+
       var b = d.createElement('button');
       b.type = 'button';
-      b.className = 'ov-i';
+      b.className = isDivider ? 'ov-i is-divider' : 'ov-i';
       b.setAttribute('data-i', String(i));
 
       var num = d.createElement('span');
@@ -39,15 +56,6 @@
       b.appendChild(num);
 
       b.appendChild(d.createTextNode(sl.getAttribute('data-title') || '—'));
-
-      var sec = sl.getAttribute('data-section');
-      var label = sec ? sectionLabel(sec) : '';
-      if (label) {
-        var s = d.createElement('span');
-        s.className = 'ov-s';
-        s.textContent = label;
-        b.appendChild(s);
-      }
       grid.appendChild(b);
     }
 

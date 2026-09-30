@@ -184,9 +184,9 @@ Folien-Attribute:
 | Attribut | Wirkung |
 |---|---|
 | `data-title` | Titel in Übersicht und Referentenansicht |
-| `data-section="1..5"` | erzeugt die Kopfzeile aus `SECTIONS` in `deck.js` |
+| `data-section="1..5"` | erzeugt die Kopfzeile aus `SECTIONS` in `deck.js`, am Trenner auch das Kapitelband der Übersicht |
 | `data-bare` | unterdrückt Kopfzeile **und** Zähler (Titel, Trenner) |
-| `data-divider` | Abschnittstrenner: Aurora breiter, Lichtzeichen kräftiger |
+| `data-divider` | Abschnittstrenner: Aurora breiter, Lichtzeichen kräftiger. In der Übersicht (O) beginnt er eine neue Zeile unter einem Kapitelband und ist getönt |
 | `data-fragments="4"` | mehrstufige Folie, **Anzahl der Zustände** |
 | `data-anim` | Gruppe für den gestaffelten Eintritt, 3–6 pro Folie |
 | `data-frag="1"` | Element erscheint ab Zustand 1 |
