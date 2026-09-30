@@ -252,7 +252,7 @@ und `dev/claude/vortragstexte.md`:
 ```bash
 SK=~/.claude/skills/create-slides/scripts
 node "$SK/layout-audit.mjs"    # Folien fotografieren und Layout prüfen
-node "$SK/acceptance.mjs"         # Layout + Referent + Kaltstart, sammelnd
+node "$SK/acceptance.mjs"      # Layout + Referent + Kaltstart, sammelnd
 
 # Unterzeilen nur als .sub (Regel 20), muss leer bleiben
 grep -nA1 'class="rule"' index.html | grep '<p' | grep -v 'class="sub"'

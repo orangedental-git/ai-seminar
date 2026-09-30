@@ -46,8 +46,8 @@ quellenangabe.md      jede Zahl mit Beleg und Adresse zum Nachlesen
 README.md             diese Datei
 CLAUDE.md             Arbeitsregeln
 
-check.bat          Doppelklick: Abnahme
-pdf.bat               Doppelklick: PDF erzeugen (erst am Ende)
+check.bat             Doppelklick: Abnahme
+pdf.bat               Doppelklick: PDF erzeugen, eine Seite je Folie (erst am Ende)
 publish.bat           Doppelklick: Weitergabe-Ordner ohne dev\
 .gitignore            was nicht ins Repository gehört
 
@@ -92,11 +92,12 @@ dieses Projekt über `deck.config.json`:
 ```bash
 SK=~/.claude/skills/create-slides/scripts
 
-node "$SK/layout-audit.mjs"            # Folien fotografieren und Layout prüfen
-node "$SK/acceptance.mjs"                 # Layout + Referent + Kaltstart
-node "$SK/contact-sheet.mjs" dev/shots  # ein Blatt zum Draufschauen
-node "$SK/deck-pdf.mjs"                # ki-seminar.pdf, erst ganz am Ende
-node "$SK/outline.mjs" --md README.md  # Folientabelle unten erzeugen
+node "$SK/layout-audit.mjs"                 # Folien fotografieren und Layout prüfen
+node "$SK/acceptance.mjs"                   # Layout + Referent + Kaltstart
+node "$SK/contact-sheet.mjs" dev/shots      # ein Blatt zum Draufschauen
+node "$SK/deck-pdf.mjs"                     # ki-seminar.pdf, erst ganz am Ende
+node "$SK/deck-pdf.mjs" --all-steps         # eine Seite je Aufbaustufe
+node "$SK/outline.mjs" --md README.md       # Folientabelle unten erzeugen
 node "$SK/timeline-geometry.mjs" axis.json  # maßstäbliche Zeitachse rechnen
 node "$SK/prepare-images.mjs" <bild> --out assets/img --width <px> --soft
 ```
